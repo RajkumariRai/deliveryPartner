@@ -17,7 +17,7 @@ import {
 
 export default function SignUp(props) {
   const {navigation} = props;
-  console.log('props ==> ', navigation);
+ 
   const [userName, setUserName] = useState('');
   const [userNameError, setUserNameError] = useState(false);
   const [email, setEmail] = useState('');
@@ -27,6 +27,8 @@ export default function SignUp(props) {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
   let flag= false;
+
+ 
   const validateData = () => {
     try {
       if (!userName || nameValidation(userName)) {

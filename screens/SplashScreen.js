@@ -11,7 +11,7 @@ import {
 
 export const SplashScreen = (props) => {
     const {navigation  } = props;
-    console.log("props ==> ", navigation)
+   
     setTimeout(() =>{navigation.push('Login')},1000)
 
   return (

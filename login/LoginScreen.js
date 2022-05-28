@@ -13,7 +13,7 @@ import {HelperText} from 'react-native-paper';
 import {blankValidator, emailValidator, showMessage} from '../utils/Validation';
 
 export default function LoginScreen(props) {
-  console.log('props ==> ', navigation);
+  const {navigation  } = props;
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('false');
   const [password, setPassword] = useState('');
@@ -92,7 +92,7 @@ export default function LoginScreen(props) {
           onPress={() => {
             navigation.push('forgetPassword');
           }}>
-          <Text style={styles.forgot_button}>Forgot Password?</Text>
+          <Text style={styles.forgot_button}>Forgot Password ?</Text>
         </TouchableOpacity>
       </View>
 
@@ -172,19 +172,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   signupBtn: {
-    width: '80%',
-    color: '#000',
-    height: 40,
-    borderLeftWidth: 1,
-    borderRightWidth: 1,
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderRadius: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 10,
-    fontWeight: 'bold',
-    padding: 10,
+    color: '#26ae61', paddingLeft: 5
   },
   textDanger: {
     color: '#dc3545',
