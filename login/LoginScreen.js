@@ -13,11 +13,11 @@ import {HelperText} from 'react-native-paper';
 import {blankValidator, emailValidator, showMessage} from '../utils/Validation';
 
 export default function LoginScreen(props) {
-  const {navigation  } = props;
+  const {navigation} = props;
   const [email, setEmail] = useState('');
-  const [emailError, setEmailError] = useState('false');
+  const [emailError, setEmailError] = useState(false);
   const [password, setPassword] = useState('');
-  const [passwordError, setpasswordError] = useState('false');
+  const [passwordError, setpasswordError] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(true);
 
   let error = false;
@@ -172,7 +172,13 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   signupBtn: {
-    color: '#26ae61', paddingLeft: 5
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+    color: '#26ae61',
+   
+    fontSize: 20,
+    alignItems: 'center',
+    fontWeight: 'bold',
   },
   textDanger: {
     color: '#dc3545',
