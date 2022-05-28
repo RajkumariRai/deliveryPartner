@@ -14,7 +14,6 @@ const DashBoard = () => {
   return (
     <SafeAreaView>
       <Header leftIcon={'bars'} tilte={'Dashboard'} rightIcon={'bell'} />
-
       <View style={styles.dashboardbgcolor}>
         {/* bar section */}
         <View>

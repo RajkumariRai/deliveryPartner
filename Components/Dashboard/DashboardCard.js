@@ -5,28 +5,28 @@ import {Card, ListItem, Button, Icon} from 'react-native-elements';
 const DashboardCard = props => {
   const {title, value} = props;
   return (
-    <Card  containerStyle={styles.cardShadow}>
+    <Card containerStyle={styles.cardShadow}>
       {value && (
         <View style={styles.topLeftValue}>
           <Text>{value}</Text>
         </View>
       )}
-
       {title && <Text style={styles.cardTitle}>{title}</Text>}
     </Card>
   );
 };
 const styles = StyleSheet.create({
   cardShadow: {
-    shadowColor: "#000",
-shadowOffset: {
-	width: 0,
-	height: 12,
-},
-shadowOpacity: 0.58,
-shadowRadius: 16.00,
-
-elevation: 24,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 12,
+    },
+    shadowOpacity: 0.58,
+    shadowRadius: 16.0,
+    elevation: 24,
+    width: '40%',
+    margin: 10,
   },
   cardTitle: {
     color: '#333',
