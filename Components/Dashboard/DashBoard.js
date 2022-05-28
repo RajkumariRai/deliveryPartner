@@ -1,12 +1,16 @@
-import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import React from 'react';
+import {View, Text, StyleSheet} from 'react-native';
+import Header from '../Header/Header';
 
-const DashBoard = ({navigation}) => {
+const DashBoard = () => {
   return (
     <View>
-      <Text> Dashboard</Text>
+      <Header leftIcon={'bars'} tilte={'Dashboard'} rightIcon={'bell'} />
+      <View></View>
     </View>
   );
 };
-
+const styles = StyleSheet.create({
+  
+});
 export default DashBoard;
