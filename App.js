@@ -12,6 +12,11 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+      <Stack.Screen
+         name="splashscreen"
+         component={SplashScreen}
+         options={{headerShown: false}}
+        />
         <Stack.Screen
           name="Login"
           component={LoginScreen}
@@ -22,11 +27,7 @@ const App = () => {
           component={DashBoard}
           options={{headerShown: false}}
         />
-        <Stack.Screen
-         name="splashscreen"
-         component={SplashScreen}
-         options={{headerShown: false}}
-        />
+        
         <Stack.Screen
          name="signup"
          component={SignUp}
