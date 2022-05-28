@@ -2,7 +2,7 @@ import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LoginScreen from './login/LoginScreen';
-import DashBoard from './mainScreen/DashBoard';
+import DashBoard from './Components/Dashboard/DashBoard';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,7 +18,7 @@ const App = () => {
         <Stack.Screen
           name="dashboard"
           component={DashBoard}
-          options={{headerShown: false}}
+          options={{headerShown: true}}
         />
       </Stack.Navigator>
     </NavigationContainer>
