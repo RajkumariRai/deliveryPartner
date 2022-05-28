@@ -5,7 +5,7 @@ import LoginScreen from './login/LoginScreen';
 
 const Stack = createNativeStackNavigator();
 
-const App = () => {
+const AuthStack = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -14,9 +14,10 @@ const App = () => {
           component={LoginScreen}
         
         />
+    
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
 
-export default App;
+export default AuthStack;
