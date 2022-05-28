@@ -137,7 +137,7 @@ export default function SignUp(props) {
           <TouchableOpacity
             style={styles.loginBtn}
             onPress={() => {
-              navigation.push('Home');
+              navigation.push('Login');
             }}>
             <Text>Login</Text>
           </TouchableOpacity>

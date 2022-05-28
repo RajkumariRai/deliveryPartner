@@ -97,7 +97,7 @@ export default function LoginScreen(props) {
   <Text style={styles.signupText}> Do not have an account yet?</Text>
       <TouchableOpacity      
         onPress={() => {
-          navigation.push('sideMenu');
+          navigation.push('signup');
         }}>
         <Text  style={styles.signupBtn}>SIGNUP</Text>
       </TouchableOpacity>
