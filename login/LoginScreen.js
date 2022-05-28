@@ -8,30 +8,28 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
+import {HelperText} from 'react-native-paper';
+
+import {blankValidator, emailValidator, showMessage} from '../utils/Validation';
 
 export default function LoginScreen(props) {
-  const {navigation} = props;
   console.log('props ==> ', navigation);
   const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('false');
   const [password, setPassword] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setpasswordError] = useState('');
-  let error = false;
+  const [passwordError, setpasswordError] = useState('false');
+  const [passwordVisible, setPasswordVisible] = useState(true);
 
+  let error = false;
   const validateData = () => {
     try {
-      if (email == null || email == '') {
+      if (!email || !emailValidator(email)) {
+        setEmailError(true);
         error = true;
-        setEmailError('Please Enter Email Id');
       }
-
-      if (password == null || password == '') {
+      if (!password || password.length < 8 || password.length > 20) {
+        setpasswordError(true);
         error = true;
-        setpasswordError('Please Enter Password');
-      }
-      if (password == !null && (password.length < 8 || password.length > 20)) {
-        error = true;
-        setpasswordError('Password should be min 8 char and max 20 char');
       }
       if (!error) {
         navigation.push('dashboard');
@@ -45,8 +43,6 @@ export default function LoginScreen(props) {
     <View style={styles.container}>
       <Image style={styles.image} source={require('../assets/Logo.png')} />
 
-      
-
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
@@ -54,30 +50,44 @@ export default function LoginScreen(props) {
           placeholderTextColor="#000"
           onChangeText={value => {
             setEmail(value);
+            setEmailError(false);
           }}
         />
       </View>
       <View>
-        {emailError.length > 0 && (
-          <Text style={styles.textDanger}>{emailError}</Text>
+        {emailError && (
+          <HelperText type="error" visible={emailError}>
+            Please Enter Valid Email Id
+          </HelperText>
         )}
       </View>
 
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
-          placeholder="Password."
+          placeholder="Password"
           placeholderTextColor="#000"
-          secureTextEntry={true}
-          onChangeText={password => setPassword(password)}
+          secureTextEntry={passwordVisible}
+          // right={
+          //   <TextInput.icon
+          //     name={passwordVisible ? 'eye' : 'eye-off'}
+          //     onPress={() => setPasswordVisible(!passwordVisible)}
+          //   />
+          // }
+          onChangeText={password => {
+            setPassword(password);
+            setpasswordError(false);
+          }}
         />
       </View>
       <View>
-        {passwordError.length > 0 && (
-          <Text style={styles.textDanger}>{passwordError}</Text>
+        {passwordError && (
+          <HelperText type="error" visible={passwordError}>
+            Please Enter Valid Passwoad
+          </HelperText>
         )}
       </View>
-      <View >
+      <View>
         <TouchableOpacity
           onPress={() => {
             navigation.push('forgetPassword');
@@ -93,14 +103,14 @@ export default function LoginScreen(props) {
         }}>
         <Text style={styles.loginText}>LOGIN</Text>
       </TouchableOpacity>
-<View>
-  <Text style={styles.signupText}> Do not have an account yet?</Text>
-      <TouchableOpacity      
-        onPress={() => {
-          navigation.push('signup');
-        }}>
-        <Text  style={styles.signupBtn}>SIGNUP</Text>
-      </TouchableOpacity>
+      <View>
+        <Text style={styles.signupText}> Do not have an account yet?</Text>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.push('signup');
+          }}>
+          <Text style={styles.signupBtn}>SIGNUP</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -142,7 +152,7 @@ const styles = StyleSheet.create({
 
   forgot_button: {
     flexDirection: 'column',
-    alignItems:'flex-end',
+    alignItems: 'flex-end',
     justifyContent: 'space-between',
     height: 30,
     marginBottom: 5,
@@ -158,7 +168,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     backgroundColor: '#2EE59D',
   },
-  signupText:{
+  signupText: {
     padding: 10,
   },
   signupBtn: {

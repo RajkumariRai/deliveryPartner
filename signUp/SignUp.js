@@ -8,53 +8,47 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
+import {HelperText} from 'react-native-paper';
+import {
+  blankValidator,
+  emailValidator,
+  nameValidation,
+} from '../utils/Validation';
 
 export default function SignUp(props) {
   const {navigation} = props;
   console.log('props ==> ', navigation);
   const [userName, setUserName] = useState('');
+  const [userNameError, setUserNameError] = useState(false);
   const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState(false);
   const [password, setPassword] = useState('');
+  const [passwordError, setPasswordError] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [userNameError, setUserNameError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-  const [confirmPasswordError, setConfirmPasswordError] = useState('');
-
-  let error = false;
-
+  const [confirmPasswordError, setConfirmPasswordError] = useState(false);
+  let flag= false;
   const validateData = () => {
     try {
-      if (userName == null || userName == '') {
-        error = true;
-        setUserNameError('Please Enter User Name');
+      if (!userName || nameValidation(userName)) {
+        setUserNameError(true);
+        flag= true
       }
-      if (email == null || email == '') {
-        error = true;
-        setEmailError('Please Enter Email Id');
+      if (!email || !emailValidator(email)) {
+        setEmailError(true);
+        flag= true
       }
-
-      if (password == null || password == '') {
-        error = true;
-        setPasswordError('Please Enter Password');
+      if (!password || password.length < 8 || password.length > 20) {
+        setPasswordError(true);
+        flag= true
       }
-      else  if (password == !null && (password.length < 8 || password.length > 20)) {
-        error = true;
-        setPasswordError('Password should be min 8 char and max 20 char');
+      if (!confirmPassword) {
+        setConfirmPasswordError(true);
+        flag= true
+      } else if (password && confirmPassword && (password !== confirmPassword)) {
+        setConfirmPasswordError(true);
+        flag= true
       }
-      else if (password == !null && (password !== confirmPassword) ) {
-        errorFlag = true;
-        setPasswordError("Passwoad and confirm password should be same.");
-        setConfirmPasswordError("Passwoad and confirm password should be same.")
-      }
-
-      if (confirmPassword == null || confirmPassword == '') {
-        error = true;
-        setConfirmPasswordError('Please enter confirm Password');
-      }
-      
-
-     if (!error) {
+      if (!flag) {
         navigation.push('dashboard');
       }
     } catch (error) {
@@ -72,43 +66,57 @@ export default function SignUp(props) {
             style={styles.TextInput}
             placeholder="Enter Username"
             placeholderTextColor="#003f5c"
-            onChangeText={userName => setUserName(userName)}
+            onChangeText={userName => {
+              setUserName(userName);
+              setUserNameError(false);
+            }}
           />
         </View>
         <View>
-        {userNameError.length > 0 && (
-          <Text style={styles.textDanger}>{userNameError}</Text>
-        )}
-      </View>
+          {userNameError && (
+            <HelperText type="error" visible={userNameError}>
+              Please Enter Valid User Name
+            </HelperText>
+          )}
+        </View>
 
         <View style={styles.inputView}>
           <TextInput
             style={styles.TextInput}
             placeholder="Enter Email"
             placeholderTextColor="#003f5c"
-            onChangeText={email => setEmail(email)}
+            onChangeText={email => {
+              setEmail(email);
+              setEmailError(false);
+            }}
           />
         </View>
         <View>
-        {emailError.length > 0 && (
-          <Text style={styles.textDanger}>{emailError}</Text>
-        )}
-      </View>
-
+          {emailError && (
+            <HelperText type="error" visible={emailError}>
+              Please Enter Valid Email Id
+            </HelperText>
+          )}
+        </View>
 
         <View style={styles.inputView}>
           <TextInput
             style={styles.TextInput}
             placeholder="Enter Password"
             placeholderTextColor="#003f5c"
-            onChangeText={password => setPassword(password)}
+            onChangeText={password => {
+              setPassword(password);
+              setPasswordError(false);
+            }}
           />
         </View>
         <View>
-        {passwordError.length > 0 && (
-          <Text style={styles.textDanger}>{passwordError}</Text>
-        )}
-      </View>
+          {passwordError && (
+            <HelperText type="error" visible={passwordError}>
+              Please Enter Valid Passwoad
+            </HelperText>
+          )}
+        </View>
 
         <View style={styles.inputView}>
           <TextInput
@@ -116,24 +124,29 @@ export default function SignUp(props) {
             placeholder="Confirm Password."
             placeholderTextColor="#003f5c"
             secureTextEntry={true}
-            onChangeText={confirmPassword => setConfirmPassword(confirmPassword)}
+            onChangeText={confirmPassword => {
+              setConfirmPassword(confirmPassword);
+              setConfirmPasswordError(false);
+            }}
           />
         </View>
 
         <View>
-        {confirmPasswordError.length > 0 && (
-          <Text style={styles.textDanger}>{confirmPasswordError}</Text>
-        )}
-      </View>
-      <TouchableOpacity
-            style={styles.signUpBtn}
-            onPress={() => {
-              validateData();
-            }}>
-            <Text>SIGNUP</Text>
-          </TouchableOpacity>
+          {confirmPasswordError && (
+            <HelperText type="error" visible={confirmPasswordError}>
+              Passwoad and confirm password should be same
+            </HelperText>
+          )}
+        </View>
+        <TouchableOpacity
+          style={styles.signUpBtn}
+          onPress={() => {
+            validateData();
+          }}>
+          <Text>SIGNUP</Text>
+        </TouchableOpacity>
         <View>
-          <Text style = {styles.loginText}> Already have an account?</Text>
+          <Text style={styles.loginText}> Already have an account?</Text>
           <TouchableOpacity
             style={styles.loginBtn}
             onPress={() => {
@@ -141,8 +154,7 @@ export default function SignUp(props) {
             }}>
             <Text>Login</Text>
           </TouchableOpacity>
-          </View>
-       
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -165,7 +177,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     width: '80%',
     height: 45,
-  
+
     alignItems: 'center',
   },
 
@@ -193,7 +205,7 @@ const styles = StyleSheet.create({
   loginText: {
     padding: 10,
   },
-  loginBtn:{
+  loginBtn: {
     borderLeftWidth: 1,
     borderRightWidth: 1,
     borderTopWidth: 1,
