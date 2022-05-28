@@ -13,7 +13,7 @@ import {
 import { NavigationContainer } from 'react-navigation';
 
 
-  function DashBoard({ navigation }) {
+  const DashBoard = ({ navigation }) => {
     return (
      <View>
        <Text> Dashboard</Text>
