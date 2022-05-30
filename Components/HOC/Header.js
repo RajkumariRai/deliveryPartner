@@ -8,13 +8,13 @@ const Header = props => {
     <View style={styles.headrBgColor}>
       <View style={styles.flexSpace}>
         <View>
-          <Icon name={'bars'} size={12} color="#fff" />
+          <Icon name={'bars'} size={16} color="#fff" />
         </View>
         <View>
           <Text style={styles.titleColor}>Dashboard</Text>
         </View>
         <View>
-          <Icon name={'bell'} size={12} color="#fff" />
+          <Icon name={'bell'} size={16} color="#fff" />
         </View>
       </View>
     </View>
@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
   titleColor: {
     color: '#fff',
     fontWeight: 'bold',
+    fontSize:16
   },
 });
 export default Header;
