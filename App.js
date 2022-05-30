@@ -3,8 +3,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LoginScreen from './login/LoginScreen';
 import DashBoard from './Components/Dashboard/DashBoard';
-import { SplashScreen } from './screens/SplashScreen';
+import {SplashScreen} from './screens/SplashScreen';
 import SignUp from './signUp/SignUp';
+import Profile from './Components/Profile/Profile';
 
 const Stack = createNativeStackNavigator();
 
@@ -12,10 +13,10 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-      <Stack.Screen
-         name="splashscreen"
-         component={SplashScreen}
-         options={{headerShown: false}}
+        <Stack.Screen
+          name="splashscreen"
+          component={SplashScreen}
+          options={{headerShown: false}}
         />
         <Stack.Screen
           name="Login"
@@ -27,11 +28,16 @@ const App = () => {
           component={DashBoard}
           options={{headerShown: false}}
         />
-        
+
         <Stack.Screen
-         name="signup"
-         component={SignUp}
-         options={{headerShown: false}}
+          name="signup"
+          component={SignUp}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="profile"
+          component={Profile}
+          options={{headerShown: false}}
         />
       </Stack.Navigator>
     </NavigationContainer>

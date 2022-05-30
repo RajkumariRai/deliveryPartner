@@ -5,13 +5,13 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome';
 const BottomNavigationStack = props => {
   const [active, setActive] = useState(1);
   const {route} = props;
-  console.log('props-======', props);
+
   useEffect(() => {
     if (route.name === 'dashboard') {
       setActive(1);
     } else if (route.name === '') {
       setActive(2);
-    } else if (route.name === '') {
+    } else if (route.name === 'profile') {
       setActive(3);
     } else {
       setActive(4);
@@ -26,6 +26,7 @@ const BottomNavigationStack = props => {
   };
   const profileHandle = () => {
     setActive(3);
+    props.navigation.push('profile');
   };
   const settingHandle = () => {
     setActive(4);
@@ -99,7 +100,7 @@ const BottomNavigationStack = props => {
           }}>
           <View style={styles.buttonCenter}>
             <Icon
-              name={'settings'}
+              name={'user'}
               size={12}
               color={active === 4 ? '#26ae61' : 'rgb(211, 211, 211)'}
             />
