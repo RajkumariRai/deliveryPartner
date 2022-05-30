@@ -17,7 +17,6 @@ import {
 
 export default function SignUp(props) {
   const {navigation} = props;
- 
   const [userName, setUserName] = useState('');
   const [userNameError, setUserNameError] = useState(false);
   const [email, setEmail] = useState('');

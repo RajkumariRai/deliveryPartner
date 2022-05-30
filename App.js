@@ -7,6 +7,7 @@ import {SplashScreen} from './screens/SplashScreen';
 import SignUp from './signUp/SignUp';
 import Profile from './Components/Profile/Profile';
 import EditProfile from './Components/Profile/EditProfile';
+import ForgetPassword from './login/ForgetPassword';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +23,11 @@ const App = () => {
         <Stack.Screen
           name="Login"
           component={LoginScreen}
+          options={{headerShown: false}}
+        />
+         <Stack.Screen
+          name="forgetpassword"
+          component={ForgetPassword}
           options={{headerShown: false}}
         />
         <Stack.Screen

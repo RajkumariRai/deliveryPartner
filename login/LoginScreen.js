@@ -90,7 +90,7 @@ export default function LoginScreen(props) {
       <View>
         <TouchableOpacity
           onPress={() => {
-            navigation.push('forgetPassword');
+            navigation.push('forgetpassword');
           }}>
           <Text style={styles.forgot_button}>Forgot Password ?</Text>
         </TouchableOpacity>
@@ -155,6 +155,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     justifyContent: 'space-between',
     height: 30,
+    fontSize: 15,
     marginBottom: 5,
     fontWeight: 'bold',
   },
@@ -175,10 +176,9 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'flex-end',
     color: '#26ae61',
-   
     fontSize: 20,
-    alignItems: 'center',
     fontWeight: 'bold',
+    marginHorizontal:50
   },
   textDanger: {
     color: '#dc3545',
