@@ -11,6 +11,9 @@ const DashboardCard = props => {
           <Text style={styles.circleTextCenter}>{value}</Text>
         </View>
       )}
+      <View>
+        <Icon name="rowing" />
+      </View>
       {title && <Text style={styles.cardTitle}>{title}</Text>}
     </Card>
   );
@@ -39,7 +42,6 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     borderRadius: 20 / 2,
-
   },
   circleTextCenter: {
     textAlign: 'center',

@@ -44,13 +44,15 @@ const DashBoard = () => {
 const styles = StyleSheet.create({
   dashboardbgcolor: {
     backgroundColor: '#26ae61',
-    height:"100%"
+    height: '100%',
   },
   cardSectionBorder: {
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     backgroundColor: '#fff',
-    padding: 20,
+    paddingLeft: 10,
+    paddingTop: 10,
+    paddingBottom: 10,
     height: '100%',
   },
   flexSpace: {
