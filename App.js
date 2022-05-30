@@ -6,6 +6,7 @@ import DashBoard from './Components/Dashboard/DashBoard';
 import {SplashScreen} from './screens/SplashScreen';
 import SignUp from './signUp/SignUp';
 import Profile from './Components/Profile/Profile';
+import EditProfile from './Components/Profile/EditProfile';
 
 const Stack = createNativeStackNavigator();
 
@@ -37,6 +38,11 @@ const App = () => {
         <Stack.Screen
           name="profile"
           component={Profile}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="edit-Profile"
+          component={EditProfile}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

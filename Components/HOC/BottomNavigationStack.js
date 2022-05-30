@@ -11,7 +11,7 @@ const BottomNavigationStack = props => {
       setActive(1);
     } else if (route.name === '') {
       setActive(2);
-    } else if (route.name === 'profile') {
+    } else if (route.name === 'profile' || route.name === 'edit-Profile') {
       setActive(3);
     } else {
       setActive(4);

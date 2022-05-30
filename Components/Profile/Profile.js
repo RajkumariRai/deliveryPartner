@@ -1,14 +1,32 @@
-import {StyleSheet, Text, View, SafeAreaView} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  TouchableOpacity,
+} from 'react-native';
 import React from 'react';
 import HOC from '../HOC/HOC';
 import UserAvatar from 'react-native-user-avatar';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
-const Profile = () => {
+const Profile = (props) => {
   return (
     <SafeAreaView style={styles.safeAreaWidth}>
       <View style={{backgroundColor: '#fff'}}>
         <View style={styles.profileTopBgColor}>
+          <View style={{alignItems: 'flex-end', paddingRight: 20}}>
+            <TouchableOpacity onPress={()=>{
+                props.navigation.push('edit-Profile');
+            }}>
+              <Icon
+                name={'edit'}
+                size={20}
+                color="#fff"
+                style={styles.iconPadding}
+              />
+            </TouchableOpacity>
+          </View>
           <View style={styles.profileImageCenter}>
             <UserAvatar
               size={90}
