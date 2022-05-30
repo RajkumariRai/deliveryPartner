@@ -4,7 +4,20 @@ import React from 'react';
 const BottomNavigationStack = () => {
   return (
     <View style={styles.bottomNavigationPostion}>
-      <Text>BottomNavigationStack</Text>
+      <View style={styles.bottomSpaceArround}>
+        <View style={styles.buttonCenter}>
+          <Text>DashBoard</Text>
+        </View>
+        <View style={styles.buttonCenter}>
+          <Text>Orders</Text>
+        </View>
+        <View style={styles.buttonCenter}>
+          <Text>My Profile</Text>
+        </View>
+        <View style={styles.buttonCenter}>
+          <Text>Setting</Text>
+        </View>
+      </View>
     </View>
   );
 };
@@ -19,6 +32,13 @@ const styles = StyleSheet.create({
     padding: 10,
     borderTopColor: 'rgb(154, 154, 154)',
     borderTopWidth: 1,
+  },
+  bottomSpaceArround: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  buttonCenter: {
+    alignItems: 'center',
   },
 });
 
