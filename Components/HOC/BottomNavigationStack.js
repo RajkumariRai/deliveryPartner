@@ -3,11 +3,23 @@ import React from 'react';
 
 const BottomNavigationStack = () => {
   return (
-    <View style={{backgroundColor:"red"}}>
+    <View style={styles.bottomNavigationPostion}>
       <Text>BottomNavigationStack</Text>
     </View>
   );
 };
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  bottomNavigationPostion: {
+    position: 'absolute',
+    bottom: 0,
+    backgroundColor: '#fff',
+    zIndex: 9,
+    width: '100%',
+    height: 50,
+    padding: 10,
+    borderTopColor: 'rgb(154, 154, 154)',
+    borderTopWidth: 1,
+  },
+});
 
 export default BottomNavigationStack;
