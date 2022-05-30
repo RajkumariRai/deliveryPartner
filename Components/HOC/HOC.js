@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import Header from './Header';
 import {View} from 'react-native';
-// import BottomNavigationStack from './BottomNavigationStack';
+import BottomNavigationStack from './BottomNavigationStack';
 
 const HOC = WrappedComponent => {
   return class extends Component {
@@ -14,7 +14,7 @@ const HOC = WrappedComponent => {
         <Fragment>
           <View style={{flex: 1}}>
             <Header {...this.props} />
-            {/* <BottomNavigationStack {...this.props} /> */}
+            <BottomNavigationStack {...this.props} />
 
             <WrappedComponent {...this.props} />
           </View>
