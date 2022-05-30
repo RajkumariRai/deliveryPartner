@@ -1,5 +1,6 @@
 import {StyleSheet, Text, View, ScrollView, TextInput} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
+import {Button} from 'react-native-paper';
 import HOC from '../HOC/HOC';
 import UserAvatar from 'react-native-user-avatar';
 import {
@@ -8,6 +9,14 @@ import {
 } from 'react-native-responsive-screen';
 
 const EditProfile = () => {
+  const [active, setactive] = useState(2);
+
+  const chnagePasswordHandle = () => {
+    setactive(1);
+  };
+  const saveChangeHandle = () => {
+    setactive(2);
+  };
   return (
     <View style={styles.safeAreaWidth}>
       <ScrollView>
@@ -34,7 +43,7 @@ const EditProfile = () => {
               </View>
             </View>
             {/* Form section */}
-            <View style={{paddingTop: 15,paddingBottom:100}}>
+            <View style={{paddingTop: 15, paddingBottom: 100}}>
               <View
                 style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                 <View style={{width: '45%'}}>
@@ -111,7 +120,39 @@ const EditProfile = () => {
                   //   }}
                 />
               </View>
-              
+              <View
+                style={{
+                  paddingTop: 12,
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                }}>
+                <Button
+                  style={
+                    active == 1
+                      ? [styles.ActiveButton]
+                      : [styles.inactiveButton]
+                  }
+                  mode={active == 1 ? 'contained' : 'outlined'}
+                  color={active == 1 ? '' : 'rgb(211, 211, 211)'}
+                  onPress={() => {
+                    chnagePasswordHandle();
+                  }}>
+                  Change Password
+                </Button>
+                <Button
+                  mode={active == 2 ? 'contained' : 'outlined'}
+                  color={active == 2 ? '' : 'rgb(211, 211, 211)'}
+                  style={
+                    active == 2
+                      ? [styles.ActiveButton, {marginLeft: 5}]
+                      : [styles.inactiveButton, {marginLeft: 5}]
+                  }
+                  onPress={() => {
+                    saveChangeHandle();
+                  }}>
+                  Save Changes
+                </Button>
+              </View>
             </View>
           </View>
         </View>
@@ -158,6 +199,18 @@ const styles = StyleSheet.create({
     color: 'rgb(211, 211, 211)',
     fontSize: 13,
     padding: 5,
+  },
+  ActiveButton: {
+    backgroundColor: '#26ae61',
+    color: '#fff',
+    borderRadius: 30,
+    fontWeight: '700',
+  },
+  inactiveButton: {
+    backgroundColor: '#fff',
+    color: '#26ae61',
+    borderRadius: 30,
+    fontWeight: '700',
   },
 });
 
