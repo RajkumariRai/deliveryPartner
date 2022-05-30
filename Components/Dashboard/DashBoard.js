@@ -7,13 +7,14 @@ import {
   ScrollView,
   Dimensions,
 } from 'react-native';
-import Header from '../Header/Header';
+import HOC from '../HOC/HOC';
+// import Header from '../HOC/Header';
 import DashboardCard from './DashboardCard';
 
 const DashBoard = () => {
   return (
     <SafeAreaView>
-      <Header leftIcon={'bars'} tilte={'Dashboard'} rightIcon={'bell'} />
+      {/* <Header leftIcon={'bars'} tilte={'Dashboard'} rightIcon={'bell'} /> */}
       <View style={styles.dashboardbgcolor}>
         {/* bar section */}
         <View>
@@ -24,7 +25,7 @@ const DashBoard = () => {
           <ScrollView>
             <View style={styles.flexSpace}>
               <DashboardCard title={'New Order'} value={'3'} />
-              <DashboardCard title={'Active Orders'} value={'5'} />
+              <DashboardCard title={'Active Orders'} value={'500'} />
             </View>
             <View style={styles.flexSpace}>
               <DashboardCard title={'Deliverd Order'} value={'15'} />
@@ -43,16 +44,18 @@ const DashBoard = () => {
 const styles = StyleSheet.create({
   dashboardbgcolor: {
     backgroundColor: '#26ae61',
+    height:"100%"
   },
   cardSectionBorder: {
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     backgroundColor: '#fff',
     padding: 20,
+    height: '100%',
   },
   flexSpace: {
     flexDirection: 'row',
     justifyContent: 'space-around',
   },
 });
-export default DashBoard;
+export default HOC(DashBoard);

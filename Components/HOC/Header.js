@@ -8,13 +8,13 @@ const Header = props => {
     <View style={styles.headrBgColor}>
       <View style={styles.flexSpace}>
         <View>
-          <Icon name={leftIcon} size={12} color="#fff" />
+          <Icon name={'bars'} size={12} color="#fff" />
         </View>
         <View>
-          <Text style={styles.titleColor}>{tilte}</Text>
+          <Text style={styles.titleColor}>Dashboard</Text>
         </View>
         <View>
-          <Icon name={rightIcon} size={12} color="#fff" />
+          <Icon name={'bell'} size={12} color="#fff" />
         </View>
       </View>
     </View>

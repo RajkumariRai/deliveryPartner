@@ -8,7 +8,7 @@ const DashboardCard = props => {
     <Card containerStyle={styles.cardShadow}>
       {value && (
         <View style={styles.topLeftValue}>
-          <Text>{value}</Text>
+          <Text style={styles.circleTextCenter}>{value}</Text>
         </View>
       )}
       {title && <Text style={styles.cardTitle}>{title}</Text>}
@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
     shadowRadius: 16.0,
     elevation: 24,
     width: '40%',
-    margin: 10,
   },
   cardTitle: {
     color: '#333',
@@ -35,10 +34,17 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   topLeftValue: {
-    borderRadius: 50,
-    borderColor: '#333',
+    borderColor: '#26ae61',
     borderWidth: 1,
-    width: '20%',
+    width: 20,
+    height: 20,
+    borderRadius: 20 / 2,
+
+  },
+  circleTextCenter: {
+    textAlign: 'center',
+    fontWeight: '500',
+    color: '#333',
   },
 });
 export default DashboardCard;
