@@ -41,7 +41,7 @@ const BottomNavigationStack = props => {
           <View style={styles.buttonCenter}>
             <Icon
               name={'home'}
-              size={12}
+              size={active === 1 ? 20 : 12}
               color={active === 1 ? '#26ae61' : 'rgb(211, 211, 211)'}
             />
             <Text
@@ -61,7 +61,7 @@ const BottomNavigationStack = props => {
           <View style={styles.buttonCenter}>
             <Icon
               name={'shopping-bag'}
-              size={12}
+              size={active === 2 ? 20 : 12}
               color={active === 2 ? '#26ae61' : 'rgb(211, 211, 211)'}
             />
             <Text
@@ -81,7 +81,7 @@ const BottomNavigationStack = props => {
           <View style={styles.buttonCenter}>
             <Icon
               name={'user'}
-              size={12}
+              size={active === 3 ? 20 : 12}
               color={active === 3 ? '#26ae61' : 'rgb(211, 211, 211)'}
             />
             <Text
@@ -101,7 +101,7 @@ const BottomNavigationStack = props => {
           <View style={styles.buttonCenter}>
             <Icon
               name={'user'}
-              size={12}
+              size={active === 4 ? 20 : 12}
               color={active === 4 ? '#26ae61' : 'rgb(211, 211, 211)'}
             />
             <Text
