@@ -4,10 +4,10 @@ import {
   Text,
   View,
   Image,
-  TextInput,
-  SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
+import {HelperText, TextInput, Button} from 'react-native-paper';
+import { button } from '../Components/CommonStyles/Index';
 
 let error = false;
 const validateData = () => {
@@ -32,112 +32,78 @@ export default function ForgetPassword(props) {
   const [password, setPassword] = useState('');
 
   return (
-    <SafeAreaView>
-      <View style={styles.container}>
-        <Image style={styles.image} source={require('../assets/Logo.png')} />
+<View style={styles.loginMainView}>
+<View style={styles.image}>
+  <Image source={require('../assets/Logo.png')} />
+</View>
 
-        <View style={styles.inputView}>
-          <TextInput
-            style={styles.TextInput}
-            placeholder="Username or Email"
-            placeholderTextColor="#000"
-            onChangeText={value => {
-              setEmail(value);
-              setEmailError(false);
-            }}
-          />
+<View style={styles.formSectionPadding}>
+<View style={{padding:50,justifyContent:'center',fontWeight:'500', fontSize:'12'}}>
+<Text>Please enter your email address.. you will recieve a link 
+          to create a new password via email</Text>
+          </View>
+  <View>
+    <TextInput
+      mode="outlined"
+      left={<TextInput.Icon name="email" />}
+      style={button.commonTextInput}
+      label="Email"
+      onChangeText={value => {
+        setEmail(value.trim());
+        setEmailError(false);
+      }}
+    />
+    {emailError && (
+      <HelperText
+        type="error"
+        visible={emailError}
+        style={{textAlign: 'center'}}>
+        Please Enter User name or Email Id
+      </HelperText>
+    )}
+  </View>
+       <View style={{marginTop:10}}>
+          <Button
+            mode="contained"
+            style={button.commonButton}
+            onPress={() => {
+              validateData();
+            }}>
+           Reset Password
+          </Button>
         </View>
-        <View>
-          {emailError && (
-            <HelperText type="error" visible={emailError}>
-              Please Enter Valid Email Id
-            </HelperText>
-          )}
-        </View>
-
-        <TouchableOpacity
-          style={styles.loginBtn}
-          onPress={() => {
-            console.log('I ma here ');
-            validateData();
-          }}>
-          <Text style={styles.loginText}>Reset Password</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Text style={{color: '#26ae61', textAlign: 'center'}}>Login?</Text>
-        </TouchableOpacity>
+        <View >
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Text style={{color: '#d60e0e', fontWeight: 'bold', textAlign:'center',marginTop:30}}>
+            Login?
+            </Text>
+          </TouchableOpacity>
+          </View>
       </View>
-    </SafeAreaView>
+      </View>
+  
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100%',
-  },
-
-  image: {
-    marginTop: 40,
-    marginBottom: 40,
-  },
-
-  inputView: {
-    backgroundColor: '#fff',
-    width: '80%',
-    height: 45,
-    marginBottom: 20,
-    alignItems: 'center',
-  },
-
-  TextInput: {
-    borderLeftWidth: 1,
-    borderRightWidth: 1,
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderRadius: 10,
-    height: 50,
-    width: '100%',
-    flex: 1,
-    padding: 10,
-    marginLeft: 20,
-  },
-
   forgot_button: {
-    flexDirection: 'column',
-    alignItems: 'flex-end',
-    justifyContent: 'space-between',
+    textAlign: 'right',
     height: 30,
     fontSize: 15,
     marginBottom: 5,
     fontWeight: 'bold',
   },
 
-  loginBtn: {
-    width: '80%',
-    borderRadius: 25,
-    height: 50,
-    alignItems: 'center',
+  loginMainView: {
+    flex: 1,
     justifyContent: 'center',
-    marginTop: 10,
-    backgroundColor: '#2EE59D',
+    flexGrow: 1,
   },
-  signupText: {
-    padding: 10,
+  image: {
+    alignItems: 'center',
+    paddingBottom: 20,
   },
-  signupBtn: {
-    flexDirection: 'column',
-    alignItems: 'flex-end',
-    color: '#26ae61',
-    fontSize: 15,
-    fontWeight: 'bold',
-    marginHorizontal: 50,
-  },
-  textDanger: {
-    color: '#dc3545',
-    marginBottom: 10,
+  formSectionPadding: {
+    padding: 15,
   },
 });

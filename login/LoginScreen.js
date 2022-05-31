@@ -23,7 +23,7 @@ export default function LoginScreen(props) {
   let error = false;
   const validateData = () => {
     try {
-      if (!email || !emailValidator(email)) {
+      if (!email) {
         setEmailError(true);
         error = true;
       }
@@ -62,7 +62,7 @@ export default function LoginScreen(props) {
               type="error"
               visible={emailError}
               style={{textAlign: 'center'}}>
-              Please Enter Valid Email Id
+              Please Enter User name or Email Id
             </HelperText>
           )}
         </View>
@@ -112,18 +112,21 @@ export default function LoginScreen(props) {
             LOGIN
           </Button>
         </View>
-        <View>
+        <View
+          style={{flexDirection: 'row', textAlign: 'center', marginTop: 45}}>
           <Text
             style={{
               fontSize: 14,
               color: '#9a9a9a',
-              marginTop: 45,
-              textAlign: 'center',
+              marginLeft: 20,
+              fontWeight: '700',
             }}>
             Do not have an account yet?
           </Text>
           <TouchableOpacity onPress={() => navigation.push('signup')}>
-            <Text style={{color: '#26ae61', textAlign: 'center'}}>SIGNUP</Text>
+            <Text style={{color: '#d60e0e', fontWeight: 'bold', marginLeft: 5}}>
+              SIGNUP
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -133,26 +136,13 @@ export default function LoginScreen(props) {
 
 const styles = StyleSheet.create({
   forgot_button: {
-    flexDirection: 'column',
-    textAlign: 'center',
-    justifyContent: 'space-between',
+    textAlign: 'right',
     height: 30,
     fontSize: 15,
     marginBottom: 5,
     fontWeight: 'bold',
   },
-
-  signupBtn: {
-    flexDirection: 'column',
-    alignItems: 'flex-end',
-    color: '#26ae61',
-    fontSize: 15,
-    fontWeight: 'bold',
-  },
-  textDanger: {
-    color: '#dc3545',
-    marginBottom: 10,
-  },
+ 
   // new css
   loginMainView: {
     flex: 1,
