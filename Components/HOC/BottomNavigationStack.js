@@ -100,7 +100,7 @@ const BottomNavigationStack = props => {
           }}>
           <View style={styles.buttonCenter}>
             <Icon
-              name={'user'}
+              name={'gear'}
               size={active === 4 ? 20 : 12}
               color={active === 4 ? '#26ae61' : 'rgb(211, 211, 211)'}
             />
