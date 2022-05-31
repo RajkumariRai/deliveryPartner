@@ -63,9 +63,9 @@ const EditProfile = () => {
   };
   return (
     <View style={styles.safeAreaWidth}>
-      <ScrollView>
-        <View>
-          <View style={styles.editProfilebottomColor}>
+      <View style={styles.editProfilebottomColor}>
+        <ScrollView>
+          <View style={{padding: 15}}>
             <View style={{flexDirection: 'row'}}>
               <View style={styles.userImageSet}>
                 <UserAvatar
@@ -230,8 +230,8 @@ const EditProfile = () => {
               </View>
             </View>
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
       {changePasswordDailog && (
         <ChangePassword
           open={chnagePasswordHandle}
@@ -251,7 +251,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    padding: 15,
     zIndex: -99,
   },
   userImageSet: {
