@@ -7,15 +7,23 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import ChangePassword from '../Dailogs/ChangePassword';
 
 const EditProfile = () => {
-  const [active, setactive] = useState(2);
+  const [active, setActive] = useState(2);
+  const [changePasswordDailog, setChangePasswordDailog] = useState(false);
 
+  // chnage password button handle
   const chnagePasswordHandle = () => {
-    setactive(1);
+    setActive(1);
+    setChangePasswordDailog(true);
   };
+  const passwordDailogClose = () => {
+    setChangePasswordDailog(false);
+  };
+  // save chnages button handle
   const saveChangeHandle = () => {
-    setactive(2);
+    setActive(2);
   };
   return (
     <View style={styles.safeAreaWidth}>
@@ -157,6 +165,12 @@ const EditProfile = () => {
           </View>
         </View>
       </ScrollView>
+      {changePasswordDailog && (
+        <ChangePassword
+          open={chnagePasswordHandle}
+          close={passwordDailogClose}
+        />
+      )}
     </View>
   );
 };
