@@ -1,5 +1,4 @@
-
-import React,{useState} from 'react'
+import React, {useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -8,7 +7,7 @@ import {
   TextInput,
   SafeAreaView,
   TouchableOpacity,
-} from "react-native";
+} from 'react-native';
 
 let error = false;
 const validateData = () => {
@@ -23,60 +22,54 @@ const validateData = () => {
   } catch (error) {
     console.log('error in validaton', error);
   }
-
-  }
+};
 
 export default function ForgetPassword(props) {
-
-  const {navigation  } = props;
-  console.log("props ==> ", navigation)
-  const [email, setEmail] = useState("");
+  const {navigation} = props;
+  console.log('props ==> ', navigation);
+  const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState(false);
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState('');
 
   return (
-    <SafeAreaView >
-    <View style={styles.container}>
- 
-     <Image style={styles.image} source={require("../assets/Logo.png")} />
+    <SafeAreaView>
+      <View style={styles.container}>
+        <Image style={styles.image} source={require('../assets/Logo.png')} />
 
+        <View style={styles.inputView}>
+          <TextInput
+            style={styles.TextInput}
+            placeholder="Username or Email"
+            placeholderTextColor="#000"
+            onChangeText={value => {
+              setEmail(value);
+              setEmailError(false);
+            }}
+          />
+        </View>
+        <View>
+          {emailError && (
+            <HelperText type="error" visible={emailError}>
+              Please Enter Valid Email Id
+            </HelperText>
+          )}
+        </View>
 
-     <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Username or Email"
-          placeholderTextColor="#000"
-          onChangeText={value => {
-            setEmail(value);
-            setEmailError(false);
-          }}
-        />
+        <TouchableOpacity
+          style={styles.loginBtn}
+          onPress={() => {
+            console.log('I ma here ');
+            validateData();
+          }}>
+          <Text style={styles.loginText}>Reset Password</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Text style={{color: '#26ae61', textAlign: 'center'}}>Login?</Text>
+        </TouchableOpacity>
       </View>
-      <View>
-        {emailError && (
-          <HelperText type="error" visible={emailError}>
-            Please Enter Valid Email Id
-          </HelperText>
-        )}
-      </View>
-
-   
-
- 
-
-    <TouchableOpacity style={styles.loginBtn}
-    onPress = {()=>{console.log("I ma here ")
-    validateData()}}>
-      <Text style={styles.loginText}>Reset Password</Text>
-    </TouchableOpacity> 
-    <TouchableOpacity onPress={() =>{
- navigation.goBack()
-    }}>
-      <Text style={styles.signupBtn}>Login?</Text>
-    </TouchableOpacity>
-  </View>
-  </SafeAreaView>
-  )
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -141,17 +134,10 @@ const styles = StyleSheet.create({
     color: '#26ae61',
     fontSize: 15,
     fontWeight: 'bold',
-    marginHorizontal:50
+    marginHorizontal: 50,
   },
   textDanger: {
     color: '#dc3545',
     marginBottom: 10,
   },
 });
-
-
-
-
-
-
-

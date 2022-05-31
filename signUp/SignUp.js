@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState,useRef} from 'react';
 import {
   StyleSheet,
   Text,
   View,
   Image,
-  TextInput,
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
-import {HelperText} from 'react-native-paper';
+import {HelperText, TextInput} from 'react-native-paper';
+import PhoneInput from 'react-native-phone-number-input';
 import {
   blankValidator,
   emailValidator,
@@ -19,35 +19,40 @@ export default function SignUp(props) {
   const {navigation} = props;
   const [userName, setUserName] = useState('');
   const [userNameError, setUserNameError] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [phoneNumberError, setPhoneNumberError] = useState(false);
+  const [phoneNumberFormat, setPhoneNumberFormat] = useState('');
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState(false);
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(true);
   const [confirmPassword, setConfirmPassword] = useState('');
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
-  let flag= false;
+  
 
- 
+  let flag = false;
+
   const validateData = () => {
     try {
       if (!userName || nameValidation(userName)) {
         setUserNameError(true);
-        flag= true
-      }
-      if (!email || !emailValidator(email)) {
+        flag = true;
+      } else if (!phoneNumber) {
+        setPhoneNumberError(true);
+        flag = true;
+      } else if (!email || !emailValidator(email)) {
         setEmailError(true);
-        flag= true
-      }
-      if (!password || password.length < 8 || password.length > 20) {
+        flag = true;
+      } else if (!password || password.length < 8 || password.length > 20) {
         setPasswordError(true);
-        flag= true
-      }
-      if (!confirmPassword) {
+        flag = true;
+      } else if (!confirmPassword) {
         setConfirmPasswordError(true);
-        flag= true
-      } else if (password && confirmPassword && (password !== confirmPassword)) {
+        flag = true;
+      } else if (password && confirmPassword && password !== confirmPassword) {
         setConfirmPasswordError(true);
-        flag= true
+        flag = true;
       }
       if (!flag) {
         navigation.push('dashboard');
@@ -64,6 +69,7 @@ export default function SignUp(props) {
 
         <View style={styles.inputView}>
           <TextInput
+            left={<TextInput.Icon name="account" />}
             style={styles.TextInput}
             placeholder="Enter Username"
             placeholderTextColor="#003f5c"
@@ -82,12 +88,35 @@ export default function SignUp(props) {
         </View>
 
         <View style={styles.inputView}>
+          <PhoneInput
+        
+            defaultValue={phoneNumber}
+            defaultCode="IN"
+            layout="first"
+            style={styles.TextInput}
+            onChangeText={text => {
+              setPhoneNumberError(false);
+              setPhoneNumber(text);
+            }}
+            onChangeFormattedText={text => {
+              setPhoneNumberFormat(text);
+            }}
+          />
+        </View>
+        {phoneNumberError && (
+          <HelperText type="error" visible={phoneNumberError}>
+            Valid Mobile number is Required
+          </HelperText>
+        )}
+
+        <View style={styles.inputView}>
           <TextInput
+            left={<TextInput.Icon name="email" />}
             style={styles.TextInput}
             placeholder="Enter Email"
             placeholderTextColor="#003f5c"
             onChangeText={email => {
-              setEmail(email);
+              setEmail(email.trim());
               setEmailError(false);
             }}
           />
@@ -102,13 +131,21 @@ export default function SignUp(props) {
 
         <View style={styles.inputView}>
           <TextInput
+            left={<TextInput.Icon name="lock" />}
             style={styles.TextInput}
             placeholder="Enter Password"
             placeholderTextColor="#003f5c"
+            secureTextEntry={passwordVisible}
             onChangeText={password => {
               setPassword(password);
               setPasswordError(false);
             }}
+            right={
+              <TextInput.Icon
+                name={passwordVisible ? 'eye' : 'eye-off'}
+                onPress={() => setNewPasswordVisible(!newPasswordVisible)}
+              />
+            }
           />
         </View>
         <View>
@@ -121,6 +158,7 @@ export default function SignUp(props) {
 
         <View style={styles.inputView}>
           <TextInput
+            left={<TextInput.Icon name="lock" />}
             style={styles.TextInput}
             placeholder="Confirm Password."
             placeholderTextColor="#003f5c"
@@ -147,13 +185,11 @@ export default function SignUp(props) {
           <Text>SIGNUP</Text>
         </TouchableOpacity>
         <View>
-          <Text style={styles.loginText}> Already have an account?</Text>
-          <TouchableOpacity
-            style={styles.loginBtn}
-            onPress={() => {
-              navigation.push('Login');
-            }}>
-            <Text>Login</Text>
+          <Text style={{fontSize: 14, color: '#9a9a9a', marginTop: 15}}>
+            Already have an account?
+          </Text>
+          <TouchableOpacity onPress={() => navigation.push('Login')}>
+            <Text style={{color: '#26ae61', textAlign: 'center'}}>Login</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -178,8 +214,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     width: '80%',
     height: 45,
-
     alignItems: 'center',
+    padding: 5,
   },
 
   TextInput: {

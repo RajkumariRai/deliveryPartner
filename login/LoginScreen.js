@@ -4,13 +4,13 @@ import {
   Text,
   View,
   Image,
-  TextInput,
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
-import {HelperText} from 'react-native-paper';
+import {HelperText, TextInput} from 'react-native-paper';
+import { button } from '../Components/CommonStyles/Index';
 
-import {blankValidator, emailValidator, showMessage} from '../utils/Validation';
+import {emailValidator, showMessage} from '../utils/Validation';
 
 export default function LoginScreen(props) {
   const {navigation} = props;
@@ -40,49 +40,54 @@ export default function LoginScreen(props) {
   };
 
   return (
-    <View style={styles.container}>
+    <View >
       <Image style={styles.image} source={require('../assets/Logo.png')} />
 
-      <View style={styles.inputView}>
+      <View >
         <TextInput
-          style={styles.TextInput}
+         mode="outlined"
+          left={<TextInput.Icon name="account" />}
+          style={button.commonTextInput}
           placeholder="Username or Email"
           placeholderTextColor="#000"
           onChangeText={value => {
-            setEmail(value);
+            setEmail(value.trim());
             setEmailError(false);
           }}
         />
       </View>
       <View>
         {emailError && (
-          <HelperText type="error" visible={emailError}>
+          <HelperText type="error" visible={emailError} style={{ textAlign:'center'}}>
             Please Enter Valid Email Id
           </HelperText>
         )}
       </View>
 
-      <View style={styles.inputView}>
+      <View >
         <TextInput
-          style={styles.TextInput}
+         style={button.commonTextInput}
+          left={<TextInput.Icon name="lock" />}
+          mode="outlined"
           placeholder="Password"
           placeholderTextColor="#000"
           secureTextEntry={passwordVisible}
-          // right={
-          //   <TextInput.icon
-          //     name={passwordVisible ? 'eye' : 'eye-off'}
-          //     onPress={() => setPasswordVisible(!passwordVisible)}
-          //   />
-          // }
+          right={
+            <TextInput.Icon
+              name={passwordVisible ? 'eye' : 'eye-off'}
+              onPress={() => setPasswordVisible(!passwordVisible)}
+            />
+          }
           onChangeText={password => {
             setPassword(password);
             setpasswordError(false);
           }}
         />
+  
       </View>
       <View>
         {passwordError && (
-          <HelperText type="error" visible={passwordError}>
+          <HelperText type="error" visible={passwordError} style={{ textAlign:'center'}}>
             Please Enter Valid Passwoad
           </HelperText>
         )}
@@ -104,13 +109,14 @@ export default function LoginScreen(props) {
         <Text style={styles.loginText}>LOGIN</Text>
       </TouchableOpacity>
       <View>
-        <Text style={styles.signupText}> Do not have an account yet?</Text>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.push('signup');
-          }}>
-          <Text style={styles.signupBtn}>SIGNUP</Text>
-        </TouchableOpacity>
+        <View>
+          <Text style={{fontSize: 14, color: '#9a9a9a', marginTop: 45, textAlign:'center',}}>
+            Do not have an account yet?
+          </Text>
+          <TouchableOpacity onPress={() => navigation.push('signup')}>
+            <Text style={{color: '#26ae61', textAlign: 'center'}}>SIGNUP</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -125,8 +131,12 @@ const styles = StyleSheet.create({
   },
 
   image: {
-    marginTop: 40,
+    marginTop: 80,
     marginBottom: 40,
+    marginLeft: 40,
+    marginRight:40,
+    alignItems:'center',
+    justifyContent: 'center',
   },
 
   inputView: {
@@ -137,22 +147,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
-  TextInput: {
-    borderLeftWidth: 1,
-    borderRightWidth: 1,
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderRadius: 10,
-    height: 50,
-    width: '100%',
-    flex: 1,
-    padding: 10,
-    marginLeft: 20,
-  },
+  // TextInput: {
+  //   borderRadius: 10,
+  //   height: 50,
+  //   width: '100%',
+  //   flex: 1,
+  //   padding: 10,
+  //   marginLeft: 20,
+  // },
 
   forgot_button: {
     flexDirection: 'column',
-    alignItems: 'flex-end',
+   textAlign:'center',
     justifyContent: 'space-between',
     height: 30,
     fontSize: 15,
@@ -164,21 +170,23 @@ const styles = StyleSheet.create({
     width: '80%',
     borderRadius: 25,
     height: 50,
+    textAlign:'center',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     marginTop: 10,
+    marginLeft:40,
     backgroundColor: '#2EE59D',
   },
   signupText: {
-    padding: 10,
+    marginTop: 10,
+    textAlign:'center',
   },
   signupBtn: {
     flexDirection: 'column',
     alignItems: 'flex-end',
     color: '#26ae61',
-    fontSize: 20,
+    fontSize: 15,
     fontWeight: 'bold',
-    marginHorizontal:50
   },
   textDanger: {
     color: '#dc3545',
