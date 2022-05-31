@@ -1,21 +1,65 @@
 import {StyleSheet, Text, View, ScrollView, TextInput} from 'react-native';
 import React, {useState} from 'react';
-import {Button} from 'react-native-paper';
+import {Button, HelperText} from 'react-native-paper';
 import HOC from '../HOC/HOC';
 import UserAvatar from 'react-native-user-avatar';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import ChangePassword from '../Dailogs/ChangePassword';
+import {emailValidator} from '../../utils/Validation';
 
 const EditProfile = () => {
-  const [active, setactive] = useState(2);
+  const [active, setActive] = useState(2);
+  const [changePasswordDailog, setChangePasswordDailog] = useState(false);
+  const [firstName, setFirstName] = useState('');
+  const [firstNameError, setFirstNameError] = useState(false);
+  const [lastName, setLastName] = useState('');
+  const [emailId, setEmailId] = useState('');
+  const [emailIdError, setEmailIdError] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [phoneNumberError, setPhoneNumberError] = useState(false);
+  const [cardNumber, setCardNumber] = useState('');
+  const [cardNumberError, setCardNumberError] = useState(false);
+  const [vehicalNumber, setVehicalNumber] = useState('');
+  const [vehicalNumberError, setVehicalNumberError] = useState(false);
 
+  // chnage password button handle
   const chnagePasswordHandle = () => {
-    setactive(1);
+    setActive(1);
+    setChangePasswordDailog(true);
   };
+  const passwordDailogClose = () => {
+    setChangePasswordDailog(false);
+  };
+  // save chnages button handle
   const saveChangeHandle = () => {
-    setactive(2);
+    setActive(2);
+    if (!firstName) {
+      setFirstNameError(true);
+    }
+    if (!emailValidator(emailId)) {
+      setEmailIdError(true);
+    }
+    if (!phoneNumber) {
+      setPhoneNumberError(true);
+    }
+    if (!cardNumber) {
+      setCardNumberError(true);
+    }
+    if (!vehicalNumber) {
+      setVehicalNumberError(true);
+    }
+    if (
+      !firstName ||
+      !emailValidator(emailId) ||
+      !phoneNumber ||
+      !cardNumber ||
+      !vehicalNumber
+    ) {
+      return;
+    }
   };
   return (
     <View style={styles.safeAreaWidth}>
@@ -52,11 +96,17 @@ const EditProfile = () => {
                     style={styles.TextInputBorder}
                     placeholder="First Name"
                     placeholderTextColor="#000"
-                    //   onChangeText={value => {
-                    //     setEmail(value);
-                    //     setEmailError(false);
-                    //   }}
+                    value={firstName}
+                    onChangeText={value => {
+                      setFirstName(value);
+                      setFirstNameError(false);
+                    }}
                   />
+                  {firstNameError && (
+                    <HelperText type="error" visible={firstNameError}>
+                      Enter First Name
+                    </HelperText>
+                  )}
                 </View>
                 <View style={{width: '45%'}}>
                   <Text style={styles.textlabel}>Last Name</Text>
@@ -64,10 +114,10 @@ const EditProfile = () => {
                     style={styles.TextInputBorder}
                     placeholder="Last Name"
                     placeholderTextColor="#000"
-                    //   onChangeText={value => {
-                    //     setEmail(value);
-                    //     setEmailError(false);
-                    //   }}
+                    value={lastName}
+                    onChangeText={value => {
+                      setLastName(value);
+                    }}
                   />
                 </View>
               </View>
@@ -78,23 +128,36 @@ const EditProfile = () => {
                   style={styles.TextInputBorder}
                   placeholder="Email id"
                   placeholderTextColor="#000"
-                  //   onChangeText={value => {
-                  //     setEmail(value);
-                  //     setEmailError(false);
-                  //   }}
+                  value={emailId}
+                  onChangeText={value => {
+                    setEmailId(value);
+                    setEmailIdError(false);
+                  }}
                 />
+                {emailIdError && (
+                  <HelperText type="error" visible={emailIdError}>
+                    Enter Valid Email id
+                  </HelperText>
+                )}
               </View>
               <View style={{paddingTop: 12}}>
                 <Text style={styles.textlabel}>Phone Number</Text>
                 <TextInput
                   style={styles.TextInputBorder}
+                  keyboardType="numeric"
                   placeholder="Phone Number"
                   placeholderTextColor="#000"
-                  //   onChangeText={value => {
-                  //     setEmail(value);
-                  //     setEmailError(false);
-                  //   }}
+                  value={phoneNumber}
+                  onChangeText={value => {
+                    setPhoneNumber(value);
+                    setPhoneNumberError(false);
+                  }}
                 />
+                {phoneNumberError && (
+                  <HelperText type="error" visible={phoneNumberError}>
+                    Enter Phone Number
+                  </HelperText>
+                )}
               </View>
               <View style={{paddingTop: 12}}>
                 <Text style={styles.textlabel}>Identity Card Number</Text>
@@ -102,11 +165,17 @@ const EditProfile = () => {
                   style={styles.TextInputBorder}
                   placeholder="Identity Card Number"
                   placeholderTextColor="#000"
-                  //   onChangeText={value => {
-                  //     setEmail(value);
-                  //     setEmailError(false);
-                  //   }}
+                  value={cardNumber}
+                  onChangeText={value => {
+                    setCardNumber(value);
+                    setCardNumberError(false);
+                  }}
                 />
+                {cardNumberError && (
+                  <HelperText type="error" visible={cardNumberError}>
+                    Enter Identity Card Number
+                  </HelperText>
+                )}
               </View>
               <View style={{paddingTop: 12}}>
                 <Text style={styles.textlabel}>Vehical Number</Text>
@@ -114,11 +183,17 @@ const EditProfile = () => {
                   style={styles.TextInputBorder}
                   placeholder="Vehical Number"
                   placeholderTextColor="#000"
-                  //   onChangeText={value => {
-                  //     setEmail(value);
-                  //     setEmailError(false);
-                  //   }}
+                  value={vehicalNumber}
+                  onChangeText={value => {
+                    setVehicalNumber(value);
+                    setVehicalNumberError(false);
+                  }}
                 />
+                {vehicalNumberError && (
+                  <HelperText type="error" visible={vehicalNumberError}>
+                    Enter Vehical Number
+                  </HelperText>
+                )}
               </View>
               <View
                 style={{
@@ -157,6 +232,12 @@ const EditProfile = () => {
           </View>
         </View>
       </ScrollView>
+      {changePasswordDailog && (
+        <ChangePassword
+          open={chnagePasswordHandle}
+          close={passwordDailogClose}
+        />
+      )}
     </View>
   );
 };
