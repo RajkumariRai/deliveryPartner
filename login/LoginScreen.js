@@ -48,8 +48,7 @@ export default function LoginScreen(props) {
          mode="outlined"
           left={<TextInput.Icon name="account" />}
           style={button.commonTextInput}
-          placeholder="Username or Email"
-          placeholderTextColor="#000"
+          label={"Username or Email"}
           onChangeText={value => {
             setEmail(value.trim());
             setEmailError(false);
@@ -69,8 +68,7 @@ export default function LoginScreen(props) {
          style={button.commonTextInput}
           left={<TextInput.Icon name="lock" />}
           mode="outlined"
-          placeholder="Password"
-          placeholderTextColor="#000"
+          label={"Password"}
           secureTextEntry={passwordVisible}
           right={
             <TextInput.Icon
