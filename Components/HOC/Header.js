@@ -1,22 +1,68 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
 const Header = props => {
-  const {leftIcon, tilte, rightIcon} = props;
+  const {route, navigation} = props;
+
   return (
     <View style={styles.headrBgColor}>
-      <View style={styles.flexSpace}>
-        <View>
-          <Icon name={'bars'} size={16} color="#fff" />
+      {/* dashboard Header  */}
+      {route.name === 'dashboard' && (
+        <View style={styles.flexSpace}>
+          <View>
+            <Icon name={'bars'} size={16} color="#fff" />
+          </View>
+          <View>
+            <Text style={styles.titleColor}>Dashboard</Text>
+          </View>
+          <View>
+            <Icon name={'bell'} size={16} color="#fff" />
+          </View>
         </View>
-        <View>
-          <Text style={styles.titleColor}>Dashboard</Text>
+      )}
+      {/* profile header */}
+      {route.name === 'profile' && (
+        <View style={styles.flexSpace}>
+          <View>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.goBack();
+              }}>
+              <Icon name={'arrow-left'} size={16} color="#fff" />
+            </TouchableOpacity>
+          </View>
+          <View>
+            <Text style={styles.titleColor}>My Profile</Text>
+          </View>
+          <View>
+            <TouchableOpacity
+              onPress={() => {
+                props.navigation.push('edit-Profile');
+              }}>
+              <Icon name={'edit'} size={20} color="#fff" />
+            </TouchableOpacity>
+          </View>
         </View>
-        <View>
-          <Icon name={'bell'} size={16} color="#fff" />
+      )}
+      {/* Edit profile header */}
+      {route.name === 'edit-Profile' && (
+        <View style={{flexDirection: 'row'}}>
+          <View>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.goBack();
+              }}>
+              <Icon name={'arrow-left'} size={16} color="#fff" />
+            </TouchableOpacity>
+          </View>
+          <View style={{width: '100%'}}>
+            <Text style={[styles.titleColor, {textAlign: 'center'}]}>
+              Edit Profile
+            </Text>
+          </View>
         </View>
-      </View>
+      )}
     </View>
   );
 };
@@ -32,7 +78,7 @@ const styles = StyleSheet.create({
   titleColor: {
     color: '#fff',
     fontWeight: 'bold',
-    fontSize:16
+    fontSize: 16,
   },
 });
 export default Header;
