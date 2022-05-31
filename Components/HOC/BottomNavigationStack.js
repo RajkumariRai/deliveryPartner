@@ -9,7 +9,7 @@ const BottomNavigationStack = props => {
   useEffect(() => {
     if (route.name === 'dashboard') {
       setActive(1);
-    } else if (route.name === '') {
+    } else if (route.name === 'Orders') {
       setActive(2);
     } else if (route.name === 'profile' || route.name === 'edit-Profile') {
       setActive(3);
@@ -23,6 +23,7 @@ const BottomNavigationStack = props => {
   };
   const orderHandle = () => {
     setActive(2);
+    props.navigation.push('Orders');
   };
   const profileHandle = () => {
     setActive(3);

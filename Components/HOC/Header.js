@@ -63,6 +63,24 @@ const Header = props => {
           </View>
         </View>
       )}
+      {/* order header */}
+      {route.name === 'Orders' && (
+        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View style={{flexDirection: 'row'}}>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.goBack();
+              }}>
+              <Icon name={'arrow-left'} size={16} color="#fff" />
+            </TouchableOpacity>
+            <Text style={[styles.titleColor, {paddingLeft: 10}]}>Order</Text>
+          </View>
+
+          <View>
+            <Icon name={'bell'} size={16} color="#fff" />
+          </View>
+        </View>
+      )}
     </View>
   );
 };

@@ -1,7 +1,6 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {Card, ListItem, Button, Icon} from 'react-native-elements';
-import {Badge} from 'react-native-paper';
+import {Card, Icon} from 'react-native-elements';
 
 const DashboardCard = props => {
   const {title, value} = props;
