@@ -1,6 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {Card, ListItem, Button, Icon} from 'react-native-elements';
+import {Badge} from 'react-native-paper';
 
 const DashboardCard = props => {
   const {title, value} = props;
@@ -8,7 +9,7 @@ const DashboardCard = props => {
     <Card containerStyle={styles.cardShadow}>
       {value && (
         <View style={styles.topLeftValue}>
-          <Text style={styles.circleTextCenter}>{value}</Text>
+          <Badge style={{backgroundColor: '#fff'}}>{value}</Badge>
         </View>
       )}
       <View>

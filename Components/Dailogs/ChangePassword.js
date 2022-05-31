@@ -8,6 +8,8 @@ import {
   Button,
   HelperText,
 } from 'react-native-paper';
+import {CommonStyle} from '../CommonStyles/CommonStyle';
+import {button} from '../CommonStyles/Index';
 
 const ChangePassword = props => {
   const {open, close} = props;
@@ -45,7 +47,8 @@ const ChangePassword = props => {
             <View>
               <View>
                 <TextInput
-                  style={styles.textInput}
+                  mode="outlined"
+                  style={button.commonTextInput}
                   label="Enter Old Password"
                   value={oldPassword}
                   onChangeText={text => {
@@ -61,7 +64,8 @@ const ChangePassword = props => {
               </View>
               <View>
                 <TextInput
-                  style={styles.textInput}
+                  mode="outlined"
+                  style={button.commonTextInput}
                   label="Enter New Password"
                   secureTextEntry={newPasswordVisible}
                   right={
@@ -84,7 +88,8 @@ const ChangePassword = props => {
               </View>
               <View>
                 <TextInput
-                  style={styles.textInput}
+                  mode="outlined"
+                  style={button.commonTextInput}
                   label="Confirm New Password"
                   secureTextEntry={confirmPasswordVisible}
                   right={
@@ -129,12 +134,7 @@ const styles = StyleSheet.create({
     color: '#26ae61',
     fontSize: 14,
   },
-  textInput: {
-    backgroundColor: '#fff',
-    height: 50,
-    margin: 4,
-    color: '#26ae61',
-  },
+
   saveButtonColor: {
     backgroundColor: '#26ae61',
     color: '#fff',
