@@ -38,7 +38,7 @@ export default function ForgetPassword(props) {
 </View>
 
 <View style={styles.formSectionPadding}>
-<View style={{padding:50,justifyContent:'center',fontWeight:'500', fontSize:'12'}}>
+<View style={{paddingTop:50, paddingRight:40, paddingLeft:40, paddingBottom:20,justifyContent:'center',fontWeight:'500', fontSize:'12'}}>
 <Text>Please enter your email address.. you will recieve a link 
           to create a new password via email</Text>
           </View>
@@ -86,13 +86,6 @@ export default function ForgetPassword(props) {
 }
 
 const styles = StyleSheet.create({
-  forgot_button: {
-    textAlign: 'right',
-    height: 30,
-    fontSize: 15,
-    marginBottom: 5,
-    fontWeight: 'bold',
-  },
 
   loginMainView: {
     flex: 1,

@@ -69,7 +69,7 @@ export default function LoginScreen(props) {
         <View>
           <TextInput
             style={button.commonTextInput}
-            left={<TextInput.Icon name="lock" />}
+            left={<TextInput.Icon name="lock"  />}
             mode="outlined"
             label="Password"
             placeholderTextColor="#000"
@@ -97,7 +97,7 @@ export default function LoginScreen(props) {
         <View>
           <TouchableOpacity
             onPress={() => {
-              navigation.push('forgetpassword');
+              navigation.push('forgetpasswordotp');
             }}>
             <Text style={styles.forgot_button}>Forgot Password ?</Text>
           </TouchableOpacity>
@@ -142,8 +142,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     fontWeight: 'bold',
   },
- 
-  // new css
+
   loginMainView: {
     flex: 1,
     justifyContent: 'center',

@@ -1,4 +1,4 @@
-import React, {useState,useRef} from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -7,7 +7,8 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
-import {HelperText, TextInput} from 'react-native-paper';
+import {HelperText, TextInput, Button} from 'react-native-paper';
+import {button} from '../Components/CommonStyles/Index';
 import PhoneInput from 'react-native-phone-number-input';
 import {
   blankValidator,
@@ -29,7 +30,6 @@ export default function SignUp(props) {
   const [passwordVisible, setPasswordVisible] = useState(true);
   const [confirmPassword, setConfirmPassword] = useState('');
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
-  
 
   let flag = false;
 
@@ -63,23 +63,22 @@ export default function SignUp(props) {
   };
 
   return (
-    <SafeAreaView>
-      <View style={styles.container}>
-        <Image style={styles.image} source={require('../assets/Logo.png')} />
-
-        <View style={styles.inputView}>
+    <View style={styles.loginMainView}>
+      <View style={styles.image}>
+        <Image source={require('../assets/Logo.png')} />
+      </View>
+      <View style={styles.formSectionPadding}>
+        <View>
           <TextInput
+            mode="outlined"
             left={<TextInput.Icon name="account" />}
-            style={styles.TextInput}
-            placeholder="Enter Username"
-            placeholderTextColor="#003f5c"
-            onChangeText={userName => {
+            style={button.commonTextInput}
+            label="Username"
+            onChangeText={value => {
               setUserName(userName);
               setUserNameError(false);
             }}
           />
-        </View>
-        <View>
           {userNameError && (
             <HelperText type="error" visible={userNameError}>
               Please Enter Valid User Name
@@ -87,13 +86,32 @@ export default function SignUp(props) {
           )}
         </View>
 
-        <View style={styles.inputView}>
+        <View>
+          <TextInput
+            mode="outlined"
+            left={<TextInput.Icon name="email" />}
+            style={button.commonTextInput}
+            label="Email id"
+            onChangeText={value => {
+              setEmail(value.trim());
+              setEmailError(false);
+            }}
+          />
+          {emailError && (
+            <HelperText
+              type="error"
+              visible={emailError}
+              style={{textAlign: 'center'}}>
+              Please Enter User name or Email Id
+            </HelperText>
+          )}
+        </View>
+        <View>
           <PhoneInput
-        
+            style={button.commonTextInput}
             defaultValue={phoneNumber}
             defaultCode="IN"
             layout="first"
-            style={styles.TextInput}
             onChangeText={text => {
               setPhoneNumberError(false);
               setPhoneNumber(text);
@@ -102,155 +120,113 @@ export default function SignUp(props) {
               setPhoneNumberFormat(text);
             }}
           />
-        </View>
-        {phoneNumberError && (
-          <HelperText type="error" visible={phoneNumberError}>
-            Valid Mobile number is Required
-          </HelperText>
-        )}
-
-        <View style={styles.inputView}>
-          <TextInput
-            left={<TextInput.Icon name="email" />}
-            style={styles.TextInput}
-            placeholder="Enter Email"
-            placeholderTextColor="#003f5c"
-            onChangeText={email => {
-              setEmail(email.trim());
-              setEmailError(false);
-            }}
-          />
-        </View>
-        <View>
-          {emailError && (
-            <HelperText type="error" visible={emailError}>
-              Please Enter Valid Email Id
+          {phoneNumberError && (
+            <HelperText type="error" visible={phoneNumberError}>
+              Valid Mobile number is Required
             </HelperText>
           )}
         </View>
-
-        <View style={styles.inputView}>
+        <View>
           <TextInput
+            style={button.commonTextInput}
             left={<TextInput.Icon name="lock" />}
-            style={styles.TextInput}
-            placeholder="Enter Password"
-            placeholderTextColor="#003f5c"
+            mode="outlined"
+            label="Password"
             secureTextEntry={passwordVisible}
+            right={
+              <TextInput.Icon
+                name={passwordVisible ? 'eye' : 'eye-off'}
+                onPress={() => setPasswordVisible(!passwordVisible)}
+              />
+            }
             onChangeText={password => {
               setPassword(password);
               setPasswordError(false);
             }}
-            right={
-              <TextInput.Icon
-                name={passwordVisible ? 'eye' : 'eye-off'}
-                onPress={() => setNewPasswordVisible(!newPasswordVisible)}
-              />
-            }
           />
-        </View>
-        <View>
           {passwordError && (
-            <HelperText type="error" visible={passwordError}>
+            <HelperText
+              type="error"
+              visible={passwordError}
+              style={{textAlign: 'center'}}>
               Please Enter Valid Passwoad
             </HelperText>
           )}
         </View>
-
-        <View style={styles.inputView}>
+        <View>
           <TextInput
+            style={button.commonTextInput}
             left={<TextInput.Icon name="lock" />}
-            style={styles.TextInput}
-            placeholder="Confirm Password."
-            placeholderTextColor="#003f5c"
-            secureTextEntry={true}
+            mode="outlined"
+            label="Confirm Password"
+            secureTextEntry={passwordVisible}
+            right={
+              <TextInput.Icon
+                name={passwordVisible ? 'eye' : 'eye-off'}
+                onPress={() => setPasswordVisible(!passwordVisible)}
+              />
+            }
             onChangeText={confirmPassword => {
               setConfirmPassword(confirmPassword);
               setConfirmPasswordError(false);
             }}
           />
-        </View>
-
-        <View>
           {confirmPasswordError && (
             <HelperText type="error" visible={confirmPasswordError}>
-              Passwoad and confirm password should be same
+              Password and confirm password should be same
             </HelperText>
           )}
+
+          <Button
+            mode="contained"
+            style={button.commonButton}
+            onPress={() => {
+              validateData();
+            }}>
+            SIGNUP
+          </Button>
         </View>
-        <TouchableOpacity
-          style={styles.signUpBtn}
-          onPress={() => {
-            validateData();
-          }}>
-          <Text>SIGNUP</Text>
-        </TouchableOpacity>
-        <View>
-          <Text style={{fontSize: 14, color: '#9a9a9a', marginTop: 15}}>
+        <View
+          style={{flexDirection: 'row', textAlign: 'center', marginTop: 35}}>
+          <Text
+            style={{
+              fontSize: 14,
+              color: '#9a9a9a',
+              marginLeft: 40,
+              fontWeight: '700',
+            }}>
             Already have an account?
           </Text>
           <TouchableOpacity onPress={() => navigation.push('Login')}>
-            <Text style={{color: '#26ae61', textAlign: 'center'}}>Login</Text>
+            <Text style={{color: '#d60e0e', fontWeight: 'bold', marginLeft: 5}}>
+            Login
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100%',
+  forgot_button: {
+    textAlign: 'right',
+    height: 30,
+    fontSize: 15,
+    marginBottom: 5,
+    fontWeight: 'bold',
   },
 
-  image: {
-    marginTop: 40,
-    marginBottom: 40,
-  },
-
-  inputView: {
-    backgroundColor: '#fff',
-    width: '80%',
-    height: 45,
-    alignItems: 'center',
-    padding: 5,
-  },
-
-  TextInput: {
-    borderLeftWidth: 1,
-    borderRightWidth: 1,
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderRadius: 10,
-    height: 50,
-    width: '100%',
+  loginMainView: {
     flex: 1,
-    marginLeft: 20,
-  },
-
-  signUpBtn: {
-    width: '80%',
-    borderRadius: 25,
-    height: 50,
-    alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 10,
-    backgroundColor: '#2EE59D',
+    flexGrow: 1,
   },
-  loginText: {
-    padding: 10,
+  image: {
+    alignItems: 'center',
+    paddingBottom: 20,
   },
-  loginBtn: {
-    borderLeftWidth: 1,
-    borderRightWidth: 1,
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderRadius: 10,
-  },
-  textDanger: {
-    color: '#dc3545',
-    marginBottom: 10,
+  formSectionPadding: {
+    padding: 15,
   },
 });

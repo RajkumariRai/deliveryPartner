@@ -8,7 +8,7 @@ import SignUp from './signUp/SignUp';
 import Profile from './Components/Profile/Profile';
 import EditProfile from './Components/Profile/EditProfile';
 import ForgetPassword from './login/ForgetPassword';
-import Orders from './Components/Orders/Orders';
+import ForgetPasswordOtp from './login/ForgotPasswordOtp';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,9 +26,14 @@ const App = () => {
           component={LoginScreen}
           options={{headerShown: false}}
         />
-        <Stack.Screen
+         <Stack.Screen
           name="forgetpassword"
           component={ForgetPassword}
+          options={{headerShown: false}}
+        />
+         <Stack.Screen
+          name="forgetpasswordotp"
+          component={ForgetPasswordOtp}
           options={{headerShown: false}}
         />
         <Stack.Screen
@@ -50,11 +55,6 @@ const App = () => {
         <Stack.Screen
           name="edit-Profile"
           component={EditProfile}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Orders"
-          component={Orders}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
