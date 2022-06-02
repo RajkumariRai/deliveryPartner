@@ -14,6 +14,17 @@ const RejectOrderDailog = props => {
   const {open, close} = props;
   const [rejectOrder, setRejectOrder] = useState('');
   const [rejectOrderError, setRejectOrderError] = useState(false);
+  const [charLeft, setcharLeft] = useState(0);
+
+  const somethingTypeHadnle = value => {
+    console.log('value-===', value.length);
+    let charCount = value.length;
+    let maxChar = 0;
+    let charLength = maxChar + charCount;
+    setcharLeft(charLength);
+    setRejectOrder(value.trim());
+    setRejectOrderError(false);
+  };
 
   const orderRejectHandle = () => {
     if (!rejectOrder) {
@@ -34,18 +45,27 @@ const RejectOrderDailog = props => {
                 <TextInput
                   mode="Flat"
                   style={button.commonTextInput}
+                  maxLength={100}
                   placeholder="Type something here"
                   placeholderTextColor="rgb(211, 211, 211)"
                   onChangeText={value => {
-                    setRejectOrder(value.trim());
-                    setRejectOrderError(false);
+                    somethingTypeHadnle(value);
                   }}
                 />
-                {rejectOrderError && (
-                  <HelperText type="error" visible={rejectOrderError}>
-                    Enter Type Here
-                  </HelperText>
-                )}
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                  }}>
+                  {rejectOrderError === true ? (
+                    <HelperText type="error" visible={rejectOrderError}>
+                      Enter Type Here
+                    </HelperText>
+                  ) : (
+                    <Text></Text>
+                  )}
+                  <Text style={styles.lengthColor}>{charLeft}/100</Text>
+                </View>
               </View>
             </View>
           </Dialog.Content>
@@ -73,5 +93,9 @@ const styles = StyleSheet.create({
     color: '#333',
     fontWeight: '600',
     paddingBottom: 20,
+  },
+  lengthColor: {
+    color: 'rgb(211, 211, 211)',
+    fontSize: 12,
   },
 });
