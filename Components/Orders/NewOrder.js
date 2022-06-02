@@ -1,9 +1,11 @@
-import {StyleSheet, Text, View, ScrollView} from 'react-native';
+import {StyleSheet, View, ScrollView, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import OrderCard from './OrderCard';
 
-const NewOrder = () => {
-  const [newOrderArray, setnewOrderArray] = useState([
+const NewOrder = props => {
+  console.log('props=====', props);
+  const {navigation} = props;
+  const [newOrderArray] = useState([
     {
       orderID: 'ORD3423423',
       Time: '11.30 AM',
@@ -51,17 +53,29 @@ const NewOrder = () => {
       image: '',
     },
   ]);
+
+  const OrderHandle = () => {
+    navigation.push('OrdersAccpectReject');
+  };
+
   return (
-    <ScrollView>
-      <View style={styles.srceenMargin}>
-        {newOrderArray &&
-          newOrderArray.map((row, index) => (
-            <View key={index}>
-              <OrderCard data={row} />
-            </View>
-          ))}
-      </View>
-    </ScrollView>
+    <>
+      <ScrollView>
+        <View style={styles.srceenMargin}>
+          {newOrderArray &&
+            newOrderArray.map((row, index) => (
+              <View key={index}>
+                <TouchableOpacity
+                  onPress={() => {
+                    OrderHandle();
+                  }}>
+                  <OrderCard data={row} />
+                </TouchableOpacity>
+              </View>
+            ))}
+        </View>
+      </ScrollView>
+    </>
   );
 };
 

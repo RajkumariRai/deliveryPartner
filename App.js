@@ -10,6 +10,7 @@ import EditProfile from './Components/Profile/EditProfile';
 import ForgetPassword from './login/ForgetPassword';
 import ForgetPasswordOtp from './login/ForgotPasswordOtp';
 import Orders from './Components/Orders/Orders';
+import OrderAcceptReject from './Components/Orders/OrderAcceptReject';
 
 const Stack = createNativeStackNavigator();
 
@@ -61,6 +62,11 @@ const App = () => {
         <Stack.Screen
           name="Orders"
           component={Orders}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="OrdersAccpectReject"
+          component={OrderAcceptReject}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
