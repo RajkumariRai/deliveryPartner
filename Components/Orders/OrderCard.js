@@ -2,13 +2,14 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import UserAvatar from 'react-native-user-avatar';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import {button} from '../CommonStyles/Index';
 
 const OrderCard = props => {
   const {data, Active} = props;
 
   return (
     <View>
-      <View style={styles.cardBorderPadding}>
+      <View style={[styles.cardBorderPadding, button.orderCardBorder]}>
         <View style={styles.flexSpace}>
           <View>
             <UserAvatar
@@ -31,12 +32,7 @@ const OrderCard = props => {
           </View>
           <View>
             <View style={{flexDirection: 'row'}}>
-              <Icon
-                name={'clock-o'}
-                size={11}
-                color="#d60e0e"
-                style={styles.iconPadding}
-              />
+              <Icon name={'clock-o'} size={11} style={button.commonColor} />
               <Text style={styles.timeColor}>{data.Time}</Text>
             </View>
             {Active && (
@@ -53,13 +49,9 @@ const OrderCard = props => {
 
 const styles = StyleSheet.create({
   cardBorderPadding: {
-    borderColor: '#d60e0e',
     borderWidth: 1,
     padding: 10,
-    marginBottom: 10,
-    marginRight: 10,
-    marginTop: 10,
-    borderRightColor: '#d60e0e',
+    margin: 10,
     borderRightWidth: 10,
   },
   flexSpace: {
@@ -86,8 +78,6 @@ const styles = StyleSheet.create({
   locationdataColor: {
     fontSize: 10,
     color: '#rgb(211, 211, 211)',
-    // flexWrap: 'wrap',
-    // flex: 1,
   },
   timeColor: {
     color: '#333',

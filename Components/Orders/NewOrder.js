@@ -3,7 +3,6 @@ import React, {useState} from 'react';
 import OrderCard from './OrderCard';
 
 const NewOrder = props => {
-  console.log('props=====', props);
   const {navigation} = props;
   const [newOrderArray] = useState([
     {

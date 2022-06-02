@@ -21,3 +21,7 @@ export const commonBackgroundColor = {
 export const tabBorderBottom = {
   borderBottomColor: '#d60e0e',
 };
+export const orderCardBorder = {
+  borderColor: '#d60e0e',
+  borderRightColor: '#d60e0e',
+};
