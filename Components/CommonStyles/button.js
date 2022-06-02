@@ -18,3 +18,6 @@ export const commonColor = {
 export const commonBackgroundColor = {
   backgroundColor: '#d60e0e',
 };
+export const tabBorderBottom = {
+  borderBottomColor: '#d60e0e',
+};

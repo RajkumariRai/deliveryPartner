@@ -4,6 +4,7 @@ import HOC from '../HOC/HOC';
 import NewOrder from './NewOrder';
 import {TabView, TabBar} from 'react-native-tab-view';
 import ActiveOrder from './ActiveOrder';
+import {button} from '../CommonStyles/Index';
 
 const Orders = props => {
   const {navigation} = props;
@@ -36,17 +37,23 @@ const Orders = props => {
       {...props}
       renderLabel={({route, focused, color}) => (
         <Text
-          style={focused === true ? [styles.tabViewColor] : styles.inactiveTab}>
+          style={
+            focused === true
+              ? [styles.tabViewColor, button.commonColor]
+              : styles.inactiveTab
+          }>
           {route.title}
         </Text>
       )}
-      indicatorStyle={{
-        backgroundColor: '#fff',
-        height: '100%',
-        borderBottomColor: '#d60e0e',
-        borderBottomWidth: 2,
-        shadowColor: '#000',
-      }}
+      indicatorStyle={[
+        button.tabBorderBottom,
+        {
+          backgroundColor: '#fff',
+          height: '100%',
+          borderBottomWidth: 2,
+          shadowColor: '#000',
+        },
+      ]}
       style={{
         backgroundColor: '#fff',
       }}
@@ -67,7 +74,6 @@ const Orders = props => {
 };
 const styles = StyleSheet.create({
   tabViewColor: {
-    color: '#d60e0e',
     fontSize: 12,
     fontWeight: 'bold',
     margin: -5,
