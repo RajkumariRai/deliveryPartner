@@ -35,19 +35,14 @@ const Orders = props => {
       {...props}
       renderLabel={({route, focused, color}) => (
         <Text
-          style={{
-            color: '#0c0c0c',
-            fontSize: 12,
-            fontWeight: 'bold',
-            margin: -5,
-          }}>
+          style={focused === true ? [styles.tabViewColor] : styles.inactiveTab}>
           {route.title}
         </Text>
       )}
       indicatorStyle={{
         backgroundColor: '#fff',
         height: '100%',
-        borderBottomColor: '#0070bb',
+        borderBottomColor: '#d60e0e',
         borderBottomWidth: 2,
         shadowColor: '#000',
       }}
@@ -70,5 +65,18 @@ const Orders = props => {
     </View>
   );
 };
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  tabViewColor: {
+    color: '#d60e0e',
+    fontSize: 12,
+    fontWeight: 'bold',
+    margin: -5,
+  },
+  inactiveTab: {
+    color: 'rgb(211, 211, 211)',
+    fontSize: 12,
+    fontWeight: 'bold',
+    margin: -5,
+  },
+});
 export default HOC(Orders);
