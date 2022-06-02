@@ -106,12 +106,30 @@ export default function SignUp(props) {
             </HelperText>
           )}
         </View>
-        <View>
+        <View style={{}}>
           <PhoneInput
-            style={button.commonTextInput}
+            containerStyle={{ 
+             marginLeft:5,
+              borderColor: '#9a9a9a',
+              borderBottomWidth: 1,
+              borderRightWidth:1,
+              borderLeftWidth:1,
+              borderTopWidth:1,
+              width: '97%',}}
+             
+             
+              codeTextStyle={{color: '#9a9a9a'}}
+              flagButtonStyle={{color: '#9a9a9a'}}
+             
+            placeholder="Phone Number"
+           
+            withDarkTheme
+    
+            autoFocus
+            // textInputStyle={button.commonTextInput}
             defaultValue={phoneNumber}
             defaultCode="IN"
-            layout="first"
+           
             onChangeText={text => {
               setPhoneNumberError(false);
               setPhoneNumber(text);
@@ -176,7 +194,7 @@ export default function SignUp(props) {
               Password and confirm password should be same
             </HelperText>
           )}
-
+<View style={{paddingTop:15}}>
           <Button
             mode="contained"
             style={button.commonButton}
@@ -185,9 +203,10 @@ export default function SignUp(props) {
             }}>
             SIGNUP
           </Button>
+          </View>
         </View>
         <View
-          style={{flexDirection: 'row', textAlign: 'center', marginTop: 35}}>
+          style={{flexDirection: 'row', textAlign: 'center', marginTop: 30}}>
           <Text
             style={{
               fontSize: 14,

@@ -24,21 +24,21 @@ export default function ForgetPasswordOtp(props) {
 
   return (
     <View style={styles.loginMainView}>
-      <View style={{padding: 15}}>
+      <View style={{padding: 25}}>
         <View style={{marginBottom: 20}}>
           <Text style={{fontWeight: 'bold', fontSize: 23, color: '#d60e0e'}}>
             Forget Passwoad
           </Text>
-          <Text style={{fontSize: 12, fontWeight: '500'}}>
+          <Text style={{fontSize: 14, fontWeight: '500',marginTop:10}}>
             An OTP code sent to your email id, Enter it here
           </Text>
         </View>
 
-        <View>
+        <View style={{ }}>
           <TextInput
             mode="outlined"
-            style={button.commonTextInput}
-            label="OTP"
+            style={button.commonTextInput }
+            label="Enter OTP"
             onChangeText={value => {
               setOtp(value);
             }}
