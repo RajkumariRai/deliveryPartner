@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import HOC from '../HOC/HOC';
 import NewOrder from './NewOrder';
 import {TabView, TabBar} from 'react-native-tab-view';
+import ActiveOrder from './ActiveOrder';
 
 const Orders = props => {
   const {navigation} = props;
@@ -17,8 +18,8 @@ const Orders = props => {
     switch (route.key) {
       case 'New':
         return <NewOrder navigation={navigation} />;
-      // case 'Created':
-      //   return <TCreatedAssignment navigation={navigation} />;
+      case 'Active':
+        return <ActiveOrder navigation={navigation} />;
       // case 'ReviewPendingAssignment':
       //   return <ReviewPendingAssignment navigation={navigation} />;
       // case 'Completed':
@@ -55,7 +56,6 @@ const Orders = props => {
   );
   return (
     <View style={{flexGrow: 1, backgroundColor: '#fff'}}>
-      {/* <NewOrder /> */}
       <TabView
         navigationState={{index, routes}}
         renderScene={renderScene}

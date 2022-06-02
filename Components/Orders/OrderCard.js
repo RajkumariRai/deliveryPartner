@@ -4,7 +4,7 @@ import UserAvatar from 'react-native-user-avatar';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
 const OrderCard = props => {
-  const {data} = props;
+  const {data, Active} = props;
 
   return (
     <View>
@@ -29,14 +29,21 @@ const OrderCard = props => {
               <Text style={styles.locationdataColor}>{data.location}</Text>
             </View>
           </View>
-          <View style={{flexDirection: 'row'}}>
-            <Icon
-              name={'clock-o'}
-              size={11}
-              color="#d60e0e"
-              style={styles.iconPadding}
-            />
-            <Text style={styles.timeColor}>{data.Time}</Text>
+          <View>
+            <View style={{flexDirection: 'row'}}>
+              <Icon
+                name={'clock-o'}
+                size={11}
+                color="#d60e0e"
+                style={styles.iconPadding}
+              />
+              <Text style={styles.timeColor}>{data.Time}</Text>
+            </View>
+            {Active && (
+              <View style={styles.activeRight}>
+                <Text style={styles.onlineActive}></Text>
+              </View>
+            )}
           </View>
         </View>
       </View>
@@ -88,6 +95,17 @@ const styles = StyleSheet.create({
     fontSize: 11,
     marginTop: -3,
     paddingLeft: 3,
+  },
+  onlineActive: {
+    width: 10,
+    height: 10,
+    backgroundColor: 'green',
+    borderRadius: 50,
+    alignItems: 'flex-end',
+  },
+  activeRight: {
+    alignItems: 'flex-end',
+    paddingTop: 15,
   },
 });
 export default OrderCard;

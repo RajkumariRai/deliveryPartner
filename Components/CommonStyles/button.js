@@ -12,3 +12,9 @@ export const commonButton = {
   paddingLeft: 20,
   paddingRight: 20,
 };
+export const commonColor = {
+  color: '#d60e0e',
+};
+export const commonBackgroundColor = {
+  backgroundColor: '#d60e0e',
+};

@@ -5,6 +5,8 @@ import {button} from '../CommonStyles/Index';
 import RejectOrderDailog from './RejectOrderDailog';
 
 const OrderAcceptReject = props => {
+  console.log('props=======', props);
+  const {params} = props.route;
   const [active, setActive] = useState(2);
   const [rejectDailog, setRejectDailog] = useState(false);
 
@@ -93,30 +95,45 @@ const OrderAcceptReject = props => {
                 <Text style={styles.timeHeadling}>Time :</Text>
                 <Text style={styles.timeValueColor}>11:30 AM</Text>
               </View>
-              <View style={[styles.flexSpace,{paddingTop:10}]}>
-                <Button
-                  mode={active == 1 ? 'contained' : 'outlined'}
-                  color={active == 1 ? '' : 'rgb(211, 211, 211)'}
-                  style={
-                    active == 1 ? button.commonButton : styles.inactiveButton
-                  }
-                  onPress={() => {
-                    rejectHandle();
-                  }}>
-                  Reject
-                </Button>
-                <Button
-                  mode={active == 2 ? 'contained' : 'outlined'}
-                  color={active == 2 ? '' : 'rgb(211, 211, 211)'}
-                  style={
-                    active == 2 ? button.commonButton : styles.inactiveButton
-                  }
-                  onPress={() => {
-                    acceptHandle();
-                  }}>
-                  Accept
-                </Button>
-              </View>
+
+              {!params && (
+                <View style={[styles.flexSpace, {paddingTop: 10}]}>
+                  <Button
+                    mode={active == 1 ? 'contained' : 'outlined'}
+                    color={active == 1 ? '' : 'rgb(211, 211, 211)'}
+                    style={
+                      active == 1 ? button.commonButton : styles.inactiveButton
+                    }
+                    onPress={() => {
+                      rejectHandle();
+                    }}>
+                    Reject
+                  </Button>
+                  <Button
+                    mode={active == 2 ? 'contained' : 'outlined'}
+                    color={active == 2 ? '' : 'rgb(211, 211, 211)'}
+                    style={
+                      active == 2 ? button.commonButton : styles.inactiveButton
+                    }
+                    onPress={() => {
+                      acceptHandle();
+                    }}>
+                    Accept
+                  </Button>
+                </View>
+              )}
+              {params === 'Active' && (
+                <View style={{paddingTop: 10, alignItems: 'center'}}>
+                  <Button
+                    mode="contained"
+                    style={button.commonButton}
+                    onPress={() => {
+                      // StartOrderHandle();
+                    }}>
+                    Start
+                  </Button>
+                </View>
+              )}
             </View>
           </View>
         </View>
