@@ -24,15 +24,16 @@ export default function ForgetPasswordOtp(props) {
 
   return (
     <View style={styles.loginMainView}>
-     
-        <View>
-          <View style={{fontWeight: 'bold', fontSize: '35', color: '#fff'}}>
-            <Text>Forget Passwoad</Text>
-          </View>
-          <View style={{fontSize: '12', fontWeight: '500'}}>
-            <Text>An OTP code sent to your email id, Enter it here </Text>
-          </View>
+      <View style={{padding: 15}}>
+        <View style={{marginBottom: 20}}>
+          <Text style={{fontWeight: 'bold', fontSize: 23, color: '#d60e0e'}}>
+            Forget Passwoad
+          </Text>
+          <Text style={{fontSize: 12, fontWeight: '500'}}>
+            An OTP code sent to your email id, Enter it here
+          </Text>
         </View>
+
         <View>
           <TextInput
             mode="outlined"
@@ -54,15 +55,14 @@ export default function ForgetPasswordOtp(props) {
           </Button>
         </View>
       </View>
-    
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   loginMainView: {
     flex: 1,
-    justifyContent: "center",
-    
+    justifyContent: 'center',
   },
   image: {
     alignItems: 'center',
