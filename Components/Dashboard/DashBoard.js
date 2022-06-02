@@ -1,12 +1,13 @@
 import React from 'react';
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import {button} from '../CommonStyles/Index';
 import HOC from '../HOC/HOC';
 // import Header from '../HOC/Header';
 import DashboardCard from './DashboardCard';
 
 const DashBoard = () => {
   return (
-    <View style={styles.dashboardbgcolor}>
+    <View style={[{flexGrow: 1}, button.commonBackgroundColor]}>
       {/* bar section */}
       <View>
         <Text>Bar Section</Text>
@@ -32,10 +33,6 @@ const DashBoard = () => {
   );
 };
 const styles = StyleSheet.create({
-  dashboardbgcolor: {
-    flexGrow: 1,
-    backgroundColor: '#26ae61',
-  },
   cardSectionBorder: {
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,

@@ -25,3 +25,6 @@ export const orderCardBorder = {
   borderColor: '#d60e0e',
   borderRightColor: '#d60e0e',
 };
+export const borderColor = {
+  borderColor: '#d60e0e',
+};

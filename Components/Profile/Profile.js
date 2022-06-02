@@ -3,11 +3,12 @@ import React from 'react';
 import HOC from '../HOC/HOC';
 import UserAvatar from 'react-native-user-avatar';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import {button} from '../CommonStyles/Index';
 
 const Profile = props => {
   return (
     <View style={styles.safeAreaWidth}>
-      <View style={styles.profileTopBgColor}>
+      <View style={[styles.profileTopBgColor, button.commonBackgroundColor]}>
         <View style={styles.profileImageCenter}>
           <UserAvatar size={90} name={'Jhon Doe'} src={''} borderRadius={50} />
           <Text style={styles.userNameColor}>Jhon Doe</Text>
@@ -20,8 +21,7 @@ const Profile = props => {
             <Icon
               name={'envelope'}
               size={12}
-              color="#26ae61"
-              style={styles.iconPadding}
+              style={[styles.iconPadding, button.commonColor]}
             />
             <Text style={styles.inputvalueColor}>AnkurD@gmail.com</Text>
           </View>
@@ -32,8 +32,7 @@ const Profile = props => {
             <Icon
               name={'mobile-phone'}
               size={12}
-              color="#26ae61"
-              style={styles.iconPadding}
+              style={[styles.iconPadding, button.commonColor]}
             />
             <Text style={styles.inputvalueColor}>+91 3333 3333 33</Text>
           </View>
@@ -44,8 +43,7 @@ const Profile = props => {
             <Icon
               name={'id-card-o'}
               size={12}
-              color="#26ae61"
-              style={styles.iconPadding}
+              style={[styles.iconPadding, button.commonColor]}
             />
             <Text style={styles.inputvalueColor}>11112-35345-34535</Text>
           </View>
@@ -56,8 +54,7 @@ const Profile = props => {
             <Icon
               name={'car'}
               size={12}
-              color="#26ae61"
-              style={styles.iconPadding}
+              style={[styles.iconPadding, button.commonColor]}
             />
             <Text style={styles.inputvalueColor}>GJ21AF3333</Text>
           </View>
@@ -72,7 +69,6 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   profileTopBgColor: {
-    backgroundColor: '#26ae61',
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
   },

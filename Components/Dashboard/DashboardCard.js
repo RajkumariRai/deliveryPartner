@@ -1,6 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {Card, Icon} from 'react-native-elements';
+import {button} from '../CommonStyles/Index';
 
 const DashboardCard = props => {
   const {title, value} = props;
@@ -8,7 +9,7 @@ const DashboardCard = props => {
     <Card containerStyle={styles.cardShadow}>
       {value && (
         <View style={styles.borderCircle}>
-          <Text style={styles.topLeftValue}>{value}</Text>
+          <Text style={[styles.topLeftValue, button.borderColor]}>{value}</Text>
         </View>
       )}
       <View>
@@ -38,7 +39,6 @@ const styles = StyleSheet.create({
   },
   topLeftValue: {
     backgroundColor: '#fff',
-    borderColor: '#26ae61',
     borderWidth: 1,
     borderRadius: 50,
     padding: 2,
