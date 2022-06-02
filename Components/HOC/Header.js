@@ -1,12 +1,13 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import {button} from '../CommonStyles/Index';
 
 const Header = props => {
   const {route, navigation} = props;
 
   return (
-    <View style={styles.headrBgColor}>
+    <View style={[button.commonBackgroundColor, {padding: 10}]}>
       {/* dashboard Header  */}
       {route.name === 'dashboard' && (
         <View style={styles.flexSpace}>
@@ -85,10 +86,6 @@ const Header = props => {
   );
 };
 const styles = StyleSheet.create({
-  headrBgColor: {
-    backgroundColor: '#26ae61',
-    padding: 10,
-  },
   flexSpace: {
     flexDirection: 'row',
     justifyContent: 'space-between',

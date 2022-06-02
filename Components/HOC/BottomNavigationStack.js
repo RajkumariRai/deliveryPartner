@@ -1,6 +1,7 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import {button} from '../CommonStyles/Index';
 
 const BottomNavigationStack = props => {
   const [active, setActive] = useState(1);
@@ -43,12 +44,12 @@ const BottomNavigationStack = props => {
             <Icon
               name={'home'}
               size={active === 1 ? 20 : 12}
-              color={active === 1 ? '#26ae61' : 'rgb(211, 211, 211)'}
+              style={active === 1 ? button.commonColor : 'rgb(211, 211, 211)'}
             />
             <Text
               style={
                 active === 1
-                  ? styles.bottomActiveColor
+                  ? [styles.bottomActiveColor, button.commonColor]
                   : styles.bottomInactiveColor
               }>
               DashBoard
@@ -63,12 +64,12 @@ const BottomNavigationStack = props => {
             <Icon
               name={'shopping-bag'}
               size={active === 2 ? 20 : 12}
-              color={active === 2 ? '#26ae61' : 'rgb(211, 211, 211)'}
+              style={active === 2 ? button.commonColor : 'rgb(211, 211, 211)'}
             />
             <Text
               style={
                 active === 2
-                  ? styles.bottomActiveColor
+                  ? [styles.bottomActiveColor, button.commonColor]
                   : styles.bottomInactiveColor
               }>
               Orders
@@ -83,12 +84,12 @@ const BottomNavigationStack = props => {
             <Icon
               name={'user'}
               size={active === 3 ? 20 : 12}
-              color={active === 3 ? '#26ae61' : 'rgb(211, 211, 211)'}
+              style={active === 3 ? button.commonColor : 'rgb(211, 211, 211)'}
             />
             <Text
               style={
                 active === 3
-                  ? styles.bottomActiveColor
+                  ? [styles.bottomActiveColor, button.commonColor]
                   : styles.bottomInactiveColor
               }>
               My Profile
@@ -103,12 +104,12 @@ const BottomNavigationStack = props => {
             <Icon
               name={'gear'}
               size={active === 4 ? 20 : 12}
-              color={active === 4 ? '#26ae61' : 'rgb(211, 211, 211)'}
+              style={active === 4 ? button.commonColor : 'rgb(211, 211, 211)'}
             />
             <Text
               style={
                 active === 4
-                  ? styles.bottomActiveColor
+                  ? [styles.bottomActiveColor, button.commonColor]
                   : styles.bottomInactiveColor
               }>
               Setting
@@ -143,7 +144,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   bottomActiveColor: {
-    color: '#26ae61',
     fontSize: 12,
   },
 });
