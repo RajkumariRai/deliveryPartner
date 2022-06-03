@@ -26,3 +26,7 @@ export const orderCardBorder = {
 export const borderColor = {
   borderColor: '#d60e0e',
 };
+export const commonSpaceBetween = {
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+};
