@@ -59,94 +59,82 @@ const DeliverOrder = () => {
       image: '',
     },
   ]);
-  const [checkOrder, setCheckOrder] = useState(false);
 
-  const deliverdCheckOrderHandle = (row, index) => {
-    setCheckOrder(true);
-  };
   return (
     <ScrollView>
       <View style={styles.srceenMargin}>
+        <View style={styles.cardBorderPaddin}>
+          <View style={button.commonSpaceBetween}>
+            <View>
+              <Text style={styles.productColor}>Deliverd Order :1</Text>
+              <Text style={styles.productColor}>Return Order :1</Text>
+              <Text style={[styles.collectAmountColor, {paddingTop: 10}]}>
+                Total Order :2
+              </Text>
+            </View>
+            <View style={styles.collectcenter}>
+              <Text style={styles.collectAmountColor}>Collect Rs. 250/-</Text>
+            </View>
+          </View>
+        </View>
         {newOrderArray &&
           newOrderArray.map((row, index) => (
             <View key={index}>
               <View style={styles.cardBorderPaddin}>
-                {!checkOrder ? (
-                  <TouchableOpacity
-                    onPress={() => {
-                      deliverdCheckOrderHandle(row, index);
-                    }}>
-                    <View style={button.commonSpaceBetween}>
-                      <View>
-                        <UserAvatar
-                          size={60}
-                          name={'Jhon Doe'}
-                          src={row.image}
-                          borderRadius={50}
-                          style={{zIndex: 999}}
-                        />
-                      </View>
-                      <View>
-                        <Text style={styles.orderIdColor}>{row.orderID}</Text>
-                        <View style={{flexDirection: 'row'}}>
-                          <Text style={styles.productColor}>
-                            {row.products}
-                          </Text>
-                        </View>
-                        <View style={{flexDirection: 'row'}}>
-                          <Text style={styles.locationHeadingColor}>
-                            Location :
-                          </Text>
-                          <Text style={styles.locationdataColor}>
-                            {row.location}
-                          </Text>
-                        </View>
-                      </View>
-                      <View>
-                        <View style={{flexDirection: 'row'}}>
-                          <Icon
-                            name={'clock-o'}
-                            size={11}
-                            style={button.commonColor}
-                          />
-                          <Text style={styles.timeColor}>{row.Time}</Text>
-                        </View>
-                        <View
-                          style={{
-                            alignItems: 'flex-end',
-                            flex: 1,
-                            justifyContent: 'center',
-                          }}>
-                          <View
-                            style={[
-                              button.commonBackgroundColor,
-                              styles.deliverdbuttobColor,
-                            ]}>
-                            <Text style={styles.deliverdTextColor}>
-                              Deliverd
-                            </Text>
-                          </View>
-                        </View>
-                      </View>
-                    </View>
-                  </TouchableOpacity>
-                ) : (
+                <TouchableOpacity
+                  onPress={() => {
+                    deliverdCheckOrderHandle(row, index);
+                  }}>
                   <View style={button.commonSpaceBetween}>
                     <View>
-                      <Text style={styles.productColor}>Deliverd Order :1</Text>
-                      <Text style={styles.productColor}>Return Order :1</Text>
-                      <Text
-                        style={[styles.collectAmountColor, {paddingTop: 10}]}>
-                        Total Order :2
-                      </Text>
+                      <UserAvatar
+                        size={60}
+                        name={'Jhon Doe'}
+                        src={row.image}
+                        borderRadius={50}
+                        style={{zIndex: 999}}
+                      />
                     </View>
                     <View>
-                      <Text style={styles.collectAmountColor}>
-                        Collect Rs. 250/-
-                      </Text>
+                      <Text style={styles.orderIdColor}>{row.orderID}</Text>
+                      <View style={{flexDirection: 'row'}}>
+                        <Text style={styles.productColor}>{row.products}</Text>
+                      </View>
+                      <View style={{flexDirection: 'row'}}>
+                        <Text style={styles.locationHeadingColor}>
+                          Location :
+                        </Text>
+                        <Text style={styles.locationdataColor}>
+                          {row.location}
+                        </Text>
+                      </View>
+                    </View>
+                    <View>
+                      <View style={{flexDirection: 'row'}}>
+                        <Icon
+                          name={'clock-o'}
+                          size={11}
+                          style={button.commonColor}
+                        />
+                        <Text style={styles.timeColor}>{row.Time}</Text>
+                      </View>
+                      <View
+                        style={{
+                          alignItems: 'flex-end',
+                          flex: 1,
+                          justifyContent: 'center',
+                        }}>
+                        <View
+                          style={[
+                            button.commonBackgroundColor,
+                            styles.deliverdbuttobColor,
+                          ]}>
+                          <Text style={styles.deliverdTextColor}>Deliverd</Text>
+                        </View>
+                      </View>
                     </View>
                   </View>
-                )}
+                </TouchableOpacity>
               </View>
             </View>
           ))}
@@ -212,5 +200,10 @@ const styles = StyleSheet.create({
     color: '#333',
     fontSize: 12,
     fontWeight: 'bold',
+  },
+  collectcenter: {
+    flex: 1,
+    alignItems: 'flex-end',
+    justifyContent: 'center',
   },
 });
