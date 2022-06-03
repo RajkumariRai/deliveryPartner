@@ -18,6 +18,9 @@ const MapLocation = props => {
   const onRegionChange = regionValue => {
     setRegion(regionValue);
   };
+  const OrderFinshHandle = () => {
+    navigation.push('OrdersAccpectReject', 'Finish');
+  };
   return (
     <View style={styles.mapMainView}>
       <View style={[button.commonBackgroundColor]}>
@@ -62,7 +65,7 @@ const MapLocation = props => {
             mode="contained"
             style={button.commonButton}
             onPress={() => {
-              //   StartOrderHandle();
+              OrderFinshHandle();
             }}>
             Finish
           </Button>
