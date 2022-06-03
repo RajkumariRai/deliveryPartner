@@ -9,6 +9,7 @@ import {
 } from 'react-native-responsive-screen';
 import ChangePassword from '../Dailogs/ChangePassword';
 import {emailValidator} from '../../utils/Validation';
+import {button} from '../CommonStyles/Index';
 
 const EditProfile = () => {
   const [active, setActive] = useState(2);
@@ -62,7 +63,7 @@ const EditProfile = () => {
     }
   };
   return (
-    <View style={styles.safeAreaWidth}>
+    <View style={[styles.safeAreaWidth, button.commonBackgroundColor]}>
       <View style={styles.editProfilebottomColor}>
         <ScrollView>
           <View style={{padding: 15}}>
@@ -82,8 +83,12 @@ const EditProfile = () => {
                   flex: 1,
                   justifyContent: 'center',
                 }}>
-                <Text style={styles.userNameFont}>John Deo</Text>
-                <Text style={styles.userEmailColor}>driverone@gmail.com</Text>
+                <Text style={[styles.userNameFont, button.commonColor]}>
+                  John Deo
+                </Text>
+                <Text style={[styles.userEmailColor, button.commonColor]}>
+                  driverone@gmail.com
+                </Text>
               </View>
             </View>
             {/* Form section */}
@@ -204,7 +209,7 @@ const EditProfile = () => {
                 <Button
                   style={
                     active == 1
-                      ? [styles.ActiveButton]
+                      ? [button.commonButton]
                       : [styles.inactiveButton]
                   }
                   mode={active == 1 ? 'contained' : 'outlined'}
@@ -219,7 +224,7 @@ const EditProfile = () => {
                   color={active == 2 ? '' : 'rgb(211, 211, 211)'}
                   style={
                     active == 2
-                      ? [styles.ActiveButton, {marginLeft: 5}]
+                      ? [button.commonButton, {marginLeft: 5}]
                       : [styles.inactiveButton, {marginLeft: 5}]
                   }
                   onPress={() => {
@@ -244,7 +249,6 @@ const EditProfile = () => {
 const styles = StyleSheet.create({
   safeAreaWidth: {
     flexGrow: 1,
-    backgroundColor: '#26ae61',
     paddingTop: 60,
   },
   editProfilebottomColor: {
@@ -259,12 +263,10 @@ const styles = StyleSheet.create({
     zIndex: 999,
   },
   userNameFont: {
-    color: '#26ae61',
     fontSize: 25,
     fontWeight: 'bold',
   },
   userEmailColor: {
-    color: '#26ae61',
     fontSize: 14,
   },
   TextInputBorder: {
@@ -280,15 +282,9 @@ const styles = StyleSheet.create({
     fontSize: 13,
     padding: 5,
   },
-  ActiveButton: {
-    backgroundColor: '#26ae61',
-    color: '#fff',
-    borderRadius: 30,
-    fontWeight: '700',
-  },
+
   inactiveButton: {
     backgroundColor: '#fff',
-    color: '#26ae61',
     borderRadius: 30,
     fontWeight: '700',
   },

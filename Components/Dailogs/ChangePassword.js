@@ -40,7 +40,7 @@ const ChangePassword = props => {
     <Provider>
       <Portal>
         <Dialog visible={open} onDismiss={close}>
-          <Dialog.Title style={styles.passwordTitle}>
+          <Dialog.Title style={[button.commonColor, {fontSize: 14}]}>
             Change Password
           </Dialog.Title>
           <Dialog.Content>
@@ -115,7 +115,7 @@ const ChangePassword = props => {
               <View style={{paddingTop: 15}}>
                 <Button
                   mode="contained"
-                  style={styles.saveButtonColor}
+                  style={button.commonButton}
                   onPress={() => {
                     savePasswordHandle();
                   }}>
@@ -130,13 +130,7 @@ const ChangePassword = props => {
   );
 };
 const styles = StyleSheet.create({
-  passwordTitle: {
-    color: '#26ae61',
-    fontSize: 14,
-  },
-
   saveButtonColor: {
-    backgroundColor: '#26ae61',
     color: '#fff',
     borderRadius: 30,
     fontWeight: '700',
