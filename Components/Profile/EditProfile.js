@@ -63,187 +63,192 @@ const EditProfile = () => {
     }
   };
   return (
-    <View style={[styles.safeAreaWidth, button.commonBackgroundColor]}>
-      <View style={styles.editProfilebottomColor}>
-        <ScrollView>
-          <View style={{padding: 15}}>
-            <View style={{flexDirection: 'row'}}>
-              <View style={styles.userImageSet}>
-                <UserAvatar
-                  size={90}
-                  name={'Jhon Doe'}
-                  src={''}
-                  borderRadius={50}
-                  style={{zIndex: 999}}
-                />
+    <>
+      <ScrollView>
+        <View style={[styles.safeAreaWidth, button.commonBackgroundColor]}>
+          <View style={styles.editProfilebottomColor}>
+            <View style={{padding: 15}}>
+              <View style={{flexDirection: 'row'}}>
+                <View style={styles.userImageSet}>
+                  <UserAvatar
+                    size={90}
+                    name={'Jhon Doe'}
+                    src={''}
+                    borderRadius={50}
+                    style={{zIndex: 999}}
+                  />
+                </View>
+                <View
+                  style={{
+                    paddingLeft: 20,
+                    // flex: 1,
+                    // justifyContent: 'center',
+                  }}>
+                  <Text style={[styles.userNameFont, button.commonColor]}>
+                    John Deo
+                  </Text>
+                  <Text style={[styles.userEmailColor, button.commonColor]}>
+                    driverone@gmail.com
+                  </Text>
+                </View>
               </View>
-              <View
-                style={{
-                  paddingLeft: 20,
-                  flex: 1,
-                  justifyContent: 'center',
-                }}>
-                <Text style={[styles.userNameFont, button.commonColor]}>
-                  John Deo
-                </Text>
-                <Text style={[styles.userEmailColor, button.commonColor]}>
-                  driverone@gmail.com
-                </Text>
-              </View>
-            </View>
-            {/* Form section */}
-            <View style={{paddingTop: 15, paddingBottom: 100}}>
-              <View
-                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                <View style={{width: '45%'}}>
-                  <Text style={styles.textlabel}>First Name</Text>
+              {/* Form section */}
+              <View style={{paddingTop: 15, paddingBottom: 50}}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                  }}>
+                  <View style={{width: '45%'}}>
+                    <Text style={styles.textlabel}>First Name</Text>
+                    <TextInput
+                      style={styles.TextInputBorder}
+                      placeholder="First Name"
+                      placeholderTextColor="#000"
+                      value={firstName}
+                      onChangeText={value => {
+                        setFirstName(value);
+                        setFirstNameError(false);
+                      }}
+                    />
+                    {firstNameError && (
+                      <HelperText type="error" visible={firstNameError}>
+                        Enter First Name
+                      </HelperText>
+                    )}
+                  </View>
+                  <View style={{width: '45%'}}>
+                    <Text style={styles.textlabel}>Last Name</Text>
+                    <TextInput
+                      style={styles.TextInputBorder}
+                      placeholder="Last Name"
+                      placeholderTextColor="#000"
+                      value={lastName}
+                      onChangeText={value => {
+                        setLastName(value);
+                      }}
+                    />
+                  </View>
+                </View>
+                <View style={{paddingTop: 12}}>
+                  <Text style={styles.textlabel}>Email id</Text>
+
                   <TextInput
                     style={styles.TextInputBorder}
-                    placeholder="First Name"
+                    placeholder="Email id"
                     placeholderTextColor="#000"
-                    value={firstName}
+                    value={emailId}
                     onChangeText={value => {
-                      setFirstName(value);
-                      setFirstNameError(false);
+                      setEmailId(value);
+                      setEmailIdError(false);
                     }}
                   />
-                  {firstNameError && (
-                    <HelperText type="error" visible={firstNameError}>
-                      Enter First Name
+                  {emailIdError && (
+                    <HelperText type="error" visible={emailIdError}>
+                      Enter Valid Email id
                     </HelperText>
                   )}
                 </View>
-                <View style={{width: '45%'}}>
-                  <Text style={styles.textlabel}>Last Name</Text>
+                <View style={{paddingTop: 12}}>
+                  <Text style={styles.textlabel}>Phone Number</Text>
                   <TextInput
                     style={styles.TextInputBorder}
-                    placeholder="Last Name"
+                    keyboardType="numeric"
+                    placeholder="Phone Number"
                     placeholderTextColor="#000"
-                    value={lastName}
+                    value={phoneNumber}
                     onChangeText={value => {
-                      setLastName(value);
+                      setPhoneNumber(value);
+                      setPhoneNumberError(false);
                     }}
                   />
+                  {phoneNumberError && (
+                    <HelperText type="error" visible={phoneNumberError}>
+                      Enter Phone Number
+                    </HelperText>
+                  )}
                 </View>
-              </View>
-              <View style={{paddingTop: 12}}>
-                <Text style={styles.textlabel}>Email id</Text>
-
-                <TextInput
-                  style={styles.TextInputBorder}
-                  placeholder="Email id"
-                  placeholderTextColor="#000"
-                  value={emailId}
-                  onChangeText={value => {
-                    setEmailId(value);
-                    setEmailIdError(false);
-                  }}
-                />
-                {emailIdError && (
-                  <HelperText type="error" visible={emailIdError}>
-                    Enter Valid Email id
-                  </HelperText>
-                )}
-              </View>
-              <View style={{paddingTop: 12}}>
-                <Text style={styles.textlabel}>Phone Number</Text>
-                <TextInput
-                  style={styles.TextInputBorder}
-                  keyboardType="numeric"
-                  placeholder="Phone Number"
-                  placeholderTextColor="#000"
-                  value={phoneNumber}
-                  onChangeText={value => {
-                    setPhoneNumber(value);
-                    setPhoneNumberError(false);
-                  }}
-                />
-                {phoneNumberError && (
-                  <HelperText type="error" visible={phoneNumberError}>
-                    Enter Phone Number
-                  </HelperText>
-                )}
-              </View>
-              <View style={{paddingTop: 12}}>
-                <Text style={styles.textlabel}>Identity Card Number</Text>
-                <TextInput
-                  style={styles.TextInputBorder}
-                  placeholder="Identity Card Number"
-                  placeholderTextColor="#000"
-                  value={cardNumber}
-                  onChangeText={value => {
-                    setCardNumber(value);
-                    setCardNumberError(false);
-                  }}
-                />
-                {cardNumberError && (
-                  <HelperText type="error" visible={cardNumberError}>
-                    Enter Identity Card Number
-                  </HelperText>
-                )}
-              </View>
-              <View style={{paddingTop: 12}}>
-                <Text style={styles.textlabel}>Vehical Number</Text>
-                <TextInput
-                  style={styles.TextInputBorder}
-                  placeholder="Vehical Number"
-                  placeholderTextColor="#000"
-                  value={vehicalNumber}
-                  onChangeText={value => {
-                    setVehicalNumber(value);
-                    setVehicalNumberError(false);
-                  }}
-                />
-                {vehicalNumberError && (
-                  <HelperText type="error" visible={vehicalNumberError}>
-                    Enter Vehical Number
-                  </HelperText>
-                )}
-              </View>
-              <View
-                style={{
-                  paddingTop: 12,
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                }}>
-                <Button
-                  style={
-                    active == 1
-                      ? [button.commonButton]
-                      : [styles.inactiveButton]
-                  }
-                  mode={active == 1 ? 'contained' : 'outlined'}
-                  color={active == 1 ? '' : 'rgb(211, 211, 211)'}
-                  onPress={() => {
-                    chnagePasswordHandle();
+                <View style={{paddingTop: 12}}>
+                  <Text style={styles.textlabel}>Identity Card Number</Text>
+                  <TextInput
+                    style={styles.TextInputBorder}
+                    placeholder="Identity Card Number"
+                    placeholderTextColor="#000"
+                    value={cardNumber}
+                    onChangeText={value => {
+                      setCardNumber(value);
+                      setCardNumberError(false);
+                    }}
+                  />
+                  {cardNumberError && (
+                    <HelperText type="error" visible={cardNumberError}>
+                      Enter Identity Card Number
+                    </HelperText>
+                  )}
+                </View>
+                <View style={{paddingTop: 12}}>
+                  <Text style={styles.textlabel}>Vehical Number</Text>
+                  <TextInput
+                    style={styles.TextInputBorder}
+                    placeholder="Vehical Number"
+                    placeholderTextColor="#000"
+                    value={vehicalNumber}
+                    onChangeText={value => {
+                      setVehicalNumber(value);
+                      setVehicalNumberError(false);
+                    }}
+                  />
+                  {vehicalNumberError && (
+                    <HelperText type="error" visible={vehicalNumberError}>
+                      Enter Vehical Number
+                    </HelperText>
+                  )}
+                </View>
+                <View
+                  style={{
+                    paddingTop: 12,
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
                   }}>
-                  Change Password
-                </Button>
-                <Button
-                  mode={active == 2 ? 'contained' : 'outlined'}
-                  color={active == 2 ? '' : 'rgb(211, 211, 211)'}
-                  style={
-                    active == 2
-                      ? [button.commonButton, {marginLeft: 5}]
-                      : [styles.inactiveButton, {marginLeft: 5}]
-                  }
-                  onPress={() => {
-                    saveChangeHandle();
-                  }}>
-                  Save Changes
-                </Button>
+                  <Button
+                    style={
+                      active == 1
+                        ? [button.commonButton]
+                        : [styles.inactiveButton]
+                    }
+                    mode={active == 1 ? 'contained' : 'outlined'}
+                    color={active == 1 ? '' : 'rgb(211, 211, 211)'}
+                    onPress={() => {
+                      chnagePasswordHandle();
+                    }}>
+                    Change Password
+                  </Button>
+                  <Button
+                    mode={active == 2 ? 'contained' : 'outlined'}
+                    color={active == 2 ? '' : 'rgb(211, 211, 211)'}
+                    style={
+                      active == 2
+                        ? [button.commonButton, {marginLeft: 5}]
+                        : [styles.inactiveButton, {marginLeft: 5}]
+                    }
+                    onPress={() => {
+                      saveChangeHandle();
+                    }}>
+                    Save Changes
+                  </Button>
+                </View>
               </View>
             </View>
           </View>
-        </ScrollView>
-      </View>
+        </View>
+      </ScrollView>
       {changePasswordDailog && (
         <ChangePassword
           open={chnagePasswordHandle}
           close={passwordDailogClose}
         />
       )}
-    </View>
+    </>
   );
 };
 const styles = StyleSheet.create({
@@ -259,7 +264,7 @@ const styles = StyleSheet.create({
   },
   userImageSet: {
     alignItems: 'flex-start',
-    marginTop: -10,
+    marginTop: -40,
     zIndex: 999,
   },
   userNameFont: {
