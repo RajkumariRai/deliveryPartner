@@ -32,9 +32,7 @@ const EditProfile = () => {
     setActive(1);
     setChangePasswordDailog(true);
   };
-  const passwordDailogClose = () => {
-    setChangePasswordDailog(false);
-  };
+
   // save chnages button handle
   const saveChangeHandle = () => {
     setActive(2);
@@ -255,7 +253,7 @@ const EditProfile = () => {
       {changePasswordDailog && (
         <ChangePassword
           open={chnagePasswordHandle}
-          close={passwordDailogClose}
+          close={setChangePasswordDailog}
         />
       )}
     </>
