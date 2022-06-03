@@ -19,6 +19,9 @@ const OrderAcceptReject = props => {
   const rejectClose = () => {
     setRejectDailog(false);
   };
+  const StartOrderHandle = () => {
+    props.navigation.push('MapLocation');
+  };
   return (
     <View>
       <ScrollView>
@@ -128,7 +131,7 @@ const OrderAcceptReject = props => {
                   mode="contained"
                   style={button.commonButton}
                   onPress={() => {
-                    // StartOrderHandle();
+                    StartOrderHandle();
                   }}>
                   Start
                 </Button>

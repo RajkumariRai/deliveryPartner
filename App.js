@@ -11,6 +11,7 @@ import ForgetPassword from './login/ForgetPassword';
 import ForgetPasswordOtp from './login/ForgotPasswordOtp';
 import Orders from './Components/Orders/Orders';
 import OrderAcceptReject from './Components/Orders/OrderAcceptReject';
+import MapLocation from './Components/Orders/MapLocation';
 
 const Stack = createNativeStackNavigator();
 
@@ -67,6 +68,11 @@ const App = () => {
         <Stack.Screen
           name="OrdersAccpectReject"
           component={OrderAcceptReject}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="MapLocation"
+          component={MapLocation}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
