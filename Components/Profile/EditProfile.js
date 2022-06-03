@@ -10,6 +10,7 @@ import {
 import ChangePassword from '../Dailogs/ChangePassword';
 import {emailValidator} from '../../utils/Validation';
 import {button} from '../CommonStyles/Index';
+import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
 const EditProfile = () => {
   const [active, setActive] = useState(2);
@@ -70,13 +71,22 @@ const EditProfile = () => {
             <View style={{padding: 15}}>
               <View style={{flexDirection: 'row'}}>
                 <View style={styles.userImageSet}>
-                  <UserAvatar
-                    size={90}
-                    name={'Jhon Doe'}
-                    src={''}
-                    borderRadius={50}
-                    style={{zIndex: 999}}
-                  />
+                  <View style={{flex: 1}}>
+                    <UserAvatar
+                      size={90}
+                      name={'Jhon Doe'}
+                      src={''}
+                      borderRadius={50}
+                      style={{zIndex: 999}}
+                    />
+                    <View style={styles.cameraBgColor}>
+                      <Icon
+                        name={'camera'}
+                        size={12}
+                        style={[button.commonColor]}
+                      />
+                    </View>
+                  </View>
                 </View>
                 <View
                   style={{
@@ -292,6 +302,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 30,
     fontWeight: '700',
+  },
+  cameraBgColor: {
+    backgroundColor: '#fff',
+    borderRadius: 50,
+    padding: 3,
+    position: 'absolute',
+    top: 0,
+    right: 5,
+    zIndex: 999,
   },
 });
 
