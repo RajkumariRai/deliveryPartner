@@ -6,6 +6,7 @@ import {TabView, TabBar} from 'react-native-tab-view';
 import ActiveOrder from './ActiveOrder';
 import {button} from '../CommonStyles/Index';
 import DeliverOrder from './DeliverOrder';
+import TotalOrder from './TotalOrder';
 
 const Orders = props => {
   const {navigation} = props;
@@ -24,8 +25,8 @@ const Orders = props => {
         return <ActiveOrder navigation={navigation} />;
       case 'Deliverd':
         return <DeliverOrder navigation={navigation} />;
-      // case 'Completed':
-      //   return <TCompletedAssignment navigation={navigation} />;
+      case 'Total':
+        return <TotalOrder navigation={navigation} />;
       default:
         return null;
     }
