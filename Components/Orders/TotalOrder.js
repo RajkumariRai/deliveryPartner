@@ -1,10 +1,20 @@
-import {StyleSheet, Text, View, ScrollView} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import {button} from '../CommonStyles/Index';
 import {TextInput} from 'react-native-paper';
 
-const TotalOrder = () => {
+const TotalOrder = props => {
+  const {navigation} = props;
+  const completeOrderHandle = () => {
+    navigation.push('OrdersAccpectReject', 'Completed');
+  };
   return (
     <ScrollView>
       <View style={{padding: 10}}>
@@ -31,19 +41,24 @@ const TotalOrder = () => {
         {/* card section */}
         <View style={{paddingTop: 10}}>
           {/* map section */}
-          <View style={styles.cardBorder}>
-            <Text style={[button.commonColor, styles.orderIdfont]}>
-              ORD123456789 -Completed
-            </Text>
-            <Text style={styles.amountColor}>Rs. 520/-</Text>
-            <View style={styles.flexPadding}>
-              <Text style={styles.datetimeColor}>
-                nove 20,2021{' '}
-                <Icon name={'clock-o'} size={12} style={button.commonColor} />{' '}
-                11:30AM
+          <TouchableOpacity
+            onPress={() => {
+              completeOrderHandle();
+            }}>
+            <View style={styles.cardBorder}>
+              <Text style={[button.commonColor, styles.orderIdfont]}>
+                ORD123456789 -Completed
               </Text>
+              <Text style={styles.amountColor}>Rs. 520/-</Text>
+              <View style={styles.flexPadding}>
+                <Text style={styles.datetimeColor}>
+                  nove 20,2021{' '}
+                  <Icon name={'clock-o'} size={12} style={button.commonColor} />{' '}
+                  11:30AM
+                </Text>
+              </View>
             </View>
-          </View>
+          </TouchableOpacity>
         </View>
       </View>
     </ScrollView>
