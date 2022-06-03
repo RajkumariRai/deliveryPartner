@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     paddingRight: 10,
-    paddingBottom: 10,
+    paddingBottom: 5,
     width: '100%',
   },
   borderCard: {
