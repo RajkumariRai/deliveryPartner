@@ -142,7 +142,15 @@ const ChangePassword = props => {
           </Dialog>
         </Portal>
       </Provider>
-      {messageShow && <MessagePop open={messageShow} close={setMessageShow} />}
+      {messageShow && (
+        <MessagePop
+          open={messageShow}
+          close={setMessageShow}
+          title={'Your password has been successfully changed'}
+          content={''}
+          type={'success'}
+        />
+      )}
     </>
   );
 };
