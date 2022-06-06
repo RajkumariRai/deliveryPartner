@@ -13,6 +13,7 @@ import Orders from './Components/Orders/Orders';
 import OrderAcceptReject from './Components/Orders/OrderAcceptReject';
 import MapLocation from './Components/Orders/MapLocation';
 import FliterCompletedOrder from './Components/Orders/FliterCompletedOrder';
+import Setting from './Components/Settings/Setting';
 
 const Stack = createNativeStackNavigator();
 
@@ -79,6 +80,11 @@ const App = () => {
         <Stack.Screen
           name="FilterCompletedOrder"
           component={FliterCompletedOrder}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Setting"
+          component={Setting}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

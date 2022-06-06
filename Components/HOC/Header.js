@@ -82,6 +82,23 @@ const Header = props => {
           </View>
         </View>
       )}
+      {route.name === 'Setting' && (
+        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View style={{flexDirection: 'row'}}>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.goBack();
+              }}>
+              <Icon name={'bars'} size={16} color="#fff" style={{paddingTop:3}} />
+            </TouchableOpacity>
+            <Text style={[styles.titleColor, {paddingLeft: 10}]}>Setting</Text>
+          </View>
+
+          <View>
+            <Icon name={'bell'} size={16} color="#fff" />
+          </View>
+        </View>
+      )}
     </View>
   );
 };

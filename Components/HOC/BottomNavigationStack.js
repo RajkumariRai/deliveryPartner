@@ -32,6 +32,7 @@ const BottomNavigationStack = props => {
   };
   const settingHandle = () => {
     setActive(4);
+    props.navigation.push('Setting');
   };
   return (
     <View style={styles.bottomNavigationPostion}>
