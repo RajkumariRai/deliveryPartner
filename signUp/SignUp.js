@@ -106,30 +106,22 @@ export default function SignUp(props) {
             </HelperText>
           )}
         </View>
-        <View style={{}}>
+        <View>
           <PhoneInput
-            containerStyle={{ 
-             marginLeft:5,
+            containerStyle={{
+              margin: 4,
               borderColor: '#9a9a9a',
-              borderBottomWidth: 1,
-              borderRightWidth:1,
-              borderLeftWidth:1,
-              borderTopWidth:1,
-              width: '97%',}}
-             
-             
-              codeTextStyle={{color: '#9a9a9a'}}
-              flagButtonStyle={{color: '#9a9a9a'}}
-             
+              borderWidth: 1,
+              width: '97%',
+              height: 40,
+            }}
+            codeTextStyle={{color: '#9a9a9a'}}
+            flagButtonStyle={{color: '#9a9a9a'}}
             placeholder="Phone Number"
-           
             withDarkTheme
-    
-            autoFocus
             // textInputStyle={button.commonTextInput}
             defaultValue={phoneNumber}
             defaultCode="IN"
-           
             onChangeText={text => {
               setPhoneNumberError(false);
               setPhoneNumber(text);
@@ -137,6 +129,7 @@ export default function SignUp(props) {
             onChangeFormattedText={text => {
               setPhoneNumberFormat(text);
             }}
+            textInputProps={{placeholderTextColor: '#9a9a9a', height: 40}}
           />
           {phoneNumberError && (
             <HelperText type="error" visible={phoneNumberError}>
@@ -194,15 +187,15 @@ export default function SignUp(props) {
               Password and confirm password should be same
             </HelperText>
           )}
-<View style={{paddingTop:15}}>
-          <Button
-            mode="contained"
-            style={button.commonButton}
-            onPress={() => {
-              validateData();
-            }}>
-            SIGNUP
-          </Button>
+          <View style={{paddingTop: 15}}>
+            <Button
+              mode="contained"
+              style={button.commonButton}
+              onPress={() => {
+                validateData();
+              }}>
+              SIGNUP
+            </Button>
           </View>
         </View>
         <View
@@ -217,8 +210,9 @@ export default function SignUp(props) {
             Already have an account?
           </Text>
           <TouchableOpacity onPress={() => navigation.push('Login')}>
-            <Text style={{color: '#d60e0e', fontWeight: 'bold', marginLeft: 5}}>
-            Login
+            <Text
+              style={[button.commonColor, {fontWeight: 'bold', marginLeft: 5}]}>
+              Login
             </Text>
           </TouchableOpacity>
         </View>

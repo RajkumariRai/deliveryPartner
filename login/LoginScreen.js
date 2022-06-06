@@ -69,7 +69,7 @@ export default function LoginScreen(props) {
         <View>
           <TextInput
             style={button.commonTextInput}
-            left={<TextInput.Icon name="lock"  />}
+            left={<TextInput.Icon name="lock" />}
             mode="outlined"
             label="Password"
             placeholderTextColor="#000"
@@ -124,7 +124,8 @@ export default function LoginScreen(props) {
             Do not have an account yet?
           </Text>
           <TouchableOpacity onPress={() => navigation.push('signup')}>
-            <Text style={{color: '#d60e0e', fontWeight: 'bold', marginLeft: 5}}>
+            <Text
+              style={[button.commonColor, {fontWeight: 'bold', marginLeft: 5}]}>
               SIGNUP
             </Text>
           </TouchableOpacity>
