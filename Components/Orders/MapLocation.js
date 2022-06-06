@@ -1,8 +1,14 @@
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native';
 import React, {useState} from 'react';
 import {button} from '../CommonStyles/Index';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
-// import MapView from 'react-native-maps';
+import MapView from 'react-native-maps';
 import {Button} from 'react-native-paper';
 import UserAvatar from 'react-native-user-avatar';
 
@@ -35,7 +41,11 @@ const MapLocation = props => {
       </View>
       {/* map section */}
       <View>
-        {/* <MapView region={region} onRegionChange={onRegionChange} /> */}
+        <MapView
+          region={region}
+          onRegionChange={onRegionChange}
+          style={styles.map}
+        />
       </View>
       <View style={styles.mapLocationPostion}>
         <View style={styles.borderCard}>
@@ -93,7 +103,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     paddingRight: 10,
-    paddingBottom: 5,
+    paddingBottom: '15%',
     width: '100%',
   },
   borderCard: {
@@ -116,5 +126,9 @@ const styles = StyleSheet.create({
     color: '#333',
     fontWeight: 'bold',
     fontSize: 11,
+  },
+  map: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
   },
 });
