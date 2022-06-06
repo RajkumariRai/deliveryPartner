@@ -6,6 +6,10 @@ import {button} from '../CommonStyles/Index';
 const Header = props => {
   const {route, navigation} = props;
 
+  const notificationHandle = () => {
+    navigation.push('Notifcation');
+  };
+
   return (
     <View style={[button.commonBackgroundColor, {padding: 10}]}>
       {/* dashboard Header  */}
@@ -18,7 +22,12 @@ const Header = props => {
             <Text style={styles.titleColor}>Dashboard</Text>
           </View>
           <View>
-            <Icon name={'bell'} size={16} color="#fff" />
+            <TouchableOpacity
+              onPress={() => {
+                notificationHandle();
+              }}>
+              <Icon name={'bell'} size={16} color="#fff" />
+            </TouchableOpacity>
           </View>
         </View>
       )}
@@ -78,7 +87,12 @@ const Header = props => {
           </View>
 
           <View>
-            <Icon name={'bell'} size={16} color="#fff" />
+            <TouchableOpacity
+              onPress={() => {
+                notificationHandle();
+              }}>
+              <Icon name={'bell'} size={16} color="#fff" />
+            </TouchableOpacity>
           </View>
         </View>
       )}
@@ -89,13 +103,23 @@ const Header = props => {
               onPress={() => {
                 navigation.goBack();
               }}>
-              <Icon name={'bars'} size={16} color="#fff" style={{paddingTop:3}} />
+              <Icon
+                name={'bars'}
+                size={16}
+                color="#fff"
+                style={{paddingTop: 3}}
+              />
             </TouchableOpacity>
             <Text style={[styles.titleColor, {paddingLeft: 10}]}>Setting</Text>
           </View>
 
           <View>
-            <Icon name={'bell'} size={16} color="#fff" />
+            <TouchableOpacity
+              onPress={() => {
+                notificationHandle();
+              }}>
+              <Icon name={'bell'} size={16} color="#fff" />
+            </TouchableOpacity>
           </View>
         </View>
       )}

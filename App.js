@@ -14,6 +14,7 @@ import OrderAcceptReject from './Components/Orders/OrderAcceptReject';
 import MapLocation from './Components/Orders/MapLocation';
 import FliterCompletedOrder from './Components/Orders/FliterCompletedOrder';
 import Setting from './Components/Settings/Setting';
+import Notification from './Components/Notification/Notification';
 
 const Stack = createNativeStackNavigator();
 
@@ -85,6 +86,11 @@ const App = () => {
         <Stack.Screen
           name="Setting"
           component={Setting}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Notifcation"
+          component={Notification}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
