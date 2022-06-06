@@ -15,6 +15,9 @@ const TotalOrder = props => {
   const completeOrderHandle = () => {
     navigation.push('OrdersAccpectReject', 'Completed');
   };
+  const fliterButtonHandle = () => {
+    navigation.push('FilterCompletedOrder');
+  };
   return (
     <ScrollView>
       <View style={{padding: 10}}>
@@ -35,7 +38,12 @@ const TotalOrder = props => {
             />
           </View>
           <View style={styles.filtericonset}>
-            <Icon name={'filter'} size={25} style={button.commonColor} />
+            <TouchableOpacity
+              onPress={() => {
+                fliterButtonHandle();
+              }}>
+              <Icon name={'filter'} size={25} style={button.commonColor} />
+            </TouchableOpacity>
           </View>
         </View>
         {/* card section */}

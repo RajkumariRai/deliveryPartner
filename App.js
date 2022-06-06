@@ -12,6 +12,7 @@ import ForgetPasswordOtp from './login/ForgotPasswordOtp';
 import Orders from './Components/Orders/Orders';
 import OrderAcceptReject from './Components/Orders/OrderAcceptReject';
 import MapLocation from './Components/Orders/MapLocation';
+import FliterCompletedOrder from './Components/Orders/FliterCompletedOrder';
 
 const Stack = createNativeStackNavigator();
 
@@ -73,6 +74,11 @@ const App = () => {
         <Stack.Screen
           name="MapLocation"
           component={MapLocation}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="FilterCompletedOrder"
+          component={FliterCompletedOrder}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
