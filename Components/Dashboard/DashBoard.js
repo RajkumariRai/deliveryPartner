@@ -9,8 +9,19 @@ const DashBoard = () => {
   return (
     <View style={[{flexGrow: 1}, button.commonBackgroundColor]}>
       {/* bar section */}
-      <View>
-        <Text>Bar Section</Text>
+      <View style={{padding: 10}}>
+        <View>
+          <Text>Bar Section</Text>
+        </View>
+        <View style={button.commonSpaceBetween}>
+          <View style={{flex: 1, justifyContent: 'center'}}>
+            <Text style={styles.dateColor}>10/06/2020</Text>
+          </View>
+          <View>
+            <Text style={styles.dayColorFont}>Monday</Text>
+            <Text style={styles.dateColor}>11:30AM</Text>
+          </View>
+        </View>
       </View>
       {/* Card section */}
       <View style={styles.cardSectionBorder}>
@@ -45,6 +56,17 @@ const styles = StyleSheet.create({
   flexSpace: {
     flexDirection: 'row',
     justifyContent: 'space-around',
+  },
+  dateColor: {
+    color: '#333',
+    fontWeight: '600',
+    fontSize: 13,
+  },
+  dayColorFont: {
+    fontSize: 10,
+    color: '#333',
+    fontWeight: '500',
+    textAlign: 'right',
   },
 });
 export default HOC(DashBoard);
