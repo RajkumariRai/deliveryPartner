@@ -2,10 +2,11 @@ import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import {button} from '../CommonStyles/Index';
+import {useNavigation} from '@react-navigation/native';
 
 const Header = props => {
   const {route, navigation} = props;
-
+  const navigationDrawer = useNavigation();
   const notificationHandle = () => {
     navigation.push('Notifcation');
   };
@@ -16,7 +17,13 @@ const Header = props => {
       {route.name === 'dashboard' && (
         <View style={styles.flexSpace}>
           <View>
-            <Icon name={'bars'} size={16} color="#fff" />
+            <TouchableOpacity
+              onPress={() => {
+                console.log('navigationDrawer', navigationDrawer);
+                navigationDrawer.toggleDrawer();
+              }}>
+              <Icon name={'bars'} size={16} color="#fff" />
+            </TouchableOpacity>
           </View>
           <View>
             <Text style={styles.titleColor}>Dashboard</Text>

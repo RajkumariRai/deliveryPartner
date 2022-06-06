@@ -8,9 +8,14 @@ const Drawer = createDrawerNavigator();
 const DrawerNavigation = () => {
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="dashboard">
-        <Drawer.Screen name="dashboard" component={DashBoard} />
-        {/* <Drawer.Screen name="Notifications" component={NotificationsScreen} /> */}
+      <Drawer.Navigator
+        drawerType="front"
+        initialRouteName="dashboard"
+        drawerContentOptions={{
+          activeTintColor: '#e91e63',
+          itemStyle: {marginVertical: 10},
+        }}>
+        <Drawer.Screen name="dashboard" key={DashBoard} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
