@@ -1,10 +1,25 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {button} from '../CommonStyles/Index';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
 const FliterCompletedOrder = props => {
   const {navigation} = props;
+  const [fliterArray] = useState([
+    {day: 'Custom'},
+    {day: 'Today'},
+    {day: 'Yesterday'},
+    {day: 'Last 7 Days'},
+    {day: 'Last 14 Days'},
+    {day: 'Last 30 Days'},
+    {day: 'Last 3 Months'},
+    {day: 'Last 6 Months'},
+  ]);
+  const [active, setActive] = useState(false);
+
+  const checkOrderHandle = row => {
+    setActive(!active);
+  };
   return (
     <View styles={styles.fliterMainView}>
       <View style={[button.commonBackgroundColor]}>
@@ -19,6 +34,24 @@ const FliterCompletedOrder = props => {
           </TouchableOpacity>
           <Text style={styles.fliterColorFont}>Fliter</Text>
         </View>
+      </View>
+      <View style={{paddingTop: 15}}>
+        {fliterArray &&
+          fliterArray.map((row, index) => (
+            <View style={styles.daysBorder} key={index}>
+              <TouchableOpacity
+                onPress={() => {
+                  checkOrderHandle(row);
+                }}>
+                <View style={button.commonSpaceBetween}>
+                  <Text style={styles.dayColorFont}>{row.day}</Text>
+                  {active && (
+                    <Icon name={'check'} size={11} style={button.commonColor} />
+                  )}
+                </View>
+              </TouchableOpacity>
+            </View>
+          ))}
       </View>
     </View>
   );
@@ -43,6 +76,16 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: 14,
     paddingLeft: 5,
-    paddingTop:5
+    paddingTop: 5,
+  },
+  daysBorder: {
+    borderBottomColor: 'rgb(112,112,112)',
+    borderBottomWidth: 1,
+    padding: 10,
+  },
+  dayColorFont: {
+    color: '#333',
+    fontSize: 12,
+    fontWeight: '500',
   },
 });
