@@ -113,7 +113,7 @@ export default function SignUp(props) {
               borderColor: '#9a9a9a',
               borderWidth: 1,
               width: '97%',
-              height: 40,
+              height: 45,
             }}
             codeTextStyle={{color: '#9a9a9a'}}
             flagButtonStyle={{color: '#9a9a9a'}}
