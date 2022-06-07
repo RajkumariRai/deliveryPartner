@@ -16,6 +16,7 @@ import FliterCompletedOrder from './Components/Orders/FliterCompletedOrder';
 import Setting from './Components/Settings/Setting';
 import Notification from './Components/Notification/Notification';
 import IntroSlide from './Components/IntroSilde/IntroSlide';
+import Sidebar from './Components/Navigation/Sidebar';
 
 const Stack = createNativeStackNavigator();
 
@@ -98,6 +99,11 @@ const App = () => {
         <Stack.Screen
           name="IntroSlide"
           component={IntroSlide}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="sidebar"
+          component={Sidebar}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

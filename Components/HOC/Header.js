@@ -23,7 +23,8 @@ const Header = props => {
           <View>
             <TouchableOpacity
               onPress={() => {
-                navigationDrawer.toggleDrawer();
+                navigation.push('sidebar');
+                // navigationDrawer.toggleDrawer();
               }}>
               <Icon name={'bars'} size={16} color="#fff" />
             </TouchableOpacity>
