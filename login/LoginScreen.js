@@ -50,7 +50,9 @@ export default function LoginScreen(props) {
             mode="outlined"
             left={<TextInput.Icon name="account" />}
             style={button.commonTextInput}
-            label="Username or Email"
+            theme={{roundness: 20}}
+            textAlign={'center'}
+            placeholder="Username or Email"
             placeholderTextColor="#000"
             onChangeText={value => {
               setEmail(value.trim());
@@ -70,8 +72,9 @@ export default function LoginScreen(props) {
           <TextInput
             style={button.commonTextInput}
             left={<TextInput.Icon name="lock" />}
+            theme={{roundness: 20}}
             mode="outlined"
-            label="Password"
+            placeholder="Password"
             placeholderTextColor="#000"
             secureTextEntry={passwordVisible}
             right={
@@ -141,6 +144,7 @@ const styles = StyleSheet.create({
     height: 30,
     fontSize: 15,
     marginBottom: 5,
+    marginTop: 5,
     fontWeight: 'bold',
   },
 
