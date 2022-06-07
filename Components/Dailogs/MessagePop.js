@@ -12,7 +12,6 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import {button} from '../CommonStyles/Index';
 
 const MessagePop = props => {
-  console.log('props=====', props);
   const {open, close, title, content, type} = props;
   return (
     <Provider>

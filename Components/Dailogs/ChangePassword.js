@@ -42,7 +42,6 @@ const ChangePassword = props => {
     } catch (error) {
       console.log(error);
     }
-    // showNotification('success', 'Your Password has been changed successfully');
   };
   return (
     <>

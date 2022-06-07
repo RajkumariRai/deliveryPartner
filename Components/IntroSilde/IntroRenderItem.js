@@ -2,7 +2,6 @@ import {StyleSheet, Text, View, Image, useWindowDimensions} from 'react-native';
 import React from 'react';
 
 const IntroRenderItem = props => {
-  console.log('item', props);
   const {item} = props.item;
 
   const {width} = useWindowDimensions();

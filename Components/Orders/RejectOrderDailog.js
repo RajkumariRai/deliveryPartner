@@ -17,7 +17,6 @@ const RejectOrderDailog = props => {
   const [charLeft, setcharLeft] = useState(0);
 
   const somethingTypeHadnle = value => {
-    console.log('value-===', value.length);
     let charCount = value.length;
     let maxChar = 0;
     let charLength = maxChar + charCount;
