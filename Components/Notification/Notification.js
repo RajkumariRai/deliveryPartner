@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import {button} from '../CommonStyles/Index';
 import ZeroNotification from './ZeroNotification';
 import NotificationList from './NotificationList';
+import {Badge} from 'react-native-paper';
 
 const Notification = props => {
   const {navigation} = props;
@@ -16,13 +17,14 @@ const Notification = props => {
     {order: 'ORD #48 was assign to you', date: '2022-02-10'},
     {order: 'ORD #48 was assign to you', date: '2022-02-10'},
   ]);
+  const [notificationCount, setNotificationCount] = useState(80);
 
   const notificationHandle = () => {
     navigation.push('Notifcation');
   };
   return (
     <View style={styles.zeroMainView}>
-      <View style={[button.commonBackgroundColor, {padding: 5}]}>
+      <View style={[button.commonBackgroundColor, {padding: 10}]}>
         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
           <View style={{flexDirection: 'row'}}>
             <TouchableOpacity
@@ -41,7 +43,17 @@ const Notification = props => {
               onPress={() => {
                 notificationHandle();
               }}>
-              <Icon name={'bell'} size={16} color="#fff" />
+              <View style={{position: 'relative'}}>
+                <Badge style={[styles.bagespostionSet, button.commonColor]}>
+                  {notificationCount}
+                </Badge>
+                <Icon
+                  name={'bell'}
+                  size={20}
+                  color="#fff"
+                  style={styles.notiIConset}
+                />
+              </View>
             </TouchableOpacity>
           </View>
         </View>
@@ -67,5 +79,16 @@ const styles = StyleSheet.create({
   zeroMainView: {
     flexGrow: 1,
     backgroundColor: '#fff',
+  },
+  bagespostionSet: {
+    backgroundColor: '#fff',
+    fontWeight: 'bold',
+    fontSize: 10,
+    zIndex: 999,
+  },
+  notiIConset: {
+    position: 'absolute',
+    left: -10,
+    bottom: -10,
   },
 });

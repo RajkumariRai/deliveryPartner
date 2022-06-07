@@ -1,12 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import {button} from '../CommonStyles/Index';
 import {useNavigation} from '@react-navigation/native';
+import {Badge} from 'react-native-paper';
 
 const Header = props => {
   const {route, navigation} = props;
   const navigationDrawer = useNavigation();
+
+  const [notificationCount, setNotificationCount] = useState(80);
+
   const notificationHandle = () => {
     navigation.push('Notifcation');
   };
@@ -33,7 +37,17 @@ const Header = props => {
               onPress={() => {
                 notificationHandle();
               }}>
-              <Icon name={'bell'} size={16} color="#fff" />
+              <View style={{position: 'relative'}}>
+                <Badge style={[styles.bagespostionSet, button.commonColor]}>
+                  {notificationCount}
+                </Badge>
+                <Icon
+                  name={'bell'}
+                  size={20}
+                  color="#fff"
+                  style={styles.notiIConset}
+                />
+              </View>
             </TouchableOpacity>
           </View>
         </View>
@@ -98,7 +112,17 @@ const Header = props => {
               onPress={() => {
                 notificationHandle();
               }}>
-              <Icon name={'bell'} size={16} color="#fff" />
+              <View style={{position: 'relative'}}>
+                <Badge style={[styles.bagespostionSet, button.commonColor]}>
+                  {notificationCount}
+                </Badge>
+                <Icon
+                  name={'bell'}
+                  size={20}
+                  color="#fff"
+                  style={styles.notiIConset}
+                />
+              </View>
             </TouchableOpacity>
           </View>
         </View>
@@ -125,7 +149,17 @@ const Header = props => {
               onPress={() => {
                 notificationHandle();
               }}>
-              <Icon name={'bell'} size={16} color="#fff" />
+              <View style={{position: 'relative'}}>
+                <Badge style={[styles.bagespostionSet, button.commonColor]}>
+                  {notificationCount}
+                </Badge>
+                <Icon
+                  name={'bell'}
+                  size={20}
+                  color="#fff"
+                  style={styles.notiIConset}
+                />
+              </View>
             </TouchableOpacity>
           </View>
         </View>
@@ -142,6 +176,17 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 16,
+  },
+  bagespostionSet: {
+    backgroundColor: '#fff',
+    fontWeight: 'bold',
+    fontSize: 10,
+    zIndex: 999,
+  },
+  notiIConset: {
+    position: 'absolute',
+    left: -10,
+    bottom: -10,
   },
 });
 export default Header;

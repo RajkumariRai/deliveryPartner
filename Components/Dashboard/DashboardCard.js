@@ -1,6 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {Card, Icon} from 'react-native-elements';
+import {Badge} from 'react-native-paper';
 import {button} from '../CommonStyles/Index';
 
 const DashboardCard = props => {
@@ -8,8 +9,8 @@ const DashboardCard = props => {
   return (
     <Card containerStyle={styles.cardShadow}>
       {value && (
-        <View style={styles.borderCircle}>
-          <Text style={[styles.topLeftValue, button.borderColor]}>{value}</Text>
+        <View>
+          <Badge style={[styles.bagesColor, button.borderColor]}>{value}</Badge>
         </View>
       )}
       <View>
@@ -37,19 +38,19 @@ const styles = StyleSheet.create({
     fontSize: 12,
     textAlign: 'center',
   },
-  topLeftValue: {
-    backgroundColor: '#fff',
-    borderWidth: 1,
-    borderRadius: 50,
-    padding: 2,
-  },
+
   circleTextCenter: {
     textAlign: 'center',
     fontWeight: '500',
     color: '#333',
   },
-  borderCircle: {
-    alignItems: 'flex-start',
+
+  bagesColor: {
+    color: '#333',
+    fontSize: 12,
+    fontWeight: '800',
+    borderWidth: 1,
+    backgroundColor: '#fff',
   },
 });
 export default DashboardCard;
