@@ -15,6 +15,7 @@ import MapLocation from './Components/Orders/MapLocation';
 import FliterCompletedOrder from './Components/Orders/FliterCompletedOrder';
 import Setting from './Components/Settings/Setting';
 import Notification from './Components/Notification/Notification';
+import IntroSlide from './Components/IntroSilde/IntroSlide';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +28,7 @@ const App = () => {
           component={SplashScreen}
           options={{headerShown: false}}
         />
+
         <Stack.Screen
           name="Login"
           component={LoginScreen}
@@ -91,6 +93,11 @@ const App = () => {
         <Stack.Screen
           name="Notifcation"
           component={Notification}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="IntroSlide"
+          component={IntroSlide}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
