@@ -1,4 +1,4 @@
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Text} from 'react-native';
 import React, {useState} from 'react';
 import {
   Dialog,
@@ -53,11 +53,15 @@ const ChangePassword = props => {
             onDismiss={() => {
               close(!open);
             }}>
-            <Dialog.Title style={[button.commonColor, {fontSize: 14}]}>
-              Change Password
-            </Dialog.Title>
             <Dialog.Content>
               <View>
+                <Text
+                  style={[
+                    button.commonColor,
+                    {fontSize: 14, padding: 5, fontWeight: '600'},
+                  ]}>
+                  Change Password
+                </Text>
                 <View>
                   <TextInput
                     mode="outlined"
