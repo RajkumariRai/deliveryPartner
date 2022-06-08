@@ -55,7 +55,7 @@ const Sidebar = props => {
       id: '4',
       icon: 'sign-out',
       title: 'Logout',
-      url: '',
+      url: 'Login',
     },
   ]);
   return (
