@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import {HelperText, TextInput, Button} from 'react-native-paper';
 import {button} from '../Components/CommonStyles/Index';
-import PhoneInput from 'react-native-phone-number-input';
+
 import {
   blankValidator,
   emailValidator,
@@ -22,7 +22,6 @@ export default function SignUp(props) {
   const [userNameError, setUserNameError] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState('');
   const [phoneNumberError, setPhoneNumberError] = useState(false);
-  const [phoneNumberFormat, setPhoneNumberFormat] = useState('');
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState(false);
   const [password, setPassword] = useState('');
@@ -68,12 +67,13 @@ export default function SignUp(props) {
         <Image source={require('../assets/Logo.png')} />
       </View>
       <View style={styles.formSectionPadding}>
-        <View>
+        <View style={{paddingBottom:15}}>
           <TextInput
             mode="outlined"
             left={<TextInput.Icon name="account" />}
             style={button.commonTextInput}
-            label="Username"
+            theme={{roundness: 20}}
+            placeholder="Username"
             onChangeText={value => {
               setUserName(userName);
               setUserNameError(false);
@@ -86,12 +86,13 @@ export default function SignUp(props) {
           )}
         </View>
 
-        <View>
+        <View style={{paddingBottom:15}}>
           <TextInput
             mode="outlined"
             left={<TextInput.Icon name="email" />}
             style={button.commonTextInput}
-            label="Email id"
+            theme={{roundness: 20}}
+            placeholder="Email id"
             onChangeText={value => {
               setEmail(value.trim());
               setEmailError(false);
@@ -106,22 +107,14 @@ export default function SignUp(props) {
             </HelperText>
           )}
         </View>
-        <View>
-          <PhoneInput
-            containerStyle={{
-              margin: 4,
-              borderColor: '#9a9a9a',
-              borderWidth: 1,
-              width: '97%',
-              height: 45,
-            }}
-            codeTextStyle={{color: '#9a9a9a'}}
-            flagButtonStyle={{color: '#9a9a9a'}}
+        <View style={{paddingBottom:15}}>
+        <TextInput
+            mode="outlined"
+            keyboardType='number-pad'
+            left={<TextInput.Icon name="cellphone" />}
+            style={button.commonTextInput}
+            theme={{roundness: 20}}
             placeholder="Phone Number"
-            withDarkTheme
-            // textInputStyle={button.commonTextInput}
-            defaultValue={phoneNumber}
-            defaultCode="IN"
             onChangeText={text => {
               setPhoneNumberError(false);
               setPhoneNumber(text);
@@ -137,12 +130,13 @@ export default function SignUp(props) {
             </HelperText>
           )}
         </View>
-        <View>
+        <View style={{paddingBottom:15}}>
           <TextInput
             style={button.commonTextInput}
             left={<TextInput.Icon name="lock" />}
             mode="outlined"
-            label="Password"
+            placeholder="Password"
+            theme={{roundness: 20}}
             secureTextEntry={passwordVisible}
             right={
               <TextInput.Icon
@@ -164,12 +158,13 @@ export default function SignUp(props) {
             </HelperText>
           )}
         </View>
-        <View>
+        <View style={{paddingBottom:15}}>
           <TextInput
             style={button.commonTextInput}
             left={<TextInput.Icon name="lock" />}
+            theme={{roundness: 20}}
             mode="outlined"
-            label="Confirm Password"
+            placeholder="Confirm Password"
             secureTextEntry={passwordVisible}
             right={
               <TextInput.Icon

@@ -10,8 +10,6 @@ import {
 import {HelperText, TextInput, Button} from 'react-native-paper';
 import {button} from '../Components/CommonStyles/Index';
 
-import {emailValidator, showMessage} from '../utils/Validation';
-
 export default function LoginScreen(props) {
   const {navigation} = props;
   const [email, setEmail] = useState('');
@@ -45,13 +43,12 @@ export default function LoginScreen(props) {
         <Image source={require('../assets/Logo.png')} />
       </View>
       <View style={styles.formSectionPadding}>
-        <View>
+        <View style={{paddingBottom: 15}}>
           <TextInput
             mode="outlined"
-            left={<TextInput.Icon name="account" />}
+            left={<TextInput.Icon name="account" color="red" />}
             style={button.commonTextInput}
             theme={{roundness: 20}}
-            textAlign={'center'}
             placeholder="Username or Email"
             placeholderTextColor="#000"
             onChangeText={value => {
@@ -68,7 +65,7 @@ export default function LoginScreen(props) {
             </HelperText>
           )}
         </View>
-        <View>
+        <View style={{paddingBottom: 15}}>
           <TextInput
             style={button.commonTextInput}
             left={<TextInput.Icon name="key-variant" />}
@@ -98,12 +95,13 @@ export default function LoginScreen(props) {
           )}
         </View>
         <View>
-          <TouchableOpacity
+          <Text
             onPress={() => {
-              navigation.push('forgetpasswordotp');
-            }}>
-            <Text style={styles.forgot_button}>Forgot Password ?</Text>
-          </TouchableOpacity>
+              navigation.push('forgetpassword');
+            }}
+            style={styles.forgot_button}>
+            Forgot Password ?
+          </Text>
         </View>
         <View>
           <Button
@@ -145,6 +143,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     marginBottom: 5,
     marginTop: 5,
+    color: '#000',
     fontWeight: 'bold',
   },
 
