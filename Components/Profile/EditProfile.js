@@ -1,6 +1,6 @@
-import {StyleSheet, Text, View, ScrollView, TextInput} from 'react-native';
+import {StyleSheet, Text, View, ScrollView} from 'react-native';
 import React, {useState} from 'react';
-import {Button, HelperText} from 'react-native-paper';
+import {Button, HelperText, TextInput} from 'react-native-paper';
 import HOC from '../HOC/HOC';
 import UserAvatar from 'react-native-user-avatar';
 import {
@@ -110,7 +110,15 @@ const EditProfile = () => {
                   <View style={{width: '45%'}}>
                     <Text style={styles.textlabel}>First Name</Text>
                     <TextInput
-                      style={styles.TextInputBorder}
+                      mode="outlined"
+                      left={
+                        <TextInput.Icon
+                          name="account"
+                          // color={button.inputIconColor}
+                        />
+                      }
+                      style={button.commonTextInput}
+                      theme={{roundness: 20}}
                       placeholder="First Name"
                       placeholderTextColor="#000"
                       value={firstName}
@@ -128,7 +136,9 @@ const EditProfile = () => {
                   <View style={{width: '45%'}}>
                     <Text style={styles.textlabel}>Last Name</Text>
                     <TextInput
-                      style={styles.TextInputBorder}
+                      mode="outlined"
+                      style={button.commonTextInput}
+                      theme={{roundness: 20}}
                       placeholder="Last Name"
                       placeholderTextColor="#000"
                       value={lastName}
@@ -138,11 +148,18 @@ const EditProfile = () => {
                     />
                   </View>
                 </View>
-                <View style={{paddingTop: 12}}>
+                <View style={styles.inputPaddingTop}>
                   <Text style={styles.textlabel}>Email id</Text>
-
                   <TextInput
-                    style={styles.TextInputBorder}
+                    mode="outlined"
+                    left={
+                      <TextInput.Icon
+                        name="email"
+                        // color={button.inputIconColor}
+                      />
+                    }
+                    style={button.commonTextInput}
+                    theme={{roundness: 20}}
                     placeholder="Email id"
                     placeholderTextColor="#000"
                     value={emailId}
@@ -160,7 +177,15 @@ const EditProfile = () => {
                 <View style={{paddingTop: 12}}>
                   <Text style={styles.textlabel}>Phone Number</Text>
                   <TextInput
-                    style={styles.TextInputBorder}
+                    mode="outlined"
+                    left={
+                      <TextInput.Icon
+                        name="email"
+                        // color={button.inputIconColor}
+                      />
+                    }
+                    style={button.commonTextInput}
+                    theme={{roundness: 20}}
                     keyboardType="numeric"
                     placeholder="Phone Number"
                     placeholderTextColor="#000"
@@ -282,18 +307,11 @@ const styles = StyleSheet.create({
   userEmailColor: {
     fontSize: 14,
   },
-  TextInputBorder: {
-    borderColor: 'rgb(211, 211, 211)',
-    borderWidth: 1,
-    height: 35,
-    borderRadius: 20,
-    padding: 10,
-    width: '100%',
-  },
+
   textlabel: {
     color: 'rgb(211, 211, 211)',
     fontSize: 13,
-    padding: 5,
+    paddingLeft: 7,
   },
 
   inactiveButton: {
@@ -309,6 +327,9 @@ const styles = StyleSheet.create({
     top: 0,
     right: 5,
     zIndex: 999,
+  },
+  inputPaddingTop: {
+    paddingTop: 15,
   },
 });
 

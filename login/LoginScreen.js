@@ -71,7 +71,7 @@ export default function LoginScreen(props) {
         <View>
           <TextInput
             style={button.commonTextInput}
-            left={<TextInput.Icon name="lock" />}
+            left={<TextInput.Icon name="key-variant" />}
             theme={{roundness: 20}}
             mode="outlined"
             placeholder="Password"

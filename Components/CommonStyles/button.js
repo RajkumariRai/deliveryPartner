@@ -1,7 +1,6 @@
 export const commonTextInput = {
   backgroundColor: '#fff',
-  height: 40,
-  margin: 4,
+  height: 35,
   color: '#26ae61',
 };
 export const commonButton = {
@@ -30,3 +29,4 @@ export const commonSpaceBetween = {
   flexDirection: 'row',
   justifyContent: 'space-between',
 };
+export const inputIconColor = ' #d60e0e';
