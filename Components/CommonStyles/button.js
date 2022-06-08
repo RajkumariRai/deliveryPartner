@@ -59,3 +59,7 @@ export const commonInactiveTextDeco = {
   textTransform: 'uppercase',
   textAlign: 'center',
 };
+export const commonLabalColor = {
+  color: 'rgb(112,112,112)',
+  fontSize: 12,
+};

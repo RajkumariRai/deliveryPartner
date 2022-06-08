@@ -1,4 +1,4 @@
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import {
   Dialog,
@@ -48,6 +48,7 @@ const ChangePassword = props => {
       <Provider>
         <Portal>
           <Dialog
+            style={{borderRadius: 20}}
             visible={open}
             onDismiss={() => {
               close(!open);
@@ -57,15 +58,19 @@ const ChangePassword = props => {
                 <Text
                   style={[
                     button.commonColor,
-                    {fontSize: 14, padding: 5, fontWeight: '600'},
+                    {fontSize: 14, fontWeight: '600', paddingBottom: 15},
                   ]}>
                   Change Password
                 </Text>
-                <View>
+                <View style={styles.paddingbottomInput}>
+                  <Text style={button.commonLabalColor}>
+                    Enter Old Password
+                  </Text>
                   <TextInput
                     mode="outlined"
                     style={button.commonTextInput}
-                    label="Enter Old Password"
+                    theme={{roundness: 20}}
+                    placeholder="Enter Old Password"
                     value={oldPassword}
                     onChangeText={text => {
                       setoldPassword(text);
@@ -78,11 +83,15 @@ const ChangePassword = props => {
                     </HelperText>
                   )}
                 </View>
-                <View>
+                <View style={styles.paddingbottomInput}>
+                  <Text style={button.commonLabalColor}>
+                    Enter New Password
+                  </Text>
                   <TextInput
                     mode="outlined"
                     style={button.commonTextInput}
-                    label="Enter New Password"
+                    theme={{roundness: 20}}
+                    placeholder="Enter New Password"
                     secureTextEntry={newPasswordVisible}
                     right={
                       <TextInput.Icon
@@ -104,11 +113,16 @@ const ChangePassword = props => {
                     </HelperText>
                   )}
                 </View>
-                <View>
+                <View style={styles.paddingbottomInput}>
+                  <Text style={button.commonLabalColor}>
+                    Confirm New Password
+                  </Text>
                   <TextInput
                     mode="outlined"
                     style={button.commonTextInput}
-                    label="Confirm New Password"
+                    left={<TextInput.Icon name="key-variant" />}
+                    theme={{roundness: 20}}
+                    placeholder="Confirm New Password"
                     secureTextEntry={confirmPasswordVisible}
                     right={
                       <TextInput.Icon
@@ -131,14 +145,14 @@ const ChangePassword = props => {
                   )}
                 </View>
                 <View style={{paddingTop: 15}}>
-                  <Button
-                    mode="contained"
-                    style={button.commonButton}
+                  <TouchableOpacity
                     onPress={() => {
                       savePasswordHandle();
                     }}>
-                    Save
-                  </Button>
+                    <View style={button.commonActiveButtonHeight}>
+                      <Text style={button.commonActiveTextDeco}>Save</Text>
+                    </View>
+                  </TouchableOpacity>
                 </View>
               </View>
             </Dialog.Content>
@@ -162,6 +176,9 @@ const styles = StyleSheet.create({
     color: '#fff',
     borderRadius: 30,
     fontWeight: '700',
+  },
+  paddingbottomInput: {
+    paddingBottom: 10,
   },
 });
 export default ChangePassword;

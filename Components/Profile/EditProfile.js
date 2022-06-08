@@ -6,13 +6,9 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React, {useState} from 'react';
-import {Button, HelperText, TextInput} from 'react-native-paper';
+import {HelperText, TextInput} from 'react-native-paper';
 import HOC from '../HOC/HOC';
 import UserAvatar from 'react-native-user-avatar';
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
 import ChangePassword from '../Dailogs/ChangePassword';
 import {emailValidator} from '../../utils/Validation';
 import {button} from '../CommonStyles/Index';
