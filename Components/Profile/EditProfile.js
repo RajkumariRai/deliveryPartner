@@ -1,4 +1,10 @@
-import {StyleSheet, Text, View, ScrollView} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import React, {useState} from 'react';
 import {Button, HelperText, TextInput} from 'react-native-paper';
 import HOC from '../HOC/HOC';
@@ -257,36 +263,50 @@ const EditProfile = () => {
                   style={[
                     button.commonSpaceBetween,
                     {
-                      paddingTop: '10%',
+                      paddingTop: '7%',
                       paddingBottom: '5%',
                     },
                   ]}>
-                  <Button
-                    style={
-                      active == 1
-                        ? [button.commonButton]
-                        : [styles.inactiveButton]
-                    }
-                    mode={active == 1 ? 'contained' : 'outlined'}
-                    color={active == 1 ? '' : 'rgb(211, 211, 211)'}
+                  <TouchableOpacity
                     onPress={() => {
                       chnagePasswordHandle();
                     }}>
-                    Change Password
-                  </Button>
-                  <Button
-                    mode={active == 2 ? 'contained' : 'outlined'}
-                    color={active == 2 ? '' : 'rgb(211, 211, 211)'}
-                    style={
-                      active == 2
-                        ? [button.commonButton, {marginLeft: 5}]
-                        : [styles.inactiveButton, {marginLeft: 5}]
-                    }
+                    <View
+                      style={
+                        active == 1
+                          ? button.commonActiveButtonHeight
+                          : button.commonInactiveButtonHeight
+                      }>
+                      <Text
+                        style={
+                          active == 1
+                            ? button.commonActiveTextDeco
+                            : button.commonInactiveTextDeco
+                        }>
+                        Change Password
+                      </Text>
+                    </View>
+                  </TouchableOpacity>
+                  <TouchableOpacity
                     onPress={() => {
                       saveChangeHandle();
                     }}>
-                    Save Changes
-                  </Button>
+                    <View
+                      style={
+                        active == 2
+                          ? button.commonActiveButtonHeight
+                          : button.commonInactiveButtonHeight
+                      }>
+                      <Text
+                        style={
+                          active == 2
+                            ? button.commonActiveTextDeco
+                            : button.commonInactiveTextDeco
+                        }>
+                        Save Changes
+                      </Text>
+                    </View>
+                  </TouchableOpacity>
                 </View>
               </View>
             </View>
@@ -332,11 +352,6 @@ const styles = StyleSheet.create({
     paddingLeft: 7,
   },
 
-  inactiveButton: {
-    backgroundColor: '#fff',
-    borderRadius: 30,
-    fontWeight: '700',
-  },
   cameraBgColor: {
     backgroundColor: '#fff',
     borderRadius: 50,
