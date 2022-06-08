@@ -174,13 +174,13 @@ const EditProfile = () => {
                     </HelperText>
                   )}
                 </View>
-                <View style={{paddingTop: 12}}>
+                <View style={styles.inputPaddingTop}>
                   <Text style={styles.textlabel}>Phone Number</Text>
                   <TextInput
                     mode="outlined"
                     left={
                       <TextInput.Icon
-                        name="email"
+                        name="phone"
                         // color={button.inputIconColor}
                       />
                     }
@@ -201,10 +201,18 @@ const EditProfile = () => {
                     </HelperText>
                   )}
                 </View>
-                <View style={{paddingTop: 12}}>
+                <View style={styles.inputPaddingTop}>
                   <Text style={styles.textlabel}>Identity Card Number</Text>
                   <TextInput
-                    style={styles.TextInputBorder}
+                    mode="outlined"
+                    left={
+                      <TextInput.Icon
+                        name="card-account-details"
+                        // color={button.inputIconColor}
+                      />
+                    }
+                    style={button.commonTextInput}
+                    theme={{roundness: 20}}
                     placeholder="Identity Card Number"
                     placeholderTextColor="#000"
                     value={cardNumber}
@@ -219,10 +227,18 @@ const EditProfile = () => {
                     </HelperText>
                   )}
                 </View>
-                <View style={{paddingTop: 12}}>
+                <View style={styles.inputPaddingTop}>
                   <Text style={styles.textlabel}>Vehical Number</Text>
                   <TextInput
-                    style={styles.TextInputBorder}
+                    mode="outlined"
+                    left={
+                      <TextInput.Icon
+                        name="bike"
+                        // color={button.inputIconColor}
+                      />
+                    }
+                    style={button.commonTextInput}
+                    theme={{roundness: 20}}
                     placeholder="Vehical Number"
                     placeholderTextColor="#000"
                     value={vehicalNumber}
@@ -238,11 +254,13 @@ const EditProfile = () => {
                   )}
                 </View>
                 <View
-                  style={{
-                    paddingTop: 12,
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                  }}>
+                  style={[
+                    button.commonSpaceBetween,
+                    {
+                      paddingTop: '10%',
+                      paddingBottom: '5%',
+                    },
+                  ]}>
                   <Button
                     style={
                       active == 1
