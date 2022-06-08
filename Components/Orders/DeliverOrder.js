@@ -83,7 +83,7 @@ const DeliverOrder = () => {
               <View style={styles.cardBorderPaddin}>
                 <TouchableOpacity
                   onPress={() => {
-                    deliverdCheckOrderHandle(row, index);
+                    // deliverdCheckOrderHandle(row, index);
                   }}>
                   <View style={button.commonSpaceBetween}>
                     <View>
