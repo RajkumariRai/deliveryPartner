@@ -70,7 +70,7 @@ export default function SignUp(props) {
         <View style={{paddingBottom:15}}>
           <TextInput
             mode="outlined"
-            left={<TextInput.Icon name="account" />}
+            left={<TextInput.Icon name="account" color={button.commonColor.color} />}
             style={button.commonTextInput}
             theme={{roundness: 20}}
             placeholder="Username"
@@ -89,7 +89,7 @@ export default function SignUp(props) {
         <View style={{paddingBottom:15}}>
           <TextInput
             mode="outlined"
-            left={<TextInput.Icon name="email" />}
+            left={<TextInput.Icon name="email" color={button.commonColor.color} />}
             style={button.commonTextInput}
             theme={{roundness: 20}}
             placeholder="Email id"
@@ -111,7 +111,7 @@ export default function SignUp(props) {
         <TextInput
             mode="outlined"
             keyboardType='number-pad'
-            left={<TextInput.Icon name="cellphone" />}
+            left={<TextInput.Icon name="cellphone" color={button.commonColor.color} />}
             style={button.commonTextInput}
             theme={{roundness: 20}}
             placeholder="Phone Number"
@@ -133,7 +133,7 @@ export default function SignUp(props) {
         <View style={{paddingBottom:15}}>
           <TextInput
             style={button.commonTextInput}
-            left={<TextInput.Icon name="lock" />}
+            left={<TextInput.Icon name="lock" color={button.commonColor.color} />}
             mode="outlined"
             placeholder="Password"
             theme={{roundness: 20}}
@@ -161,7 +161,7 @@ export default function SignUp(props) {
         <View style={{paddingBottom:15}}>
           <TextInput
             style={button.commonTextInput}
-            left={<TextInput.Icon name="lock" />}
+            left={<TextInput.Icon name="lock" color={button.commonColor.color} />}
             theme={{roundness: 20}}
             mode="outlined"
             placeholder="Confirm Password"
