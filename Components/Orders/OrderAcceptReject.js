@@ -1,6 +1,11 @@
-import {StyleSheet, Text, View, ScrollView} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import React, {useState} from 'react';
-import {Button} from 'react-native-paper';
 import {button} from '../CommonStyles/Index';
 import RejectOrderDailog from './RejectOrderDailog';
 
@@ -100,41 +105,59 @@ const OrderAcceptReject = props => {
             </View>
 
             {!params && (
-              <View style={[styles.flexSpace, {paddingTop: 10}]}>
-                <Button
-                  mode={active == 1 ? 'contained' : 'outlined'}
-                  color={active == 1 ? '' : 'rgb(211, 211, 211)'}
-                  style={
-                    active == 1 ? button.commonButton : styles.inactiveButton
-                  }
+              <View style={[button.commonSpaceBetween, {paddingTop: 10}]}>
+                <TouchableOpacity
                   onPress={() => {
                     rejectHandle();
                   }}>
-                  Reject
-                </Button>
-                <Button
-                  mode={active == 2 ? 'contained' : 'outlined'}
-                  color={active == 2 ? '' : 'rgb(211, 211, 211)'}
-                  style={
-                    active == 2 ? button.commonButton : styles.inactiveButton
-                  }
+                  <View
+                    style={
+                      active == 1
+                        ? button.commonActiveButtonHeight
+                        : button.commonInactiveButtonHeight
+                    }>
+                    <Text
+                      style={
+                        active == 1
+                          ? button.commonActiveTextDeco
+                          : button.commonInactiveTextDeco
+                      }>
+                      Reject
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+                <TouchableOpacity
                   onPress={() => {
                     acceptHandle();
                   }}>
-                  Accept
-                </Button>
+                  <View
+                    style={
+                      active == 2
+                        ? button.commonActiveButtonHeight
+                        : button.commonInactiveButtonHeight
+                    }>
+                    <Text
+                      style={
+                        active == 2
+                          ? button.commonActiveTextDeco
+                          : button.commonInactiveTextDeco
+                      }>
+                      Accept
+                    </Text>
+                  </View>
+                </TouchableOpacity>
               </View>
             )}
             {params === 'Active' && (
               <View style={{paddingTop: 10, alignItems: 'center'}}>
-                <Button
-                  mode="contained"
-                  style={button.commonButton}
+                <TouchableOpacity
                   onPress={() => {
                     StartOrderHandle();
                   }}>
-                  Start
-                </Button>
+                  <View style={button.commonActiveButtonHeight}>
+                    <Text style={button.commonActiveTextDeco}>Start</Text>
+                  </View>
+                </TouchableOpacity>
               </View>
             )}
           </View>
@@ -184,10 +207,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     paddingBottom: 10,
   },
-  flexSpace: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
+
   totalamountBold: {
     color: '#333',
     fontSize: 14,

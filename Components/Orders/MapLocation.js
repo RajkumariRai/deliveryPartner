@@ -9,7 +9,6 @@ import React, {useState} from 'react';
 import {button} from '../CommonStyles/Index';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import MapView from 'react-native-maps';
-import {Button} from 'react-native-paper';
 import UserAvatar from 'react-native-user-avatar';
 
 const MapLocation = props => {
@@ -71,14 +70,14 @@ const MapLocation = props => {
           </View>
         </View>
         <View style={{alignItems: 'flex-end'}}>
-          <Button
-            mode="contained"
-            style={button.commonButton}
+          <TouchableOpacity
             onPress={() => {
               OrderFinshHandle();
             }}>
-            Finish
-          </Button>
+            <View style={button.commonActiveButtonHeight}>
+              <Text style={button.commonActiveTextDeco}>Finish</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
     </View>

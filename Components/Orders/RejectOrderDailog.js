@@ -1,11 +1,10 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import {
   Dialog,
   Portal,
   Provider,
   TextInput,
-  Button,
   HelperText,
 } from 'react-native-paper';
 import {button} from '../CommonStyles/Index';
@@ -69,14 +68,14 @@ const RejectOrderDailog = props => {
             </View>
           </Dialog.Content>
           <Dialog.Actions>
-            <Button
-              mode={'contained'}
-              style={button.commonButton}
+            <TouchableOpacity
               onPress={() => {
                 orderRejectHandle();
               }}>
-              send
-            </Button>
+              <View style={button.commonActiveButtonHeight}>
+                <Text style={button.commonActiveTextDeco}>send</Text>
+              </View>
+            </TouchableOpacity>
           </Dialog.Actions>
         </Dialog>
       </Portal>
