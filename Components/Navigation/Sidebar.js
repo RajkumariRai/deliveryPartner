@@ -11,7 +11,7 @@ const Sidebar = props => {
       id: '1',
       icon: 'home',
       title: 'Dashboard',
-      url: 'dashboard',
+      url: 'Dashboard',
     },
     {
       id: '2',
@@ -125,6 +125,7 @@ export default Sidebar;
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
+    marginTop:-4
   },
   sidebarbottomBgColor: {
     backgroundColor: '#fff',

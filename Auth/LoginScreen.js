@@ -30,7 +30,7 @@ export default function LoginScreen(props) {
         error = true;
       }
       if (!error) {
-        navigation.push('dashboard');
+        navigation.push('Dashboard');
       }
     } catch (error) {
       console.log('error in validaton', error);

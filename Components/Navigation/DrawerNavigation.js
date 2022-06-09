@@ -1,21 +1,22 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import * as React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
 import DashBoard from '../Dashboard/DashBoard';
+import Orders from '../Orders/Orders';
+import Notification from '../Notification/Notification';
+import CustomDrawer from './CustomDrawer';
 
 const Drawer = createDrawerNavigator();
 const DrawerNavigation = () => {
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        drawerType="front"
-        initialRouteName="dashboard"
-        drawerContentOptions={{
-          activeTintColor: '#e91e63',
-          itemStyle: {marginVertical: 10},
-        }}>
-        <Drawer.Screen name="dashboard" key={DashBoard} />
+        drawerContent={props => <CustomDrawer {...props} />}
+        screenOptions={{headerShown: false}}>
+        <Drawer.Screen name="Dashboard" component={DashBoard} />
+        <Drawer.Screen name="Orders" component={Orders} />
+        <Drawer.Screen name="Notifcation" component={Notification} />
       </Drawer.Navigator>
     </NavigationContainer>
   );

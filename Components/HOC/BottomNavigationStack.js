@@ -8,7 +8,7 @@ const BottomNavigationStack = props => {
   const {route} = props;
 
   useEffect(() => {
-    if (route.name === 'dashboard') {
+    if (route.name === 'Dashboard') {
       setActive(1);
     } else if (route.name === 'Orders') {
       setActive(2);
@@ -20,7 +20,7 @@ const BottomNavigationStack = props => {
   }, [props]);
   const homehandle = () => {
     setActive(1);
-    props.navigation.replace('dashboard');
+    props.navigation.replace('Dashboard');
   };
   const orderHandle = () => {
     setActive(2);

@@ -16,11 +16,13 @@ import FliterCompletedOrder from './Components/Orders/FliterCompletedOrder';
 import Setting from './Components/Settings/Setting';
 import Notification from './Components/Notification/Notification';
 import Sidebar from './Components/Navigation/Sidebar';
+import DrawerNavigation from './Components/Navigation/DrawerNavigation';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
+    // <DrawerNavigation />
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
@@ -45,7 +47,7 @@ const App = () => {
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="dashboard"
+          name="Dashboard"
           component={DashBoard}
           options={{headerShown: false}}
         />

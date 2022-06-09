@@ -7,7 +7,6 @@ import {Badge} from 'react-native-paper';
 
 const Header = props => {
   const {route, navigation} = props;
-  const navigationDrawer = useNavigation();
 
   const [notificationCount, setNotificationCount] = useState(80);
 
@@ -18,13 +17,12 @@ const Header = props => {
   return (
     <View style={[button.commonBackgroundColor, {padding: 10}]}>
       {/* dashboard Header  */}
-      {route.name === 'dashboard' && (
+      {route.name === 'Dashboard' && (
         <View style={styles.flexSpace}>
           <View>
             <TouchableOpacity
               onPress={() => {
-                navigation.push('sidebar');
-                // navigationDrawer.toggleDrawer();
+                navigation.openDrawer();
               }}>
               <Icon name={'bars'} size={16} color="#fff" />
             </TouchableOpacity>

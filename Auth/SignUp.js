@@ -54,7 +54,7 @@ export default function SignUp(props) {
         flag = true;
       }
       if (!flag) {
-        navigation.push('dashboard');
+        navigation.push('Dashboard');
       }
     } catch (error) {
       console.log('error in validaton', error);
