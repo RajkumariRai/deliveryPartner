@@ -120,7 +120,12 @@ const ChangePassword = props => {
                   <TextInput
                     mode="outlined"
                     style={button.commonTextInput}
-                    left={<TextInput.Icon name="key-variant" />}
+                    left={
+                      <TextInput.Icon
+                        name="key-variant"
+                        color={button.commonColor.color}
+                      />
+                    }
                     theme={{roundness: 20}}
                     placeholder="Confirm New Password"
                     secureTextEntry={confirmPasswordVisible}

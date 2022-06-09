@@ -29,7 +29,6 @@ export const commonSpaceBetween = {
   flexDirection: 'row',
   justifyContent: 'space-between',
 };
-export const inputIconColor = ' #d60e0e';
 export const commonActiveButtonHeight = {
   borderRadius: 50,
   height: 30,
