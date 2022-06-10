@@ -1,22 +1,25 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Image} from 'react-native';
 import React from 'react';
 import {Card, Icon} from 'react-native-elements';
 import {Badge} from 'react-native-paper';
 import {button} from '../CommonStyles/Index';
 
 const DashboardCard = props => {
-  const {title, value} = props;
+  const {data} = props;
+  console.log('data', data);
   return (
     <Card containerStyle={styles.cardShadow}>
-      {value && (
+      {data.value && (
         <View>
-          <Badge style={[styles.bagesColor, button.borderColor]}>{value}</Badge>
+          <Badge style={[styles.bagesColor, button.borderColor]}>
+            {data.value}
+          </Badge>
         </View>
       )}
-      <View>
-        <Icon name="rowing" />
+      <View style={{alignItems: 'center'}}>
+        {data.image && <Image source={data.image} style={styles.imageWidth} />}
       </View>
-      {title && <Text style={styles.cardTitle}>{title}</Text>}
+      {data.title && <Text style={styles.cardTitle}>{data.title}</Text>}
     </Card>
   );
 };
@@ -31,6 +34,7 @@ const styles = StyleSheet.create({
     shadowRadius: 16.0,
     elevation: 24,
     width: '40%',
+    borderRadius: 10,
   },
   cardTitle: {
     color: '#333',
@@ -51,6 +55,11 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     borderWidth: 1,
     backgroundColor: '#fff',
+  },
+  imageWidth: {
+    width: 30,
+    height: 30,
+    alignItems: 'center',
   },
 });
 export default DashboardCard;

@@ -1,11 +1,50 @@
-import React from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, StyleSheet, FlatList} from 'react-native';
 import {button} from '../CommonStyles/Index';
 import HOC from '../HOC/HOC';
 // import Header from '../HOC/Header';
 import DashboardCard from './DashboardCard';
 
 const DashBoard = () => {
+  const [cardArray] = useState([
+    {
+      id: 1,
+      value: '3',
+      image: require('./Images/orderImg.jpg'),
+      title: 'New Order',
+    },
+
+    {
+      id: 2,
+      value: '500',
+      image: require('../../assets/Logo.png'),
+      title: 'Active Orders',
+    },
+    {
+      id: 3,
+      value: '3',
+      image: require('../../assets/Logo.png'),
+      title: 'Deliverd Order',
+    },
+    {
+      id: 4,
+      value: '3',
+      image: require('../../assets/Logo.png'),
+      title: 'Total Order',
+    },
+    {
+      id: 5,
+      value: '30',
+      image: require('../../assets/Logo.png'),
+      title: 'Total Earning',
+    },
+    {
+      id: 6,
+      value: '3',
+      image: require('../../assets/Logo.png'),
+      title: 'Reviews',
+    },
+  ]);
   return (
     <View style={[{flexGrow: 1}, button.commonBackgroundColor]}>
       {/* bar section */}
@@ -25,20 +64,16 @@ const DashBoard = () => {
       </View>
       {/* Card section */}
       <View style={styles.cardSectionBorder}>
-        <ScrollView>
-          <View style={styles.flexSpace}>
-            <DashboardCard title={'New Order'} value={'3'} />
-            <DashboardCard title={'Active Orders'} value={'500'} />
-          </View>
-          <View style={styles.flexSpace}>
-            <DashboardCard title={'Deliverd Order'} value={'15'} />
-            <DashboardCard title={'Total Order'} value={'30'} />
-          </View>
-          <View style={styles.flexSpace}>
-            <DashboardCard title={'Total Earning'} />
-            <DashboardCard title={'Reviews'} />
-          </View>
-        </ScrollView>
+        <FlatList
+          data={cardArray}
+          numColumns={2}
+          columnWrapperStyle={{
+            justifyContent: 'space-between',
+            marginBottom: 15,
+          }}
+          keyExtractor={item => item.id.toString()}
+          renderItem={({item}) => <DashboardCard data={item} />}
+        />
       </View>
     </View>
   );
@@ -48,15 +83,10 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     backgroundColor: '#fff',
-    paddingLeft: 10,
-    paddingTop: 10,
-    paddingBottom: 10,
-    height: '100%',
+    padding: 10,
+    flexGrow: 1,
   },
-  flexSpace: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-  },
+
   dateColor: {
     color: '#333',
     fontWeight: '600',
