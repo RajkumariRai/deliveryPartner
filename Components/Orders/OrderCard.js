@@ -35,11 +35,15 @@ const OrderCard = props => {
               <Icon name={'clock-o'} size={11} style={button.commonColor} />
               <Text style={styles.timeColor}>{data.Time}</Text>
             </View>
+
             {Active && (
               <View style={styles.activeRight}>
                 <Text style={styles.onlineActive}></Text>
               </View>
             )}
+          </View>
+          <View style={styles.trinaglePostionset}>
+            <View style={styles.tirngleColor}></View>
           </View>
         </View>
       </View>
@@ -96,6 +100,22 @@ const styles = StyleSheet.create({
   activeRight: {
     alignItems: 'flex-end',
     paddingTop: 15,
+  },
+  tirngleColor: {
+    borderTopWidth: 10,
+    borderRightWidth: 0,
+    borderBottomWidth: 10,
+    borderLeftWidth: 10,
+    borderTopColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderBottomColor: 'transparent',
+    borderLeftColor: '#fff',
+  },
+  trinaglePostionset: {
+    alignItems: 'flex-end',
+    flex: 1,
+    justifyContent: 'center',
+    marginRight: -20,
   },
 });
 export default OrderCard;
