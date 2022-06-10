@@ -68,8 +68,8 @@ const DashBoard = () => {
           data={cardArray}
           numColumns={2}
           columnWrapperStyle={{
-            justifyContent: 'space-between',
-            marginBottom: 15,
+            justifyContent: 'space-around',
+            marginBottom: 5,
           }}
           keyExtractor={item => item.id.toString()}
           renderItem={({item}) => <DashboardCard data={item} />}

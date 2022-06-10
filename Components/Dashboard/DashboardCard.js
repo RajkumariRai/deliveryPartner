@@ -6,7 +6,6 @@ import {button} from '../CommonStyles/Index';
 
 const DashboardCard = props => {
   const {data} = props;
-  console.log('data', data);
   return (
     <Card containerStyle={styles.cardShadow}>
       {data.value && (
@@ -25,14 +24,14 @@ const DashboardCard = props => {
 };
 const styles = StyleSheet.create({
   cardShadow: {
-    shadowColor: '#000',
+    shadowColor: button.commonColor.color,
     shadowOffset: {
       width: 0,
-      height: 12,
+      height: 2,
     },
-    shadowOpacity: 0.58,
-    shadowRadius: 16.0,
-    elevation: 24,
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
     width: '40%',
     borderRadius: 10,
   },
@@ -60,6 +59,7 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     alignItems: 'center',
+    marginBottom: 10,
   },
 });
 export default DashboardCard;
