@@ -46,7 +46,13 @@ export default function LoginScreen(props) {
         <View style={{paddingBottom: 15}}>
           <TextInput
             mode="outlined"
-            left={<TextInput.Icon name="account" color={button.commonColor.color} />}
+            left={
+              <TextInput.Icon
+                name="account"
+                color={button.commonColor.color}
+                size={20}
+              />
+            }
             style={button.commonTextInput}
             theme={{roundness: 20}}
             placeholder="Username or Email"
@@ -68,7 +74,13 @@ export default function LoginScreen(props) {
         <View style={{paddingBottom: 15}}>
           <TextInput
             style={button.commonTextInput}
-            left={<TextInput.Icon name="key-variant" color={button.commonColor.color}/>}
+            left={
+              <TextInput.Icon
+                name="key-variant"
+                color={button.commonColor.color}
+                size={20}
+              />
+            }
             theme={{roundness: 20}}
             mode="outlined"
             placeholder="Password"

@@ -95,6 +95,7 @@ const ChangePassword = props => {
                     secureTextEntry={newPasswordVisible}
                     right={
                       <TextInput.Icon
+                        size={20}
                         name={newPasswordVisible ? 'eye' : 'eye-off'}
                         onPress={() =>
                           setNewPasswordVisible(!newPasswordVisible)
@@ -124,6 +125,7 @@ const ChangePassword = props => {
                       <TextInput.Icon
                         name="key-variant"
                         color={button.commonColor.color}
+                        size={20}
                       />
                     }
                     theme={{roundness: 20}}
@@ -131,6 +133,7 @@ const ChangePassword = props => {
                     secureTextEntry={confirmPasswordVisible}
                     right={
                       <TextInput.Icon
+                        size={20}
                         name={confirmPasswordVisible ? 'eye' : 'eye-off'}
                         onPress={() =>
                           setConfirmPasswordVisible(!confirmPasswordVisible)

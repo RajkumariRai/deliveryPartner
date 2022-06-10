@@ -67,10 +67,16 @@ export default function SignUp(props) {
         <Image source={require('../assets/Logo.png')} />
       </View>
       <View style={styles.formSectionPadding}>
-        <View style={{paddingBottom:15}}>
+        <View style={{paddingBottom: 15}}>
           <TextInput
             mode="outlined"
-            left={<TextInput.Icon name="account" color={button.commonColor.color} />}
+            left={
+              <TextInput.Icon
+                name="account"
+                color={button.commonColor.color}
+                size={20}
+              />
+            }
             style={button.commonTextInput}
             theme={{roundness: 20}}
             placeholder="Username"
@@ -86,10 +92,16 @@ export default function SignUp(props) {
           )}
         </View>
 
-        <View style={{paddingBottom:15}}>
+        <View style={{paddingBottom: 15}}>
           <TextInput
             mode="outlined"
-            left={<TextInput.Icon name="email" color={button.commonColor.color} />}
+            left={
+              <TextInput.Icon
+                name="email"
+                color={button.commonColor.color}
+                size={20}
+              />
+            }
             style={button.commonTextInput}
             theme={{roundness: 20}}
             placeholder="Email id"
@@ -107,11 +119,17 @@ export default function SignUp(props) {
             </HelperText>
           )}
         </View>
-        <View style={{paddingBottom:15}}>
-        <TextInput
+        <View style={{paddingBottom: 15}}>
+          <TextInput
             mode="outlined"
-            keyboardType='number-pad'
-            left={<TextInput.Icon name="cellphone" color={button.commonColor.color} />}
+            keyboardType="number-pad"
+            left={
+              <TextInput.Icon
+                name="cellphone"
+                color={button.commonColor.color}
+                size={20}
+              />
+            }
             style={button.commonTextInput}
             theme={{roundness: 20}}
             placeholder="Phone Number"
@@ -130,10 +148,16 @@ export default function SignUp(props) {
             </HelperText>
           )}
         </View>
-        <View style={{paddingBottom:15}}>
+        <View style={{paddingBottom: 15}}>
           <TextInput
             style={button.commonTextInput}
-            left={<TextInput.Icon name="lock" color={button.commonColor.color} />}
+            left={
+              <TextInput.Icon
+                name="lock"
+                color={button.commonColor.color}
+                size={20}
+              />
+            }
             mode="outlined"
             placeholder="Password"
             theme={{roundness: 20}}
@@ -158,10 +182,16 @@ export default function SignUp(props) {
             </HelperText>
           )}
         </View>
-        <View style={{paddingBottom:15}}>
+        <View style={{paddingBottom: 15}}>
           <TextInput
             style={button.commonTextInput}
-            left={<TextInput.Icon name="lock" color={button.commonColor.color} />}
+            left={
+              <TextInput.Icon
+                name="lock"
+                color={button.commonColor.color}
+                size={20}
+              />
+            }
             theme={{roundness: 20}}
             mode="outlined"
             placeholder="Confirm Password"

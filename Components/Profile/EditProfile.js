@@ -117,6 +117,7 @@ const EditProfile = () => {
                         <TextInput.Icon
                           name="account"
                           color={button.commonColor.color}
+                          size={20}
                         />
                       }
                       style={button.commonTextInput}
@@ -158,6 +159,7 @@ const EditProfile = () => {
                       <TextInput.Icon
                         name="email"
                         color={button.commonColor.color}
+                        size={20}
                       />
                     }
                     style={button.commonTextInput}
@@ -184,6 +186,7 @@ const EditProfile = () => {
                       <TextInput.Icon
                         name="phone"
                         color={button.commonColor.color}
+                        size={20}
                       />
                     }
                     style={button.commonTextInput}
@@ -211,6 +214,7 @@ const EditProfile = () => {
                       <TextInput.Icon
                         name="card-account-details"
                         color={button.commonColor.color}
+                        size={20}
                       />
                     }
                     style={button.commonTextInput}
@@ -237,6 +241,7 @@ const EditProfile = () => {
                       <TextInput.Icon
                         name="bike"
                         color={button.commonColor.color}
+                        size={20}
                       />
                     }
                     style={button.commonTextInput}
