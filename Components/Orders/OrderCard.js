@@ -102,10 +102,10 @@ const styles = StyleSheet.create({
     paddingTop: 15,
   },
   tirngleColor: {
-    borderTopWidth: 10,
+    borderTopWidth: 9,
     borderRightWidth: 0,
-    borderBottomWidth: 10,
-    borderLeftWidth: 10,
+    borderBottomWidth: 9,
+    borderLeftWidth: 9,
     borderTopColor: 'transparent',
     borderRightColor: 'transparent',
     borderBottomColor: 'transparent',
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     flex: 1,
     justifyContent: 'center',
-    marginRight: -20,
+    marginRight: -17,
   },
 });
 export default OrderCard;
