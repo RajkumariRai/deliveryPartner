@@ -69,7 +69,11 @@ export default function ForgetPassword(props) {
             mode="outlined"
             theme={{roundness: 20}}
             left={
-              <TextInput.Icon name="email" color={button.commonColor.color} />
+              <TextInput.Icon
+                name="email"
+                color={button.commonColor.color}
+                size={20}
+              />
             }
             style={button.commonTextInput}
             placeholder="Email"
