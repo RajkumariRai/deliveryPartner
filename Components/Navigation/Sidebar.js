@@ -109,8 +109,8 @@ const Sidebar = props => {
               onPress={() => {
                 navigation.push(row.url);
               }}>
-              <View style={button.commonSpaceBetween}>
-                <View style={styles.iconTitlepostion} key={row.id}>
+              <View style={button.commonSpaceBetween} key={row.id}>
+                <View style={styles.iconTitlepostion}>
                   <Icon
                     name={row.icon}
                     size={14}
@@ -123,7 +123,9 @@ const Sidebar = props => {
                     <Switch
                       trackColor={{false: '#767577', true: '#767577'}}
                       thumbColor={
-                        isEnabled ? button.commonColor.color : button.commonColor.color
+                        isEnabled
+                          ? button.commonColor.color
+                          : button.commonColor.color
                       }
                       ios_backgroundColor="#3e3e3e"
                       onValueChange={() => {
