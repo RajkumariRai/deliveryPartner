@@ -10,15 +10,13 @@ import CustomDrawer from './CustomDrawer';
 const Drawer = createDrawerNavigator();
 const DrawerNavigation = () => {
   return (
-    <NavigationContainer>
-      <Drawer.Navigator
-        drawerContent={props => <CustomDrawer {...props} />}
-        screenOptions={{headerShown: false}}>
-        <Drawer.Screen name="Dashboard" component={DashBoard} />
-        <Drawer.Screen name="Orders" component={Orders} />
-        <Drawer.Screen name="Notifcation" component={Notification} />
-      </Drawer.Navigator>
-    </NavigationContainer>
+    <Drawer.Navigator
+      drawerContent={props => <CustomDrawer {...props} />}
+      screenOptions={{headerShown: false}}>
+      <Drawer.Screen name="Dashboard" component={DashBoard} />
+      <Drawer.Screen name="Orders" component={Orders} />
+      <Drawer.Screen name="Notifcation" component={Notification} />
+    </Drawer.Navigator>
   );
 };
 

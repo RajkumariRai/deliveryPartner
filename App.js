@@ -2,7 +2,6 @@ import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LoginScreen from './Auth/LoginScreen';
-import DashBoard from './Components/Dashboard/DashBoard';
 import {SplashScreen} from './screens/SplashScreen';
 import SignUp from './Auth/SignUp';
 import Profile from './Components/Profile/Profile';
@@ -22,7 +21,6 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    // <DrawerNavigation />
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
@@ -48,7 +46,7 @@ const App = () => {
         />
         <Stack.Screen
           name="Dashboard"
-          component={DashBoard}
+          component={DrawerNavigation}
           options={{headerShown: false}}
         />
 

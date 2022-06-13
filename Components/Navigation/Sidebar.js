@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity, Switch} from 'react-native';
 import React, {useState} from 'react';
 import {button} from '../CommonStyles/Index';
 import UserAvatar from 'react-native-user-avatar';
@@ -58,6 +58,11 @@ const Sidebar = props => {
       url: 'Login',
     },
   ]);
+
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = row => {
+    setIsEnabled(previousState => !previousState);
+  };
   return (
     <View style={[styles.container, button.commonBackgroundColor]}>
       <View style={styles.userDeatil}>
@@ -104,13 +109,30 @@ const Sidebar = props => {
               onPress={() => {
                 navigation.push(row.url);
               }}>
-              <View style={styles.iconTitlepostion} key={row.id}>
-                <Icon
-                  name={row.icon}
-                  size={14}
-                  style={[button.commonColor, styles.iconpostionset]}
-                />
-                <Text style={styles.titleColor}>{row.title}</Text>
+              <View style={button.commonSpaceBetween}>
+                <View style={styles.iconTitlepostion} key={row.id}>
+                  <Icon
+                    name={row.icon}
+                    size={14}
+                    style={[button.commonColor, styles.iconpostionset]}
+                  />
+                  <Text style={styles.titleColor}>{row.title}</Text>
+                </View>
+                {row.title === 'Dark Mode' && (
+                  <View>
+                    <Switch
+                      trackColor={{false: '#767577', true: '#767577'}}
+                      thumbColor={
+                        isEnabled ? button.commonColor.color : button.commonColor.color
+                      }
+                      ios_backgroundColor="#3e3e3e"
+                      onValueChange={() => {
+                        toggleSwitch(row);
+                      }}
+                      value={isEnabled}
+                    />
+                  </View>
+                )}
               </View>
             </TouchableOpacity>
           ))}
@@ -125,7 +147,7 @@ export default Sidebar;
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    marginTop:-4
+    marginTop: -4,
   },
   sidebarbottomBgColor: {
     backgroundColor: '#fff',
