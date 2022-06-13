@@ -1,7 +1,6 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import * as React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import {NavigationContainer} from '@react-navigation/native';
 import DashBoard from '../Dashboard/DashBoard';
 import Orders from '../Orders/Orders';
 import Notification from '../Notification/Notification';
