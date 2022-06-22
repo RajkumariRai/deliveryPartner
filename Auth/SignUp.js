@@ -60,9 +60,9 @@ export default function SignUp(props) {
       let config = {
         method: 'post',
         url: url,
-        // headers: {
-        //   'Content-Type': 'application/json',
-        // },
+        headers: {
+          'Content-Type': 'application/json',
+        },
         data: temp,
       };
       const {data} = await axios(config);

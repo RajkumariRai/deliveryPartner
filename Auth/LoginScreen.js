@@ -1,14 +1,11 @@
 import React, {useState} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  SafeAreaView,
-  TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import {HelperText, TextInput, Button} from 'react-native-paper';
 import {button} from '../Components/CommonStyles/Index';
+// api
+import {getBaseUrl} from '../utils';
+import axios from 'axios';
+import {showMessage} from '../utils/Validation';
 
 export default function LoginScreen(props) {
   const {navigation} = props;
@@ -18,19 +15,36 @@ export default function LoginScreen(props) {
   const [passwordError, setpasswordError] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(true);
 
-  let error = false;
-  const validateData = () => {
+  const loginHandle = async () => {
     try {
       if (!email) {
         setEmailError(true);
-        error = true;
       }
       if (!password || password.length < 8 || password.length > 20) {
         setpasswordError(true);
-        error = true;
       }
-      if (!error) {
+      if (!email || !password) {
+        return;
+      }
+      let temp = JSON.stringify({
+        user_name: email,
+        password: password,
+      });
+      let url = getBaseUrl() + 'deliveryPartner/v1/signin';
+      let config = {
+        method: 'post',
+        url: url,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        data: temp,
+      };
+      const {data} = await axios(config);
+      console.log('data', data);
+      if (data.success === 1) {
         navigation.push('Dashboard');
+      } else {
+        showMessage('error', data.message);
       }
     } catch (error) {
       console.log('error in validaton', error);
@@ -120,7 +134,7 @@ export default function LoginScreen(props) {
             mode="contained"
             style={button.commonButton}
             onPress={() => {
-              validateData();
+              loginHandle();
             }}>
             LOGIN
           </Button>
