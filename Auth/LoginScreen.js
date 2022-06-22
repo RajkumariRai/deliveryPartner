@@ -40,7 +40,6 @@ export default function LoginScreen(props) {
         data: temp,
       };
       const {data} = await axios(config);
-      console.log('data', data);
       if (data.success === 1) {
         navigation.push('Dashboard');
       } else {

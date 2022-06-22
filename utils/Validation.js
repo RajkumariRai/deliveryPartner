@@ -32,6 +32,7 @@ export const nameValidation = name => {
   return true;
 };
 export const showMessage = (error, message) => {
+  console.log('error==', error, message);
   Toast.show({
     type: error,
     text2: message,

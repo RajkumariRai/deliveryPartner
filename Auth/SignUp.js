@@ -66,7 +66,6 @@ export default function SignUp(props) {
         data: temp,
       };
       const {data} = await axios(config);
-      console.log('data', data);
       if (data.success === 1) {
         showMessage('success', data.message);
         navigation.push('Dashboard');
