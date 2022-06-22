@@ -1,21 +1,19 @@
-
-export const blankValidator = (validators) => {
- try {
+import Toast from 'react-native-toast-message';
+export const blankValidator = validators => {
+  try {
     if (
-        validators === undefined ||
-        validators === '' ||
-        validators === null ||
-        validators == {} ||
-        validators == -1
-      ) {
-        return false;
-      }
-      return true;
-     
- } 
-  catch (error) {
-     console.log("Error in validation", error)
-}
+      validators === undefined ||
+      validators === '' ||
+      validators === null ||
+      validators == {} ||
+      validators == -1
+    ) {
+      return false;
+    }
+    return true;
+  } catch (error) {
+    console.log('Error in validation', error);
+  }
 };
 
 export const emailValidator = email => {
@@ -32,4 +30,10 @@ export const nameValidation = name => {
     return false;
   }
   return true;
+};
+export const showMessage = (error, message) => {
+  Toast.show({
+    type: error,
+    text2: message,
+  });
 };

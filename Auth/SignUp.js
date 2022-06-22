@@ -1,20 +1,11 @@
 import React, {useState} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  SafeAreaView,
-  TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import {HelperText, TextInput, Button} from 'react-native-paper';
 import {button} from '../Components/CommonStyles/Index';
-
-import {
-  blankValidator,
-  emailValidator,
-  nameValidation,
-} from '../utils/Validation';
+import {emailValidator, nameValidation, showMessage} from '../utils/Validation';
+// api
+import {getBaseUrl} from '../utils';
+import axios from 'axios';
 
 export default function SignUp(props) {
   const {navigation} = props;
@@ -30,31 +21,57 @@ export default function SignUp(props) {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
 
-  let flag = false;
-
-  const validateData = () => {
+  const signupHandle = async () => {
     try {
-      if (!userName || nameValidation(userName)) {
+      if (!nameValidation(userName)) {
         setUserNameError(true);
-        flag = true;
-      } else if (!phoneNumber) {
-        setPhoneNumberError(true);
-        flag = true;
-      } else if (!email || !emailValidator(email)) {
-        setEmailError(true);
-        flag = true;
-      } else if (!password || password.length < 8 || password.length > 20) {
-        setPasswordError(true);
-        flag = true;
-      } else if (!confirmPassword) {
-        setConfirmPasswordError(true);
-        flag = true;
-      } else if (password && confirmPassword && password !== confirmPassword) {
-        setConfirmPasswordError(true);
-        flag = true;
       }
-      if (!flag) {
+      if (!phoneNumber) {
+        setPhoneNumberError(true);
+      }
+      if (!email || !emailValidator(email)) {
+        setEmailError(true);
+      }
+      if (!password || password.length < 8 || password.length > 20) {
+        setPasswordError(true);
+      }
+      if (!confirmPassword) {
+        setConfirmPasswordError(true);
+      }
+      if (password && confirmPassword && password !== confirmPassword) {
+        setConfirmPasswordError(true);
+      }
+      if (
+        !userName ||
+        !phoneNumber ||
+        !email ||
+        !password ||
+        !confirmPassword
+      ) {
+        return;
+      }
+      let temp = JSON.stringify({
+        FullName: userName,
+        Email_id: email,
+        Contact_No: phoneNumber,
+        Password: password,
+      });
+      let url = getBaseUrl() + 'deliveryPartner/v1/register';
+      let config = {
+        method: 'post',
+        url: url,
+        // headers: {
+        //   'Content-Type': 'application/json',
+        // },
+        data: temp,
+      };
+      const {data} = await axios(config);
+      console.log('data', data);
+      if (data.success === 1) {
+        showMessage('success', data.message);
         navigation.push('Dashboard');
+      } else {
+        showMessage('error', data.message);
       }
     } catch (error) {
       console.log('error in validaton', error);
@@ -80,8 +97,9 @@ export default function SignUp(props) {
             style={button.commonTextInput}
             theme={{roundness: 20}}
             placeholder="Username"
+            value={userName}
             onChangeText={value => {
-              setUserName(userName);
+              setUserName(value);
               setUserNameError(false);
             }}
           />
@@ -105,16 +123,14 @@ export default function SignUp(props) {
             style={button.commonTextInput}
             theme={{roundness: 20}}
             placeholder="Email id"
+            value={email}
             onChangeText={value => {
               setEmail(value.trim());
               setEmailError(false);
             }}
           />
           {emailError && (
-            <HelperText
-              type="error"
-              visible={emailError}
-              style={{textAlign: 'center'}}>
+            <HelperText type="error" visible={emailError}>
               Please Enter User name or Email Id
             </HelperText>
           )}
@@ -174,10 +190,7 @@ export default function SignUp(props) {
             }}
           />
           {passwordError && (
-            <HelperText
-              type="error"
-              visible={passwordError}
-              style={{textAlign: 'center'}}>
+            <HelperText type="error" visible={passwordError}>
               Please Enter Valid Passwoad
             </HelperText>
           )}
@@ -217,7 +230,7 @@ export default function SignUp(props) {
               mode="contained"
               style={button.commonButton}
               onPress={() => {
-                validateData();
+                signupHandle();
               }}>
               SIGNUP
             </Button>
